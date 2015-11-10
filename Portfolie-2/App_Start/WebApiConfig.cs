@@ -19,6 +19,12 @@ namespace Portfolie_2
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "UserApi",
+                routeTemplate: "api/user/{id}",
+                defaults: new { controller = "UserController", id = RouteParameter.Optional }
+            );
         }
     }
 }
