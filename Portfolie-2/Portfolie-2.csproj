@@ -120,6 +120,7 @@
     </Compile>
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\PostModel.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\PostRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Portfolie_2.Models
 {
-    public class UserModel
+    public class User
     {
         public int Id { get; set; }
         public string DisplayName { get; set; }
