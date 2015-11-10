@@ -18,7 +18,26 @@ namespace Portfolie_2
 
         private static IEnumerable<Post> ExecuteQuery(string sql)
         {
-            
+            using (var connection = MySqlConnection("database string"))
+            {
+                connection.Open();
+
+                var cmd = new MySqlCommand(sql, connection);
+
+                using (var rdr = cmd.ExecuteQuery())
+                {
+                    // as long as we have rows we can read
+                    while (rdr.HasRows && rdr.Read())
+                    {
+                        yield return new Post
+                        {
+                            Id = rdr.GetInt32(0),
+                            Title = rdr.GetString(1),
+                            Body = rdr.GetString(2)
+                        };
+                    }
+                }
+            }
         }
     }
 }
