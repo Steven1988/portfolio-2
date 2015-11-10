@@ -18,7 +18,7 @@ namespace Portfolie_2
 
         private static IEnumerable<Post> ExecuteQuery(string sql)
         {
-            using (var connection = MySqlConnection("database string"))
+            using (var connection = MySqlConnection("server=wt-220.ruc.dk;database=raw;uid=raw3;pwd=raw3"))
             {
                 connection.Open();
 
