@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
+using Portfolie_2.Models;
 
 namespace Portfolie_2
 {
@@ -36,7 +37,7 @@ namespace Portfolie_2
                     // as long as we have rows we can read
                     while (rdr.HasRows && rdr.Read())
                     {
-                        yield return new Models.User
+                        yield return new User
                         {
                             Id = rdr.GetInt32(0),
                             DisplayName = rdr.GetString(1),
@@ -49,5 +50,13 @@ namespace Portfolie_2
             }
         }
 
+        private class User : Models.User
+        {
+            public object AboutMe { get; set; }
+            public object CreationDate { get; set; }
+            public object DisplayName { get; set; }
+            public object Id { get; set; }
+            public object Location { get; set; }
+        }
     }
 }
