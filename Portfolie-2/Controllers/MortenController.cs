@@ -10,5 +10,6 @@ namespace Portfolie_2.Controllers
     public class MortenController : ApiController
     {
         public string Rope { get; set; }
+        // se jeg har lavet en kommentar
     }
 }
