@@ -13,10 +13,13 @@ namespace Portfolie_2.Controllers
     {
         PostRepository _postRepository = new PostRepository();
 
-        //public IEnumerable<PostModel> Get()
-        //{
-        //    var helper = new UrlHelper(Request);
-        //    return WriteLine("Hello")
-        //}
+        public IEnumerable<Post> Get()
+        {
+            var helper = new UrlHelper(Request);
+            return _postRepository.GetAll().Select(post => ModelFactory.Create(post));
+
+
+            //return WriteLine("Hello")
+        }
     }
 }

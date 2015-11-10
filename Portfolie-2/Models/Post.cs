@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Portfolie_2.Models
 {
-    public class PostModel
+    internal class Post
     {
         public int Id { get; set; }
         public string Title { get; set; }
