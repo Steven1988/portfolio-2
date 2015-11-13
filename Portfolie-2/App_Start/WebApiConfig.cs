@@ -14,16 +14,16 @@ namespace Portfolie_2
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
 
             config.Routes.MapHttpRoute(
                 name: "UserApi",
-                routeTemplate: "api/user/{id}",
-                defaults: new { controller = "UserController", id = RouteParameter.Optional }
+                routeTemplate: "api/posts/{id}",
+                defaults: new { controller = "Post", id = RouteParameter.Optional }
             );
         }
     }

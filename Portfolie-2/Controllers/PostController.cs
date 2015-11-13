@@ -4,22 +4,31 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Portfolie_2.Models;
 using System.Web.Http.Routing;
+using Portfolie_2.Repository;
+using Portfolie_2.Models;
 
 namespace Portfolie_2.Controllers
 {
     public class PostController : ApiController
     {
         PostRepository _postRepository = new PostRepository();
-
         public IEnumerable<Post> Get()
         {
-            var helper = new UrlHelper(Request);
-            return _postRepository.GetAll().Select(post => ModelFactory.Create(post));
-
-
-            //return WriteLine("Hello")
+            return _postRepository.GetAll();
         }
+
+        //public object Get()
+        //{
+        //    return "hello from PostController";
+        //}
+
+        //PostRepository _postRepository = new PostRepository();
+
+        //public IEnumerable<Post> Get()
+        //{
+        //    var helper = new UrlHelper(Request);
+        //    return _postRepository.GetAll().Select(post => ModelFactory.Create(post));
+        //}
     }
 }
