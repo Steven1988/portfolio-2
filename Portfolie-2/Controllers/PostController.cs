@@ -10,6 +10,7 @@ using Portfolie_2.Models;
 
 namespace Portfolie_2.Controllers
 {
+    // The PostController handles requests about posts
     public class PostController : ApiController
     {
         PostRepository _postRepository = new PostRepository();

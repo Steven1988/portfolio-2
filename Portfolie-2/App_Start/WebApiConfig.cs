@@ -21,9 +21,15 @@ namespace Portfolie_2
             //);
 
             config.Routes.MapHttpRoute(
-                name: "UserApi",
+                name: "PostApi",
                 routeTemplate: "api/posts/{id}",
                 defaults: new { controller = "Post", id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "UserApi",
+                routeTemplate: "api/users/{id}",
+                defaults: new { controller = "User", id = RouteParameter.Optional }
             );
         }
     }
