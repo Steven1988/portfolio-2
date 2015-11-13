@@ -34,7 +34,7 @@ namespace Portfolie_2
 
             config.Routes.MapHttpRoute(
                 name: "UserApi",
-                routeTemplate: "api/users/{id}",
+                routeTemplate: "api/Comment/{id}",
                 defaults: new { controller = "Comment", id = RouteParameter.Optional }
             );
         }
