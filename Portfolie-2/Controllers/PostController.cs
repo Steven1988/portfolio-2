@@ -15,7 +15,9 @@ namespace Portfolie_2.Controllers
         PostRepository _postRepository = new PostRepository();
         public IEnumerable<Post> Get()
         {
-            return _postRepository.GetAll();
+            IEnumerable<Post> p = _postRepository.GetAll();
+            Console.WriteLine(p.First<Post>().Title);
+            return p;
         }
 
         //public object Get()
