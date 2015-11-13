@@ -22,7 +22,7 @@ namespace Portfolie_2.Repository
            
             {
                 connection.Open();
-                var sql = string.Format("select id, title, body from posts limit {0} offset {1}", limit, offset);
+                var sql = string.Format("select id, posttypeid, parentid, acceptedanswerid, userid, creationdate, title, body from posts limit {0} offset {1}", limit, offset);
 
                 var cmd = new MySqlCommand(sql, connection);
                 using (var rdr = cmd.ExecuteReader())
@@ -33,6 +33,11 @@ namespace Portfolie_2.Repository
                         yield return new Post
                         {
                             Id = rdr.GetInt32(0),
+                            PostTypeId = rdr.GetInt32(1),
+                            //ParentId = rdr.GetInt32(2),
+                            //AcceptedAnswersId = rdr.GetInt32(3),
+                            UserId = rdr.GetInt32(4),
+                            CreationDate = rdr.GetDateTime(5),
                             Title = rdr["title"] as string,
                             Body = rdr["body"] as string
                         };
@@ -53,7 +58,7 @@ namespace Portfolie_2.Repository
             using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                var sql = string.Format("select id, title, body from posts where id = {0}", id);
+                var sql = string.Format("select id, posttypeid, parentid, acceptedanswerid, userid, creationdate, title, body from posts where id = {0}", id);
 
                 var cmd = new MySqlCommand(sql, connection);
                 using (var rdr = cmd.ExecuteReader())
@@ -63,6 +68,11 @@ namespace Portfolie_2.Repository
                         return new Post
                         {
                             Id = rdr.GetInt32(0),
+                            PostTypeId = rdr.GetInt32(1),
+                            //ParentId = rdr.GetInt32(2),
+                            //AcceptedAnswersId = rdr.GetInt32(3),
+                            UserId = rdr.GetInt32(4),
+                            CreationDate = rdr.GetDateTime(5),
                             Title = rdr["title"] as string,
                             Body = rdr["body"] as string
                         };
