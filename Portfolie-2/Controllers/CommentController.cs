@@ -12,10 +12,15 @@ namespace Portfolie_2.Controllers
 {
     public class CommentController : ApiController
     {
-        CommentRepository _commentRepositry = new CommentRepository();
+        CommentRepository _commentRepository = new CommentRepository();
         public IEnumerable<Comment> Get()
         {
-            return _commentRepositry.GetAll();
+            return _commentRepository.GetAll();
+        }
+
+        public Comment Get(int id)
+        {
+            return _commentRepository.GetById(id);
         }
     }
 }

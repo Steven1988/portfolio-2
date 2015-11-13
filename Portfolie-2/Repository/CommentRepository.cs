@@ -47,5 +47,38 @@ namespace Portfolie_2.Repository
             //foreach (var post in ExecuteQuery(sql))
             //    yield return post;
         }
+
+        public Comment GetById(int id)
+        {
+            var connectionString = @"Server=wt-220.ruc.dk;
+                                     User ID=raw3;
+                                     Password=raw3;
+                                     Database=raw3;
+                                     Port=3306;
+                                     Pooling=false";
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                var sql = string.Format("select id, postId, text, creationDate, userId from comments where id = {0}", id);
+
+                var cmd = new MySqlCommand(sql, connection);
+                using (var rdr = cmd.ExecuteReader())
+                {
+                    if (rdr.HasRows && rdr.Read())
+                    {
+                        return new Comment
+                        {
+                            Id = rdr.GetInt32(0),
+                            PostId = rdr.GetInt32(1),
+                            Text = rdr["text"] as string,
+                            CreationDate = rdr.GetDateTime(3),
+                            UserId = rdr.GetInt32(4)
+                        };
+                    }
+                }
+            }
+            return null;
+        }
     }
 }
