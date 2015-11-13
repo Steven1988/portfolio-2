@@ -22,7 +22,7 @@ namespace Portfolie_2.Repository
 
             {
                 connection.Open();
-                var sql = string.Format("select id, title, body from posts limit {0} offset {1}", limit, offset);
+                var sql = string.Format("select id, postId, text, creationDate, userId from posts limit {0} offset {1}", limit, offset);
 
                 var cmd = new MySqlCommand(sql, connection);
                 using (var rdr = cmd.ExecuteReader())
@@ -30,11 +30,13 @@ namespace Portfolie_2.Repository
                     // as long as we have rows we can read
                     while (rdr.HasRows && rdr.Read())
                     {
-                        yield return new Post
+                        yield return new Comment
                         {
                             Id = rdr.GetInt32(0),
-                            Title = rdr["title"] as string,
-                            Body = rdr["body"] as string
+                            PostId = rdr.GetInt32(1),
+                            Text = rdr["text"] as string,
+                            CreationDate = rdr.GetDateTime(3),
+                            UserId = rdr.GetInt32(4)
                         };
                     }
                 }
