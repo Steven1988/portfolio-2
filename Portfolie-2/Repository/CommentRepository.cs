@@ -22,7 +22,7 @@ namespace Portfolie_2.Repository
 
             {
                 connection.Open();
-                var sql = string.Format("select id, postId, text, creationDate, userId from posts limit {0} offset {1}", limit, offset);
+                var sql = string.Format("select id, postId, text, creationDate, userId from comments limit {0} offset {1}", limit, offset);
 
                 var cmd = new MySqlCommand(sql, connection);
                 using (var rdr = cmd.ExecuteReader())
