@@ -33,8 +33,8 @@ namespace Portfolie_2.Repository
                         yield return new Post
                         {
                             Id = rdr.GetInt32(0),
-                            Title = rdr.GetString(1),
-                            Body = rdr.GetString(2)
+                            //Title = rdr.GetString(1),
+                            Body = rdr.GetString(1)
                         };
                     }
                 }
