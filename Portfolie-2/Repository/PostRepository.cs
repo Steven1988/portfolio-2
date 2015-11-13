@@ -11,11 +11,11 @@ namespace Portfolie_2.Repository
     {
         public IEnumerable<Post> GetAll(int limit = 10, int offset = 0)
         {
-            using (var connection = new MySqlConnection("server = wt - 220.ruc.dk; database = raw3; uid = raw3; pwd = raw3; port = 3306;"))
+            using (var connection = new MySqlConnection("server=wt-220.ruc.dk;database=raw3;uid=raw3;pwd=raw3;"))
             //(var connection = new MySqlConnection("server=wt-220.ruc.dk;database=raw3;uid=raw3;pwd=raw3;port=3306"))
             {
                 connection.Open();
-                var sql = string.Format("select id, title, body from posts limit {0} offset {1}", limit, offset);
+                var sql = string.Format("select id, body from posts limit {0} offset {1}", limit, offset);
 
                 var cmd = new MySqlCommand(sql, connection);
                 using (var rdr = cmd.ExecuteReader())
@@ -26,8 +26,8 @@ namespace Portfolie_2.Repository
                         yield return new Post
                         {
                             Id = rdr.GetInt32(0),
-                            Title = rdr.GetString(1),
-                            Body = rdr.GetString(2)
+                            //Title = rdr.GetString(1),
+                            Body = rdr.GetString(1)
                         };
                     }
                 }
