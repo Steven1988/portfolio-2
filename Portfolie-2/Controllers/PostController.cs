@@ -17,9 +17,14 @@ namespace Portfolie_2.Controllers
         public IEnumerable<Post> Get()
         {
             IEnumerable<Post> p = _postRepository.GetAll();
-            Console.WriteLine(p.First<Post>().Title);
             return p;
         }
+
+        public Post Get(int id)
+        {
+            return _postRepository.GetById(id);
+        }
+
 
         //public object Get()
         //{
