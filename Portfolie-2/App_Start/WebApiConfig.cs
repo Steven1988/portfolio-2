@@ -43,6 +43,12 @@ namespace Portfolie_2
                 routeTemplate: "api/tags/{id}",
                 defaults: new { controller = "Tag", id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "TiApi",
+                routeTemplate: "api/ti/{tid}",
+                defaults: new { controller = "Ti", tid = RouteParameter.Optional }
+            );
         }
     }
 }

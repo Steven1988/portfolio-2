@@ -17,9 +17,9 @@ namespace Portfolie_2.Controllers
             return _tiRepository.GetAll();
         }
 
-        public Ti Get(int id)
+        public Ti Get(int tid)
         {
-            return _tiRepository.GetByTid(id);
+            return _tiRepository.GetByTid(tid);
         }
     }
 }
