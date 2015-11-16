@@ -45,7 +45,7 @@ namespace Portfolie_2.Repository
             //    yield return post;
         }
 
-        public Ti GetByTip(int tid)
+        public Ti GetByTid(int tid)
         {
             var connectionString = @"Server=wt-220.ruc.dk;
                                      User ID=raw3;
