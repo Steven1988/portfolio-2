@@ -15,7 +15,8 @@ namespace Portfolie_2.Controllers
 
         public IEnumerable<SearchPost> GetSearch()
         {
-            IEnumerable<SearchPost> s = _postRepository.GetAllSearch();
+            var searchString = "Hello";
+            IEnumerable<SearchPost> s = _postRepository.GetAllSearch(searchString);
             return s;
 
         }
