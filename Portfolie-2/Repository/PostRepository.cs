@@ -20,8 +20,9 @@ namespace Portfolie_2.Repository
                                     CreationDate,
                                     Body,
                                     Title,
-                                    UserId
-                                    from posts limit {0} offset {1}", limit, offset);
+                                    UserId,
+                                    DisplayName
+                                    from posts, users limit {0} offset {1}", limit, offset);
             foreach (var post in ExecuteQuery(sql))
                 yield return post;
         }
@@ -45,28 +46,8 @@ namespace Portfolie_2.Repository
 
         public IEnumerable<SearchPost> GetAllSearch(string searchString)
         {
-            //var sql = string.Format("call raw3.search('" + inputString + "')");
 
-            //return ExecuteQuery(sql).First();
-            //var connectionString = @"Server=wt-220.ruc.dk;
-            //                         User ID=raw3;
-            //                         Password=raw3;
-            //                         Database=raw3;
-            //                         Port=3306;
-            //                         Pooling=false";
-            //using (var connection = new MySqlConnection(connectionString))
-            //{
-            //    connection.Open();
-            //    using (var cmd = new MySqlCommand("raw3.search('Hello')", connection)
-            //    {
-            //    CommandType = CommandType.StoredProcedure
-            //    })
-            //{
-            //        connection.Open();
-            //        cmd.ExecuteQuery();
-            //} 
-            //}
-
+            // stored procedure call
 
             MySqlConnection conn = new MySqlConnection("Server=wt-220.ruc.dk;User ID = raw3;Password = raw3;Database = raw3;Port = 3306;Pooling = false");
             MySqlCommand cmd = new MySqlCommand();
@@ -123,6 +104,7 @@ namespace Portfolie_2.Repository
                             Body = rdr["body"] as string,
                             Title = rdr["title"] as string,
                             UserId = rdr.GetInt32(7)
+                            //PostUser.Name = rdr["displayname"] as string
 
                         };
                     }

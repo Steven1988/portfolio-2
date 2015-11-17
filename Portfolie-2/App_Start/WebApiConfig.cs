@@ -32,8 +32,8 @@ namespace Portfolie_2
             );
             config.Routes.MapHttpRoute(
                 name: "SearchApi",
-                routeTemplate: "api/search/{inputString}",
-                defaults: new { controller = "Search", inputString = RouteParameter.Optional }
+                routeTemplate: "api/search/{searchString}",
+                defaults: new { controller = "Search", searchString = RouteParameter.Optional }
                 );
 
             config.Routes.MapHttpRoute(
