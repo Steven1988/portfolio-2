@@ -11,7 +11,16 @@ namespace Portfolie_2.Repository
     {
         public IEnumerable<Post> GetAll(int limit = 10, int offset = 0)
         {
-            var sql = string.Format("select id, posttypeid, parentid, acceptedanswerid, userid, creationdate, title, body from posts limit {0} offset {1}", limit, offset);
+            var sql = string.Format(@"select 
+                                    Id,
+                                    PostTypeId,
+                                    ParentId,
+                                    AcceptedAnswerId,
+                                    CreationDate,
+                                    Body,
+                                    Title,
+                                    UserId
+                                    from posts limit {0} offset {1}", limit, offset);
             foreach (var post in ExecuteQuery(sql))
                 yield return post;
         }
@@ -20,7 +29,16 @@ namespace Portfolie_2.Repository
 
         public Post GetById(int id)
         {
-            var sql = string.Format("select id, posttypeid, parentid, acceptedanswerid, userid, creationdate, title, body from posts where id = {0}", id);
+            var sql = string.Format(@"select 
+                                    Id,
+                                    PostTypeId,
+                                    ParentId,
+                                    AcceptedAnswerId,
+                                    CreationDate,
+                                    Body,
+                                    Title,
+                                    UserId
+                                    from posts where id = {0}", id);
             return ExecuteQuery(sql).FirstOrDefault();
         }
 
