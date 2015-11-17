@@ -113,6 +113,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\FavoriteController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\TiController.cs" />
@@ -122,13 +123,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Favorite.cs" />
     <Compile Include="Models\ModelFactory.cs" />
+    <Compile Include="Models\SearchHistory.cs" />
     <Compile Include="Models\SearchPost.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Ti.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Repository\CommentRepository.cs" />
+    <Compile Include="Repository\FavoriteRepository.cs" />
     <Compile Include="Repository\TagRepository.cs" />
     <Compile Include="Repository\TiRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
