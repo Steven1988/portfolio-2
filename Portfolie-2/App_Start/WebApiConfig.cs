@@ -20,6 +20,11 @@ namespace Portfolie_2
             //    defaults: new { id = RouteParameter.Optional }
             //);
 
+            /*A request comes in. 
+              System pattern matches according to the following templates of mapped routes.
+              A route is a set of instructions on how to take a URI coming into a request.
+              It is mapped to some code, typically a controller.
+            */
             config.Routes.MapHttpRoute(
                 name: "PostApi",
                 routeTemplate: "api/posts/{id}",
