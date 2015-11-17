@@ -25,6 +25,11 @@ namespace Portfolie_2
                 routeTemplate: "api/posts/{id}",
                 defaults: new { controller = "Post", id = RouteParameter.Optional }
             );
+            config.Routes.MapHttpRoute(
+                name: "SearchApi",
+                routeTemplate: "api/search/{inputString}",
+                defaults: new { controller = "Search", inputString = RouteParameter.Optional }
+                );
 
             config.Routes.MapHttpRoute(
                 name: "UserApi",
