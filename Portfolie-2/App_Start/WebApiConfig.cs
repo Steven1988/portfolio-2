@@ -37,6 +37,18 @@ namespace Portfolie_2
                 routeTemplate: "api/comments/{id}",
                 defaults: new { controller = "Comment", id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "TagApi",
+                routeTemplate: "api/tags/{id}",
+                defaults: new { controller = "Tag", id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "TiApi",
+                routeTemplate: "api/ti/{tid}",
+                defaults: new { controller = "Ti", tid = RouteParameter.Optional }
+            );
         }
     }
 }
