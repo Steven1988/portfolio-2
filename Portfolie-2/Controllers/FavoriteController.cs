@@ -11,18 +11,15 @@ namespace Portfolie_2.Controllers
 {
     public class FavoriteController : ApiController
     {
-        public class CommentController : ApiController
+        FavoriteRepository _favoriteRepository = new FavoriteRepository();
+        public IEnumerable<Favorite> Get()
         {
-            FavoriteRepository _favoriteRepository = new FavoriteRepository();
-            public IEnumerable<Favorite> Get()
-            {
-                return _favoriteRepository.GetAll();
-            }
+            return _favoriteRepository.GetAll();
+        }
 
-            public Favorite Get(int userId)
-            {
-                return _favoriteRepository.GetByUserId(userId);
-            }
+        public Favorite Get(int userId)
+        {
+            return _favoriteRepository.GetByUserId(userId);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Portfolie_2.Repository
                         {
                             UserId = rdr.GetInt32(0),
                             PostId = rdr.GetInt32(1),
-                            Annotation = rdr["text"] as string
+                            Annotation = rdr["annotation"] as string
                         };
                     }
                 }
@@ -64,7 +64,7 @@ namespace Portfolie_2.Repository
                         {
                             UserId = rdr.GetInt32(0),
                             PostId = rdr.GetInt32(1),
-                            Annotation = rdr["text"] as string
+                            Annotation = rdr["annotation"] as string
                         };
                     }
                 }
