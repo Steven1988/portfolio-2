@@ -128,6 +128,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Repository\CommentRepository.cs" />
+    <Compile Include="Repository\FavoriteRepository.cs" />
     <Compile Include="Repository\TagRepository.cs" />
     <Compile Include="Repository\TiRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
