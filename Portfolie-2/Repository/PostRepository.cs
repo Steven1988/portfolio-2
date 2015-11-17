@@ -117,8 +117,8 @@ namespace Portfolie_2.Repository
                             PostTypeId = rdr.GetInt32(1),
                             //ParentId = rdr.GetInt32(2),
                             //AcceptedAnswersId = rdr.GetInt32(3),
-                            UserId = rdr.GetInt32(4),
-                            CreationDate = rdr.GetDateTime(5),
+                            UserId = rdr.GetInt32(7),
+                            CreationDate = rdr.GetDateTime(4),
                             Title = rdr["title"] as string,
                             Body = rdr["body"] as string
                         };
