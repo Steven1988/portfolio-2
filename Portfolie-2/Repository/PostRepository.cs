@@ -56,6 +56,6 @@ namespace Portfolie_2.Repository
                     }
                 }
             }
-        }q     
+        }     
     }
 }
