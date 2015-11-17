@@ -9,6 +9,12 @@ namespace Portfolie_2.Repository
 {
     public class UserRepository
     {
+        /// <summary>
+        /// selects all data from first 10 users
+        /// </summary>
+        /// <param name="limit"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
         public IEnumerable<User> GetAll(int limit = 10, int offset = 0)
         {
             var sql = string.Format(@"select 
@@ -17,7 +23,11 @@ namespace Portfolie_2.Repository
             foreach (var user in ExecuteQuery(sql))
                 yield return user;
         }
-
+        /// <summary>
+        /// selects data from user with specified id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public User GetById(int id)
         {
             var sql = string.Format(@"select 
@@ -31,6 +41,11 @@ namespace Portfolie_2.Repository
             return ExecuteQuery(sql).FirstOrDefault();
         }
 
+        /// <summary>
+        /// makes a connection to the MYSQL database
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         private static IEnumerable<User> ExecuteQuery(string sql)
         {
             var connectionString = @"Server=wt-220.ruc.dk;
