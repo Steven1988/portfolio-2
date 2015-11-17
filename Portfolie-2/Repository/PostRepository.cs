@@ -122,7 +122,7 @@ namespace Portfolie_2.Repository
                             CreationDate = rdr.GetDateTime(4),
                             Body = rdr["body"] as string,
                             Title = rdr["title"] as string,
-                            UserId = rdr.GetInt32(7),
+                            UserId = rdr.GetInt32(7)
 
                         };
                     }
