@@ -120,7 +120,7 @@ namespace Portfolie_2.Repository
                             //ParentId = rdr.GetInt32(2),
                             //AcceptedAnswersId = rdr.GetInt32(3),
                             CreationDate = rdr.GetDateTime(4),
-                            Body = rdr["body"] as string
+                            Body = rdr["body"] as string,
                             Title = rdr["title"] as string,
                             UserId = rdr.GetInt32(7),
 
