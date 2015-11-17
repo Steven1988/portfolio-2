@@ -17,4 +17,21 @@ namespace Portfolie_2.Models
         public int? AcceptedAnswersId { get; set; }
         public int? UserId { get; set; }
     }
+    //public class ChildUser
+    //{
+    //    public int UserId { get; set; }
+    //    public string Name { get; set; }
+    //    public Post Child { get; set; }
+
+    //    Car car = new Car
+    //    {
+    //        Name = "Chevrolet Corvette",
+    //        Color = Color.Yellow,
+    //        Manufacturer = new CarManufacturer
+    //        {
+    //            Name = "Chevrolet", Country = "USA"
+    //        }
+    //    };
+    //}
+    
 }
