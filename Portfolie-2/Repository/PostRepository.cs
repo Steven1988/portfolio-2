@@ -46,6 +46,8 @@ namespace Portfolie_2.Repository
             }
         }
 
+        
+
         public Post GetById(int id)
         {
             var connectionString = @"Server=wt-220.ruc.dk;
