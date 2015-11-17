@@ -71,7 +71,8 @@ namespace Portfolie_2.Repository
                             DisplayName     = rdr.GetString(1),
                             CreationDate    = rdr.GetDateTime(2),
                             Location        = rdr.GetString(3),
-                            AboutMe         = rdr.GetString(4)
+                            AboutMe         = rdr.GetString(4),
+                            Age             = rdr.GetString(5)
                         };
                     }
                 }
