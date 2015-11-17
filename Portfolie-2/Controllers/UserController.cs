@@ -16,7 +16,13 @@ namespace Portfolie_2.Controllers
         UserRepository _userRepository = new UserRepository();
         public IEnumerable<User> Get()
         {
-            return _userRepository.GetAll();
+            IEnumerable<User> u = _userRepository.GetAll();
+            return u;
+        }
+
+        public User Get(int id)
+        {
+            return _userRepository.GetById(id);
         }
     }
 }

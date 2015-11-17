@@ -7,9 +7,9 @@ using System.Web;
 
 namespace Portfolie_2.Repository
 {
-    public class CommentRepository
+    public class FavoriteRepository
     {
-        public IEnumerable<Comment> GetAll(int limit = 10, int offset = 0)
+        public IEnumerable<Favorite> GetAll(int limit = 10, int offset = 0)
         {
             var connectionString = @"Server=wt-220.ruc.dk;
                                      User ID=raw3;
@@ -22,13 +22,7 @@ namespace Portfolie_2.Repository
 
             {
                 connection.Open();
-                var sql = string.Format(@"select 
-                                        Id,
-                                        PostId,
-                                        Text,
-                                        CreationDate,
-                                        UserId 
-                                        from comments limit {0} offset {1}", limit, offset);
+                var sql = string.Format("select userid, postId, annotation from favorites limit {0} offset {1}", limit, offset);
 
                 var cmd = new MySqlCommand(sql, connection);
                 using (var rdr = cmd.ExecuteReader())
@@ -36,25 +30,18 @@ namespace Portfolie_2.Repository
                     // as long as we have rows we can read
                     while (rdr.HasRows && rdr.Read())
                     {
-                        yield return new Comment
+                        yield return new Favorite
                         {
-                            Id = rdr.GetInt32(0),
+                            UserId = rdr.GetInt32(0),
                             PostId = rdr.GetInt32(1),
-                            Text = rdr["text"] as string,
-                            CreationDate = rdr.GetDateTime(3),
-                            UserId = rdr.GetInt32(4)
+                            Annotation = rdr["annotation"] as string
                         };
                     }
                 }
             }
-
-            //var sql = string.Format("select id, title, body from posts limit {0} offset {1}", limit, offset);
-
-            //foreach (var post in ExecuteQuery(sql))
-            //    yield return post;
         }
 
-        public Comment GetById(int id)
+        public Favorite GetByUserId(int userId)
         {
             var connectionString = @"Server=wt-220.ruc.dk;
                                      User ID=raw3;
@@ -66,26 +53,18 @@ namespace Portfolie_2.Repository
             using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                var sql = string.Format(@"select 
-                                        Id,
-                                        PostId,
-                                        Text,
-                                        CreationDate,
-                                        UserId 
-                                        from comments where id = {0}", id);
+                var sql = string.Format("select userid, postid, annotation from favorites where userid = {0}", userId);
 
                 var cmd = new MySqlCommand(sql, connection);
                 using (var rdr = cmd.ExecuteReader())
                 {
                     if (rdr.HasRows && rdr.Read())
                     {
-                        return new Comment
+                        return new Favorite
                         {
-                            Id = rdr.GetInt32(0),
+                            UserId = rdr.GetInt32(0),
                             PostId = rdr.GetInt32(1),
-                            Text = rdr["text"] as string,
-                            CreationDate = rdr.GetDateTime(3),
-                            UserId = rdr.GetInt32(4)
+                            Annotation = rdr["annotation"] as string
                         };
                     }
                 }
