@@ -43,7 +43,7 @@ namespace Portfolie_2.Repository
             return ExecuteQuery(sql).FirstOrDefault();
         }
 
-        public IEnumerable<SearchPost> GetAllSearch()
+        public IEnumerable<SearchPost> GetAllSearch(string searchString)
         {
             //var sql = string.Format("call raw3.search('" + inputString + "')");
 
@@ -75,7 +75,8 @@ namespace Portfolie_2.Repository
             cmd.CommandText = "raw3.search";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = conn;
-
+            //cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = "Blah";
+            cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = searchString;
             conn.Open();
 
             using (reader = cmd.ExecuteReader())
