@@ -12,12 +12,7 @@ namespace Portfolie_2.Repository
         public IEnumerable<User> GetAll(int limit = 10, int offset = 0)
         {
             var sql = string.Format(@"select 
-                                    Id, 
-                                    DisplayName, 
-                                    CreationDate, 
-                                    Location, 
-                                    AboutMe, 
-                                    Age 
+                                    * 
                                     from users limit {0} offset {1}", limit, offset);
             foreach (var user in ExecuteQuery(sql))
                 yield return user;
