@@ -113,6 +113,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\FavoriteController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\TiController.cs" />
     <Compile Include="Controllers\UserController.cs" />
