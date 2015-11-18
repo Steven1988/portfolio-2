@@ -9,6 +9,11 @@ namespace Portfolie_2.Repository
 {
     public class UserRepository
     {
+
+        //implementing Moq
+        public int Something { get; set; }
+
+
         /// <summary>
         /// selects all data from first 10 users
         /// </summary>
