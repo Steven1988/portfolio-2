@@ -85,6 +85,7 @@ namespace Portfolie_2.Repository
                 {
                     yield return new SearchPost
                     {
+                        Id = reader.GetInt32(0),
                         Title = reader["title"] as string,
                         Body = reader["body"] as string
                     };
