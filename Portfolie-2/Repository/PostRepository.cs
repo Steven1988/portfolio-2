@@ -13,35 +13,53 @@ namespace Portfolie_2.Repository
         public IEnumerable<Post> GetAll(int limit = 10, int offset = 0)
         {
             var sql = string.Format(@"select 
-                                    posts.Id,
-                                    PostTypeId,
-                                    ParentId,
-                                    AcceptedAnswerId,
-                                    posts.CreationDate,
-                                    Body,
-                                    Title,
-                                    UserId,
-                                    users.id,
-                                    DisplayName
-                                    from posts, users where posts.userid = users.id limit {0} offset {1}", limit, offset);
-            foreach (var post in ExecuteQuery(sql))
-                yield return post;
-        }
+                posts.Id, PostTypeId, ParentId,
+                AcceptedAnswerId, posts.CreationDate,
+                Body, Title, posts.UserId,
+                                    
+                pAuthor.id,
+                pAuthor.DisplayName as PostAuthorName,
 
+                comments.id, text,
+                comments.CreationDate, comments.userid,
+                cAuthor.id, cAuthor.DisplayName as CommentAuthorName
+
+                from posts, users as pAuthor, users as cAuthor, comments 
+                where posts.userid = pAuthor.id and comments.postId = posts.id and comments.userid = cAuthor.id
+                limit {0} offset {1}", limit, offset);
+
+            
+            foreach (var post in ExecuteQuery(sql))
+            { 
+                yield return post;
+                
+            }
+                
+        }
+        public string commentsql(int postId) {  
+            return string.Format(@"select
+                posts.id 
+
+                comments.id, text,
+                comments.CreationDate, comments.userid
+                users.DisplayName as CommentAuthorName,
+                
+                from posts, comments, users
+                where posts.id = comments.postId and comments.userid = cAuthor.id", postId);
+        }
         
 
         public Post GetById(int id)
         {
             var sql = string.Format(@"select 
-                                    Id,
-                                    PostTypeId,
-                                    ParentId,
-                                    AcceptedAnswerId,
-                                    CreationDate,
-                                    Body,
-                                    Title,
-                                    UserId
-                                    from posts where id = {0}", id);
+                posts.Id, PostTypeId, ParentId,
+                AcceptedAnswerId, posts.CreationDate,
+                Body, Title, UserId,
+                
+                users.id, DisplayName
+                
+                from posts, users
+                where users.id = posts.UserId and posts.Id = {0}", id);
             return ExecuteQuery(sql).FirstOrDefault();
         }
 
@@ -97,7 +115,6 @@ namespace Portfolie_2.Repository
                     {
                         yield return new Post
                         {
-
                             Id = rdr.GetInt32(0),
                             PostTypeId = rdr.GetInt32(1),
                             //ParentId = rdr.GetInt32(2),
@@ -109,14 +126,23 @@ namespace Portfolie_2.Repository
                             UserInstance = new Post.User
                             {
                                 UserId = rdr.GetInt32(8),
-                                Name = rdr["DisplayName"] as string
-                            }
-                            
+                                Name = rdr["displayname"] as string
+                            },
+                            Comments = new List<Post.Comment>()
+
+                            //{
+                            //    CommentId = rdr.GetInt32(10),
+                            //    Text = rdr["text"] as string,
+                            //    CreationDate = rdr.GetDateTime(12),
+                            //    CommentAuthorId = rdr.GetInt32(13),
+                            //    AuthorName = rdr["CommentAuthorName"] as string
+                            //    //PostId = rdr.GetInt32(13)
+                            //}
 
                         };
                     }
                 }
             }
-        }     
+        }  
     }
 }
