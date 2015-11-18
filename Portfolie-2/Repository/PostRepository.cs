@@ -13,11 +13,11 @@ namespace Portfolie_2.Repository
         public IEnumerable<Post> GetAll(int limit = 10, int offset = 0)
         {
             var sql = string.Format(@"select 
-                                    Id,
+                                    posts.Id,
                                     PostTypeId,
                                     ParentId,
                                     AcceptedAnswerId,
-                                    CreationDate,
+                                    posts.CreationDate,
                                     Body,
                                     Title,
                                     UserId,
