@@ -19,7 +19,7 @@ namespace Portfolie_2.Repository
             MySqlCommand cmd = new MySqlCommand();
             MySqlDataReader reader;
 
-            cmd.CommandText = "raw3.Tagcound";
+            cmd.CommandText = "raw3.tagCount";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = conn;
             conn.Open();
@@ -31,7 +31,7 @@ namespace Portfolie_2.Repository
                     yield return new Tag
                     {
                         Id = reader.GetInt32(0),
-                        Tagname = reader["Tagname"] as string,
+                        Tagname = reader["tagname"] as string,
                         TagCount = reader.GetInt32(2)
                     };
                 }
