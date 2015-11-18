@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Routing;
 using Portfolie_2.Repository;
 using Portfolie_2.Models;
+using Newtonsoft.Json;
 
 namespace Portfolie_2.Controllers
 {
@@ -24,5 +25,18 @@ namespace Portfolie_2.Controllers
         {
             return _userRepository.GetById(id);
         }
+
+        public UserController(UserRepository repository)
+        {
+            _userRepository = repository;
+        }
+
+        public string GetUser(int id)
+        {
+            var User = _userRepository.GetById(id);
+
+            return JsonConvert.SerializeObject(User);
+        }
+
     }
 }
