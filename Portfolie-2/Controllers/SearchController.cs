@@ -20,13 +20,5 @@ namespace Portfolie_2.Controllers
             return s;
         }
 
-
-
-        //private static string inputString = "JavaScript";
-
-        //private static List<PostRepository> Posts = new 
-        //{
-        //    var inputString = "JavaScript";
-        //}
     }
 }

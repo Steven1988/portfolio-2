@@ -16,17 +16,31 @@ namespace Portfolie_2.Models
         public int? ParentId { get; set; }
         public int? AcceptedAnswersId { get; set; }
         public int? UserId { get; set; }
-        public PostUser PostUser { get; set; }
+
+        public class User
+        {
+            public int UserId { get; set; }
+            public string Name { get; set; }
+        }
+
+        public User UserInstance { get; set; }
+
         public Post()
         {
-            this.PostUser = new PostUser() { UserId = -1 };
+            UserInstance = new User();
         }
+
+
+        //public Post()
+        //{
+        //    this.User = new User() { UserId = -1 };
+        //}
     }
 
-    public class PostUser
-    {
-        public int UserId { get; set; }
-        public string Name { get; set; }
+    //public class PostUser
+    //{
+    //    public int UserId { get; set; }
+    //    public string Name { get; set; }
 
         //Car car = new Car
         //{
@@ -38,6 +52,6 @@ namespace Portfolie_2.Models
         //        Country = "USA"
         //    }
         //};
-    }
+    //}
 
 }

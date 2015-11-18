@@ -21,8 +21,9 @@ namespace Portfolie_2.Repository
                                     Body,
                                     Title,
                                     UserId,
+                                    users.id,
                                     DisplayName
-                                    from posts, users limit {0} offset {1}", limit, offset);
+                                    from posts, users where posts.userid = users.id limit {0} offset {1}", limit, offset);
             foreach (var post in ExecuteQuery(sql))
                 yield return post;
         }
@@ -104,8 +105,13 @@ namespace Portfolie_2.Repository
                             CreationDate = rdr.GetDateTime(4),
                             Body = rdr["body"] as string,
                             Title = rdr["title"] as string,
-                            UserId = rdr.GetInt32(7)
-                            //PostUser.Name = rdr["displayname"] as string
+                            UserId = rdr.GetInt32(7),
+                            UserInstance = new Post.User
+                            {
+                                UserId = rdr.GetInt32(8),
+                                Name = rdr["DisplayName"] as string
+                            }
+                            
 
                         };
                     }
