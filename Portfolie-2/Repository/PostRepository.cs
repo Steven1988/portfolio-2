@@ -54,7 +54,8 @@ namespace Portfolie_2.Repository
                 users.id, DisplayName
                 
                 from posts, users
-                where (users.id = posts.UserId and posts.Id = {0}) OR  (users.id = posts.UserId and ParentId={0})", id);
+                where (users.id = posts.UserId and posts.Id = {0}) OR  (users.id = posts.UserId and ParentId={0})
+                order by CreationDate asc", id);
 
             var connectionString = @"Server=wt-220.ruc.dk;
                                      User ID=raw3;
@@ -75,31 +76,31 @@ namespace Portfolie_2.Repository
                     {
 
 
-                        //------ here a loop should run which adds objects to the list - CommentList
+                        ////------ here a loop should run which adds objects to the list - CommentList
                         
-                        // static Comments [TEST]
+                        //// static Comments [TEST]
                         List<DetailPost.Comment> CommentList = new List<DetailPost.Comment>();       
 
-                        CommentList.Add(
-                                new DetailPost.Comment()
-                                {
-                                    CommentId = 123456,
-                                    Text = "Jeg ved ikke hvordan man laver C# programmer",
-                                    //CreationDate = cRdr.GetDateTime(2),
-                                    CommentAuthorId = 1234,
-                                    AuthorName = "Morten Lau Larsen"
-                                });
-                        CommentList.Add(
-                                new DetailPost.Comment()
-                                {
-                                    CommentId = 654321,
-                                    Text = "det gør jeg heller ikke",
-                                    //CreationDate = cRdr.GetDateTime(2),
-                                    CommentAuthorId = 321,
-                                    AuthorName = "Mortens usynlige ven"
-                                });
+                        //CommentList.Add(
+                        //        new DetailPost.Comment()
+                        //        {
+                        //            CommentId = 123456,
+                        //            Text = "Jeg ved ikke hvordan man laver C# programmer",
+                        //            //CreationDate = cRdr.GetDateTime(2),
+                        //            CommentAuthorId = 1234,
+                        //            AuthorName = "Morten Lau Larsen"
+                        //        });
+                        //CommentList.Add(
+                        //        new DetailPost.Comment()
+                        //        {
+                        //            CommentId = 654321,
+                        //            Text = "det gør jeg heller ikke",
+                        //            //CreationDate = cRdr.GetDateTime(2),
+                        //            CommentAuthorId = 321,
+                        //            AuthorName = "Mortens usynlige ven"
+                        //        });
 
-                        // END static Comments [TEST] 
+                        //// END static Comments [TEST] 
 
 
 
