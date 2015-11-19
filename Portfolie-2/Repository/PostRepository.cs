@@ -49,7 +49,7 @@ namespace Portfolie_2.Repository
         }
         
 
-        public Post GetById(int id)
+        public IEnumerable<Post> GetById(int id)
         {
             var sql = string.Format(@"select 
                 posts.Id, PostTypeId, ParentId,
@@ -59,8 +59,56 @@ namespace Portfolie_2.Repository
                 users.id, DisplayName
                 
                 from posts, users
-                where users.id = posts.UserId and posts.Id = {0}", id);
-            return ExecuteQuery(sql).FirstOrDefault();
+                where (users.id = posts.UserId and posts.Id = {0}) OR  (users.id = posts.UserId and ParentId={0})", id);
+
+            var connectionString = @"Server=wt-220.ruc.dk;
+                                     User ID=raw3;
+                                     Password=raw3;
+                                     Database=raw3;
+                                     Port=3306;
+                                     Pooling=false";
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var cmd = new MySqlCommand(sql, connection);
+                using (var rdr = cmd.ExecuteReader())
+                {
+                    // as long as we have rows we can read
+                    while (rdr.HasRows && rdr.Read())
+                    {
+                        yield return new Post
+                        {
+                            Id = rdr.GetInt32(0),
+                            PostTypeId = rdr.GetInt32(1),
+                            ParentId = rdr.IsDBNull(2) ? (int?)null : rdr.GetInt32(2),
+                            AcceptedAnswersId = rdr.IsDBNull(3) ? (int?)null : rdr.GetInt32(3),
+                            CreationDate = rdr.GetDateTime(4),
+                            Body = rdr["body"] as string,
+                            Title = rdr["title"] as string,
+                            UserId = rdr.GetInt32(7),
+                            //UserInstance = new Post.User
+                            //{
+                            //    UserId = rdr.GetInt32(8),
+                            //    Name = rdr["displayname"] as string
+                            //},
+                            //Comments = new List<Post.Comment>()
+
+                            //{
+                            //    CommentId = rdr.GetInt32(10),
+                            //    Text = rdr["text"] as string,
+                            //    CreationDate = rdr.GetDateTime(12),
+                            //    CommentAuthorId = rdr.GetInt32(13),
+                            //    AuthorName = rdr["CommentAuthorName"] as string
+                            //    //PostId = rdr.GetInt32(13)
+                            //}
+
+                        };
+                    }
+                }
+                connection.Close();
+            }
         }
 
         public IEnumerable<SearchPost> GetAllSearch(string searchString)
@@ -117,7 +165,7 @@ namespace Portfolie_2.Repository
                         {
                             Id = rdr.GetInt32(0),
                             PostTypeId = rdr.GetInt32(1),
-                            //ParentId = rdr.GetInt32(2),
+                            ParentId = rdr.IsDBNull(2) ? (int?)null : rdr.GetInt32(2),
                             AcceptedAnswersId = rdr.IsDBNull(3) ? (int?)null : rdr.GetInt32(3),
                             CreationDate = rdr.GetDateTime(4),
                             Body = rdr["body"] as string,
