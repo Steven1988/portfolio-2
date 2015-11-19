@@ -38,18 +38,13 @@ namespace Portfolie_2.Repository
         }
         public string commentsql(int postId) {  
             return string.Format(@"select
-                posts.id 
-
                 comments.id, text,
                 comments.CreationDate, comments.userid
-                users.DisplayName as CommentAuthorName,
-                
-                from posts, comments, users
-                where posts.id = comments.postId and comments.userid = cAuthor.id", postId);
+                DisplayName from comments, users where comments.userid = users.id and comments.id = {0} ", postId);
         }
         
 
-        public IEnumerable<Post> GetById(int id)
+        public IEnumerable<DetailPost> GetById(int id)
         {
             var sql = string.Format(@"select 
                 posts.Id, PostTypeId, ParentId,
@@ -78,7 +73,37 @@ namespace Portfolie_2.Repository
                     // as long as we have rows we can read
                     while (rdr.HasRows && rdr.Read())
                     {
-                        yield return new Post
+
+
+                        //------ here a loop should run which adds objects to the list - CommentList
+                        
+                        // static Comments [TEST]
+                        List<DetailPost.Comment> CommentList = new List<DetailPost.Comment>();       
+
+                        CommentList.Add(
+                                new DetailPost.Comment()
+                                {
+                                    CommentId = 123456,
+                                    Text = "Jeg ved ikke hvordan man laver C# programmer",
+                                    //CreationDate = cRdr.GetDateTime(2),
+                                    CommentAuthorId = 1234,
+                                    AuthorName = "Morten Lau Larsen"
+                                });
+                        CommentList.Add(
+                                new DetailPost.Comment()
+                                {
+                                    CommentId = 654321,
+                                    Text = "det gør jeg heller ikke",
+                                    //CreationDate = cRdr.GetDateTime(2),
+                                    CommentAuthorId = 321,
+                                    AuthorName = "Mortens usynlige ven"
+                                });
+
+                        // END static Comments [TEST] 
+
+
+
+                        yield return new DetailPost
                         {
                             Id = rdr.GetInt32(0),
                             PostTypeId = rdr.GetInt32(1),
@@ -88,12 +113,19 @@ namespace Portfolie_2.Repository
                             Body = rdr["body"] as string,
                             Title = rdr["title"] as string,
                             UserId = rdr.GetInt32(7),
-                            //UserInstance = new Post.User
-                            //{
-                            //    UserId = rdr.GetInt32(8),
-                            //    Name = rdr["displayname"] as string
-                            //},
-                            //Comments = new List<Post.Comment>()
+                            UserInstance = new DetailPost.User
+                            {
+                                UserId = rdr.GetInt32(8),
+                                Name = rdr["displayname"] as string
+                            },
+                            Comments = CommentList
+
+
+
+
+
+
+
 
                             //{
                             //    CommentId = rdr.GetInt32(10),
@@ -106,6 +138,7 @@ namespace Portfolie_2.Repository
 
                         };
                     }
+                    
                 }
                 connection.Close();
             }
