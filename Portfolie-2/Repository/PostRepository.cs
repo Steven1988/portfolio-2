@@ -118,17 +118,17 @@ namespace Portfolie_2.Repository
                             Id = rdr.GetInt32(0),
                             PostTypeId = rdr.GetInt32(1),
                             //ParentId = rdr.GetInt32(2),
-                            //AcceptedAnswersId = rdr.GetInt32(3),
+                            AcceptedAnswersId = rdr.IsDBNull(3) ? (int?)null : rdr.GetInt32(3),
                             CreationDate = rdr.GetDateTime(4),
                             Body = rdr["body"] as string,
                             Title = rdr["title"] as string,
                             UserId = rdr.GetInt32(7),
-                            UserInstance = new Post.User
-                            {
-                                UserId = rdr.GetInt32(8),
-                                Name = rdr["displayname"] as string
-                            },
-                            Comments = new List<Post.Comment>()
+                            //UserInstance = new Post.User
+                            //{
+                            //    UserId = rdr.GetInt32(8),
+                            //    Name = rdr["displayname"] as string
+                            //},
+                            //Comments = new List<Post.Comment>()
 
                             //{
                             //    CommentId = rdr.GetInt32(10),
