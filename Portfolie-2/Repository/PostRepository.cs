@@ -146,3 +146,13 @@ namespace Portfolie_2.Repository
         }  
     }
 }
+
+
+//find a post with postid
+
+//  loop through the answers of that has postid as parentid
+
+//    then loop through the comments that is related to the postid
+
+//    Answers should be a list --> maybe
+//    comments should be a list
