@@ -5,12 +5,13 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using Portfolie_2.Models;
 using System.Data;
+using Portfolie_2.Repository;
 
 namespace Portfolie_2.Repository
 {
     public class PostRepository
     {
-        public IEnumerable<Post> GetAll(int limit = 10, int offset = 0)
+        public IEnumerable<Post> GetAll(int limit = 20, int offset = 0)
         {
             var sql = string.Format(@"select 
                 posts.Id, PostTypeId, ParentId,
@@ -27,12 +28,10 @@ namespace Portfolie_2.Repository
                 from posts, users as pAuthor, users as cAuthor, comments 
                 where posts.userid = pAuthor.id and comments.postId = posts.id and comments.userid = cAuthor.id
                 limit {0} offset {1}", limit, offset);
-
-            
+         
             foreach (var post in ExecuteQuery(sql))
             { 
-                yield return post;
-                
+                yield return post; 
             }
                 
         }
@@ -74,13 +73,12 @@ namespace Portfolie_2.Repository
                     // as long as we have rows we can read
                     while (rdr.HasRows && rdr.Read())
                     {
-
+                       
 
                         ////------ here a loop should run which adds objects to the list - CommentList
                         
                         //// static Comments [TEST]
-                        List<DetailPost.Comment> CommentList = new List<DetailPost.Comment>();       
-
+                        //List<DetailPost.Comment> CommentList = new List<DetailPost.Comment>();  
                         //CommentList.Add(
                         //        new DetailPost.Comment()
                         //        {
@@ -90,21 +88,10 @@ namespace Portfolie_2.Repository
                         //            CommentAuthorId = 1234,
                         //            AuthorName = "Morten Lau Larsen"
                         //        });
-                        //CommentList.Add(
-                        //        new DetailPost.Comment()
-                        //        {
-                        //            CommentId = 654321,
-                        //            Text = "det gør jeg heller ikke",
-                        //            //CreationDate = cRdr.GetDateTime(2),
-                        //            CommentAuthorId = 321,
-                        //            AuthorName = "Mortens usynlige ven"
-                        //        });
 
                         //// END static Comments [TEST] 
 
-
-
-                        yield return new DetailPost
+                        var detailedPost = new DetailPost
                         {
                             Id = rdr.GetInt32(0),
                             PostTypeId = rdr.GetInt32(1),
@@ -118,15 +105,7 @@ namespace Portfolie_2.Repository
                             {
                                 UserId = rdr.GetInt32(8),
                                 Name = rdr["displayname"] as string
-                            },
-                            Comments = CommentList
-
-
-
-
-
-
-
+                            }
 
                             //{
                             //    CommentId = rdr.GetInt32(10),
@@ -136,12 +115,62 @@ namespace Portfolie_2.Repository
                             //    AuthorName = rdr["CommentAuthorName"] as string
                             //    //PostId = rdr.GetInt32(13)
                             //}
-
                         };
-                    }
-                    
+
+                        detailedPost.Comments = GetComments(detailedPost.Id);
+                        yield return detailedPost;
+                    }           
                 }
                 connection.Close();
+            }
+        }
+
+        private List<DetailPost.Comment> GetComments(int postId)
+        {
+            var sql = string.Format(@"select
+                comments.id, text,
+                comments.CreationDate, comments.userid
+                DisplayName 
+                from comments, users 
+                where comments.userid = users.id and postId = {0} ", postId);
+
+            var connectionString = @"Server=wt-220.ruc.dk;
+                                     User ID=raw3;
+                                     Password=raw3;
+                                     Database=raw3;
+                                     Port=3306;
+                                     Pooling=false";
+            using (var connect = new MySqlConnection(connectionString))
+            {
+                connect.Open();
+                var cmd = new MySqlCommand(sql, connect);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    var result = new List<DetailPost.Comment>();
+                    while(reader.HasRows && reader.Read())
+                    {
+                      
+                        result.Add(
+                            new DetailPost.Comment
+                            {
+                                CommentId = reader.GetInt32(0),
+                                Text = reader["text"] as string
+                            }
+                        );
+
+                        //{
+                        //    CommentId = reader.GetInt32(0),
+                        //    Text = reader["text"] as string
+                        //    //    CreationDate = rdr.GetDateTime(12),
+                        //    //    CommentAuthorId = rdr.GetInt32(13),
+                        //    //    AuthorName = rdr["CommentAuthorName"] as string
+                        //    //    //PostId = rdr.GetInt32(13)
+
+                        //};
+                        
+                    }
+                    return result;
+                }
             }
         }
 
