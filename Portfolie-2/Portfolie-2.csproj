@@ -146,7 +146,6 @@
     <Compile Include="Quarks\TypeExtensions\IsNullable.cs" />
     <Compile Include="Repository\ConnectionString.cs" />
     <Compile Include="Repository\FavoriteRepository.cs" />
-    <Compile Include="Repository\ICommentRepository.cs" />
     <Compile Include="Repository\IFavoriteRepository.cs" />
     <Compile Include="Repository\IPostRepository.cs" />
     <Compile Include="Repository\ITagRepository.cs" />

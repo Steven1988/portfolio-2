@@ -32,16 +32,8 @@ namespace Portfolie_2.Repository
             foreach (var post in ExecuteQuery(sql))
             { 
                 yield return post; 
-            }
-                
+            }       
         }
-        public string commentsql(int postId) {  
-            return string.Format(@"select
-                comments.id, text,
-                comments.CreationDate, comments.userid
-                DisplayName from comments, users where comments.userid = users.id and comments.id = {0} ", postId);
-        }
-        
 
         public IEnumerable<DetailPost> GetById(int id)
         {
@@ -73,24 +65,6 @@ namespace Portfolie_2.Repository
                     // as long as we have rows we can read
                     while (rdr.HasRows && rdr.Read())
                     {
-                       
-
-                        ////------ here a loop should run which adds objects to the list - CommentList
-                        
-                        //// static Comments [TEST]
-                        //List<DetailPost.Comment> CommentList = new List<DetailPost.Comment>();  
-                        //CommentList.Add(
-                        //        new DetailPost.Comment()
-                        //        {
-                        //            CommentId = 123456,
-                        //            Text = "Jeg ved ikke hvordan man laver C# programmer",
-                        //            //CreationDate = cRdr.GetDateTime(2),
-                        //            CommentAuthorId = 1234,
-                        //            AuthorName = "Morten Lau Larsen"
-                        //        });
-
-                        //// END static Comments [TEST] 
-
                         var detailedPost = new DetailPost
                         {
                             Id = rdr.GetInt32(0),
@@ -106,15 +80,6 @@ namespace Portfolie_2.Repository
                                 UserId = rdr.GetInt32(8),
                                 Name = rdr["displayname"] as string
                             }
-
-                            //{
-                            //    CommentId = rdr.GetInt32(10),
-                            //    Text = rdr["text"] as string,
-                            //    CreationDate = rdr.GetDateTime(12),
-                            //    CommentAuthorId = rdr.GetInt32(13),
-                            //    AuthorName = rdr["CommentAuthorName"] as string
-                            //    //PostId = rdr.GetInt32(13)
-                            //}
                         };
 
                         detailedPost.Comments = GetComments(detailedPost.Id);
@@ -129,7 +94,7 @@ namespace Portfolie_2.Repository
         {
             var sql = string.Format(@"select
                 comments.id, text,
-                comments.CreationDate, comments.userid
+                comments.CreationDate, comments.userid,
                 DisplayName 
                 from comments, users 
                 where comments.userid = users.id and postId = {0} ", postId);
@@ -148,26 +113,17 @@ namespace Portfolie_2.Repository
                 {
                     var result = new List<DetailPost.Comment>();
                     while(reader.HasRows && reader.Read())
-                    {
-                      
+                    { 
                         result.Add(
                             new DetailPost.Comment
                             {
                                 CommentId = reader.GetInt32(0),
-                                Text = reader["text"] as string
+                                Text = reader["text"] as string,
+                                CreationDate = reader.GetDateTime(2),
+                                CommentAuthorId = reader.GetInt32(3),
+                                AuthorName = reader["DisplayName"] as string
                             }
                         );
-
-                        //{
-                        //    CommentId = reader.GetInt32(0),
-                        //    Text = reader["text"] as string
-                        //    //    CreationDate = rdr.GetDateTime(12),
-                        //    //    CommentAuthorId = rdr.GetInt32(13),
-                        //    //    AuthorName = rdr["CommentAuthorName"] as string
-                        //    //    //PostId = rdr.GetInt32(13)
-
-                        //};
-                        
                     }
                     return result;
                 }
@@ -194,6 +150,7 @@ namespace Portfolie_2.Repository
             {
                 while (reader.HasRows && reader.Read())
                 {
+                    // Data is accessible through the DataReader object here.
                     yield return new SearchPost
                     {
                         Id = reader.GetInt32(0),
@@ -202,7 +159,7 @@ namespace Portfolie_2.Repository
                     };
                 }
             }
-                // Data is accessible through the DataReader object here.
+                
             conn.Close();
         }
 
