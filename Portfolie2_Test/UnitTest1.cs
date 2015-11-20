@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
 using Moq;
 using Portfolie_2.Models;
 using Portfolie_2.Repository;
@@ -13,7 +14,7 @@ namespace Portfolie2_Test
     {
         public User GetUserById(int id)
         {
-            return new User { DisplayName = "Peter", Age = "22" };
+            return new User { DisplayName = "Peter", Age = 22 };
         }
     }
 
@@ -24,11 +25,12 @@ namespace Portfolie2_Test
         {
             var repoMock = new Mock<IUserRepository>();
             repoMock.Setup(m => m.GetById(It.IsAny<int>()))
-                .Returns(new User { DisplayName = "Peter", Age = "22" });
+                .Returns(new User { DisplayName = "Peter", Age = 22 });
             //repoMock.Setup(m => m.Something).Returns(5);
             var controller = new UserController(repoMock.Object);
 
             var result = controller.GetUser(1);
+
 
             Assert.AreEqual("{\"DisplayName\":\"Peter\",\"Age\":22}", result);
         }
