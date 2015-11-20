@@ -11,7 +11,7 @@ namespace Portfolie2_Test
 {
     class FakeRepo : UserRepository
     {
-        public User GetPersonById(int id)
+        public User GetUserById(int id)
         {
             return new User { DisplayName = "Peter", Age = "22" };
         }
@@ -22,15 +22,17 @@ namespace Portfolie2_Test
         [Test]
         public void GetPerson_ValidId_ReturnsPersonAsJson()
         {
-            var repoMock = new Mock<UserRepository>();
+            var repoMock = new Mock<IUserRepository>();
             repoMock.Setup(m => m.GetById(It.IsAny<int>()))
                 .Returns(new User { DisplayName = "Peter", Age = "22" });
-            repoMock.Setup(m => m.Something).Returns(5);
+            //repoMock.Setup(m => m.Something).Returns(5);
             var controller = new UserController(repoMock.Object);
 
             var result = controller.GetUser(1);
 
-            Assert.AreEqual("{\"Name\":\"Peter\",\"Age\":22}", result);
+            Assert.AreEqual("{\"DisplayName\":\"Peter\",\"Age\":22}", result);
         }
     }
+
+    
 }

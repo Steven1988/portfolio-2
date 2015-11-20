@@ -9,7 +9,7 @@ using Portfolie_2.Repository;
 
 namespace Portfolie_2.Repository
 {
-    public class PostRepository
+    public class PostRepository : IPostRepository
     {
         public IEnumerable<Post> GetAll(int limit = 20, int offset = 0)
         {

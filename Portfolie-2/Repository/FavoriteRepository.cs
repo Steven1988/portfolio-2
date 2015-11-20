@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Portfolie_2.Repository
 {
-    public class FavoriteRepository
+    public class FavoriteRepository : IFavoriteRepository
     {
         public IEnumerable<Favorite> GetAll(int limit = 10, int offset = 0)
         {
