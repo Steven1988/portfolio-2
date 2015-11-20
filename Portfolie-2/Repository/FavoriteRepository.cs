@@ -2,6 +2,7 @@
 using Portfolie_2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -19,7 +20,6 @@ namespace Portfolie_2.Repository
                                      Pooling=false";
 
             using (var connection = new MySqlConnection(connectionString))
-
             {
                 connection.Open();
                 var sql = string.Format("select userid, postId, annotation from favorites limit {0} offset {1}", limit, offset);
@@ -41,7 +41,7 @@ namespace Portfolie_2.Repository
             }
         }
 
-        public Favorite GetByUserId(int userId)
+        public Favorite GetByUserId(int userId, int postId)
         {
             var connectionString = @"Server=wt-220.ruc.dk;
                                      User ID=raw3;
@@ -53,7 +53,7 @@ namespace Portfolie_2.Repository
             using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                var sql = string.Format("select userid, postid, annotation from favorites where userid = {0}", userId);
+                var sql = string.Format("select userid, postid, annotation from favorites where userid = {0} and postId = {1}", userId, postId);
 
                 var cmd = new MySqlCommand(sql, connection);
                 using (var rdr = cmd.ExecuteReader())
@@ -70,6 +70,32 @@ namespace Portfolie_2.Repository
                 }
             }
             return null;
+        }
+
+        public void Create(Favorite favorite)
+        {
+
+            MySqlConnection conn = new MySqlConnection("Server=wt-220.ruc.dk;User ID = raw3;Password = raw3;Database = raw3;Port = 3306;Pooling = false");
+            MySqlCommand cmd = new MySqlCommand();
+            //MySqlDataReader reader;
+
+            cmd.CommandText = "raw3.addFavorite";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = conn;
+
+            cmd.Parameters.Add("@User_id", MySqlDbType.Int32).Value = 1;
+            cmd.Parameters.Add("@annotation1", MySqlDbType.VarChar, 500).Value = "some annotation";
+            cmd.Parameters.Add("@post_id", MySqlDbType.Int32).Value = 6;
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            var postId = favorite.PostId;
+            var userId = favorite.UserId;
+
+            GetByUserId(userId, postId);
+
         }
     }
 }

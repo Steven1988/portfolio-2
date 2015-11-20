@@ -38,5 +38,10 @@ namespace Portfolie_2.Controllers
             return JsonConvert.SerializeObject(User);
         }
 
+        //public string AddAnnotation()
+        //{
+        //    return _userRepository.Add();
+        //}
+
     }
 }

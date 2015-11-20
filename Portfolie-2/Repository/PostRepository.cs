@@ -130,7 +130,7 @@ namespace Portfolie_2.Repository
             }
         }
 
-        public IEnumerable<SearchPost> GetAllSearch(string searchString)
+        public IEnumerable<SearchPost> GetSearch(string searchString)
         {
 
             // stored procedure call
@@ -158,8 +158,7 @@ namespace Portfolie_2.Repository
                         Body = reader["body"] as string
                     };
                 }
-            }
-                
+            }     
             conn.Close();
         }
 

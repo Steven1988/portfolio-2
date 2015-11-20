@@ -6,6 +6,6 @@ namespace Portfolie_2.Repository
     public interface IFavoriteRepository
     {
         IEnumerable<Favorite> GetAll(int limit = 10, int offset = 0);
-        Favorite GetByUserId(int userId);
+        Favorite GetByUserId(int userId, int postId);
     }
 }
