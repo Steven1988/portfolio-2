@@ -30,9 +30,8 @@ namespace Portfolie_2.Repository
 
             
             foreach (var post in ExecuteQuery(sql))
-            { 
+            {
                 yield return post;
-                
             }
                 
         }
@@ -60,7 +59,7 @@ namespace Portfolie_2.Repository
                 
                 from posts, users
                 where users.id = posts.UserId and posts.Id = {0}", id);
-            return ExecuteQuery(sql).FirstOrDefault();
+            return GetPostDetails(sql).FirstOrDefault();
         }
 
         public IEnumerable<SearchPost> GetAllSearch(string searchString)
@@ -93,6 +92,52 @@ namespace Portfolie_2.Repository
             }
                 // Data is accessible through the DataReader object here.
             conn.Close();
+        }
+        private static List<Post.Comment> GetPostDetails(string sql)
+        {
+            List<Post.Comment> PostComment = new List<Post.Comment> { };
+            var connectionString = @"Server=wt-220.ruc.dk;
+                                     User ID=raw3;
+                                     Password=raw3;
+                                     Database=raw3;
+                                     Port=3306;
+                                     Pooling=false";
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var cmd = new MySqlCommand(sql, connection);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.HasRows && reader.Read())
+                    {
+
+                        Post.Comment com = new Post.Comment();
+                        com.CommentId = reader.GetInt32(10);
+                        com.Text = reader["Text"] as string;
+                        PostComment.Add(com);
+                    }
+                    return PostComment;
+
+
+                        //yield return new Post.Comment
+                        //{
+
+                        //    CommentId = .Add(reader.GetInt32(10)
+                        //    Text = reader["text"] as string,
+                        //    CreationDate = reader.GetDateTime(12),
+                        //    CommentAuthorId = reader.GetInt32(13),
+                        //    AuthorName = reader["CommentAuthorName"] as string
+                        //    //PostId = rdr.GetInt32(13)
+
+
+                        //};
+                        
+                    }
+
+                }
+            }
+
         }
 
         private static IEnumerable<Post> ExecuteQuery(string sql)
