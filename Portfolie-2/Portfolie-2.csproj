@@ -138,6 +138,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Favorite.cs" />
     <Compile Include="Models\ModelFactory.cs" />
+    <Compile Include="Models\DetailPost.cs" />
     <Compile Include="Models\SearchHistory.cs" />
     <Compile Include="Models\SearchPost.cs" />
     <Compile Include="Models\Tag.cs" />
