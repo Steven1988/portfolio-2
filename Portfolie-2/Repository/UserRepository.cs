@@ -7,7 +7,7 @@ using Portfolie_2.Models;
 
 namespace Portfolie_2.Repository
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
 
         //implementing Moq

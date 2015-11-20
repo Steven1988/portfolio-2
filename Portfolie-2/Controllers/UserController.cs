@@ -14,7 +14,7 @@ namespace Portfolie_2.Controllers
     // The UserController handles requests about users
     public class UserController : ApiController
     {
-        UserRepository _userRepository = new UserRepository();
+        IUserRepository _userRepository = new UserRepository();
         public IEnumerable<User> Get()
         {
             IEnumerable<User> u = _userRepository.GetAll();
@@ -26,7 +26,7 @@ namespace Portfolie_2.Controllers
             return _userRepository.GetById(id);
         }
 
-        public UserController(UserRepository repository)
+        public UserController(IUserRepository repository)
         {
             _userRepository = repository;
         }
