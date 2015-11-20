@@ -31,6 +31,11 @@ namespace Portfolie_2.Controllers
             _userRepository = repository;
         }
 
+        public UserController()
+        {
+            _userRepository = new UserRepository();
+        }
+
         public string GetUser(int id)
         {
             var User = _userRepository.GetById(id);
