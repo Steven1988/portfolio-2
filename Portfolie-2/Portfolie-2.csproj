@@ -148,6 +148,11 @@
     <Compile Include="Quarks\TypeExtensions\IsNullable.cs" />
     <Compile Include="Repository\CommentRepository.cs" />
     <Compile Include="Repository\FavoriteRepository.cs" />
+    <Compile Include="Repository\ICommentRepository.cs" />
+    <Compile Include="Repository\IFavoriteRepository.cs" />
+    <Compile Include="Repository\IPostRepository.cs" />
+    <Compile Include="Repository\ITagRepository.cs" />
+    <Compile Include="Repository\ITiRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\TagRepository.cs" />
     <Compile Include="Repository\TiRepository.cs" />

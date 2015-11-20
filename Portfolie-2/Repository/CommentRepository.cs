@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Portfolie_2.Repository
 {
-    public class CommentRepository
+    public class CommentRepository : ICommentRepository
     {
         public IEnumerable<Comment> GetAll(int limit = 10, int offset = 0)
         {

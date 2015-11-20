@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Portfolie_2.Repository
 {
-    public class TiRepository
+    public class TiRepository : ITiRepository
     {
         public IEnumerable<Ti> GetAll(int limit = 10, int offset = 0)
         {

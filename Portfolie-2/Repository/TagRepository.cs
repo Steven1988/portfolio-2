@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Portfolie_2.Repository
 {
-    public class TagRepository
+    public class TagRepository : ITagRepository
     {
         public IEnumerable<Tag> GetAll(int limit = 10, int offset = 0)
         {

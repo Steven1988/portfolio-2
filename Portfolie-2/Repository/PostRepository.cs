@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Portfolie_2.Repository
 {
-    public class PostRepository
+    public class PostRepository : IPostRepository
     {
         public IEnumerable<Post> GetAll(int limit = 10, int offset = 0)
         {
