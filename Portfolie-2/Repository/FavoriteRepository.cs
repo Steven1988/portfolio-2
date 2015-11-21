@@ -12,14 +12,7 @@ namespace Portfolie_2.Repository
     {
         public IEnumerable<Favorite> GetAll(int limit = 10, int offset = 0)
         {
-            var connectionString = @"Server=wt-220.ruc.dk;
-                                     User ID=raw3;
-                                     Password=raw3;
-                                     Database=raw3;
-                                     Port=3306;
-                                     Pooling=false";
-
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(ConnectionString.String))
             {
                 connection.Open();
                 var sql = string.Format("select userid, postId, annotation from favorites limit {0} offset {1}", limit, offset);
@@ -43,14 +36,7 @@ namespace Portfolie_2.Repository
 
         public Favorite GetByUserId(int userId, int postId)
         {
-            var connectionString = @"Server=wt-220.ruc.dk;
-                                     User ID=raw3;
-                                     Password=raw3;
-                                     Database=raw3;
-                                     Port=3306;
-                                     Pooling=false";
-
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(ConnectionString.String))
             {
                 connection.Open();
                 var sql = string.Format("select userid, postid, annotation from favorites where userid = {0} and postId = {1}", userId, postId);
@@ -75,7 +61,7 @@ namespace Portfolie_2.Repository
         public void Create(Favorite favorite)
         {
 
-            MySqlConnection conn = new MySqlConnection("Server=wt-220.ruc.dk;User ID = raw3;Password = raw3;Database = raw3;Port = 3306;Pooling = false");
+            MySqlConnection conn = new MySqlConnection(ConnectionString.String);
             MySqlCommand cmd = new MySqlCommand();
             //MySqlDataReader reader;
 

@@ -48,14 +48,14 @@ namespace Portfolie_2.Repository
                 where (users.id = posts.UserId and posts.Id = {0}) OR  (users.id = posts.UserId and ParentId={0})
                 order by CreationDate asc", id);
 
-            var connectionString = @"Server=wt-220.ruc.dk;
-                                     User ID=raw3;
-                                     Password=raw3;
-                                     Database=raw3;
-                                     Port=3306;
-                                     Pooling=false";
+            //var connectionString = @"Server=wt-220.ruc.dk;
+            //                         User ID=raw3;
+            //                         Password=raw3;
+            //                         Database=raw3;
+            //                         Port=3306;
+            //                         Pooling=false";
 
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(ConnectionString.String))
             {
                 connection.Open();
 
@@ -99,13 +99,7 @@ namespace Portfolie_2.Repository
                 from comments, users 
                 where comments.userid = users.id and postId = {0} ", postId);
 
-            var connectionString = @"Server=wt-220.ruc.dk;
-                                     User ID=raw3;
-                                     Password=raw3;
-                                     Database=raw3;
-                                     Port=3306;
-                                     Pooling=false";
-            using (var connect = new MySqlConnection(connectionString))
+            using (var connect = new MySqlConnection(ConnectionString.String))
             {
                 connect.Open();
                 var cmd = new MySqlCommand(sql, connect);
@@ -135,7 +129,7 @@ namespace Portfolie_2.Repository
 
             // stored procedure call
 
-            MySqlConnection conn = new MySqlConnection("Server=wt-220.ruc.dk;User ID = raw3;Password = raw3;Database = raw3;Port = 3306;Pooling = false");
+            MySqlConnection conn = new MySqlConnection(ConnectionString.String);
             MySqlCommand cmd = new MySqlCommand();
             MySqlDataReader reader;
 
@@ -164,13 +158,7 @@ namespace Portfolie_2.Repository
 
         private static IEnumerable<Post> ExecuteQuery(string sql)
         { 
-            var connectionString = @"Server=wt-220.ruc.dk;
-                                     User ID=raw3;
-                                     Password=raw3;
-                                     Database=raw3;
-                                     Port=3306;
-                                     Pooling=false";
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(ConnectionString.String))
             {
                 connection.Open();
 

@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Portfolie_2.Repository
 {
-    public class ConnectionString
+    public static class ConnectionString
     {
-        public string connectionString = @"Server=wt-220.ruc.dk;
+        public static string String = @"Server=wt-220.ruc.dk;
                                      User ID=raw3;
                                      Password=raw3;
                                      Database=raw3;
