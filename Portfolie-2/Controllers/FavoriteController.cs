@@ -23,9 +23,9 @@ namespace Portfolie_2.Controllers
             return _favoriteRepository.GetByUserId(userId, postId);
         }
 
-        public void CreateFav(Favorite newfavorite)
+        public void CreateFav(Favorite favorite)
         {
-            _favoriteRepository.Create(newfavorite);
+            _favoriteRepository.Create(favorite);
         }
     }
 }
