@@ -62,14 +62,7 @@ namespace Portfolie_2.Repository
         /// <returns></returns>
         private static IEnumerable<User> ExecuteQuery(string sql)
         {
-            var connectionString = @"Server=wt-220.ruc.dk;
-                                     User ID=raw3;
-                                     Password=raw3;
-                                     Database=raw3;
-                                     Port=3306;
-                                     Pooling=false";
-
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(ConnectionString.String))
             {
                 connection.Open();
 

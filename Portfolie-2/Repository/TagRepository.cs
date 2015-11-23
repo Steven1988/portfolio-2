@@ -15,7 +15,7 @@ namespace Portfolie_2.Repository
 
             // stored procedure call
 
-            MySqlConnection conn = new MySqlConnection("Server=wt-220.ruc.dk;User ID = raw3;Password = raw3;Database = raw3;Port = 3306;Pooling = false");
+            MySqlConnection conn = new MySqlConnection(ConnectionString.String);
             MySqlCommand cmd = new MySqlCommand();
             MySqlDataReader reader;
 
@@ -42,14 +42,7 @@ namespace Portfolie_2.Repository
 
         public Tag GetById(int id)
         {
-            var connectionString = @"Server=wt-220.ruc.dk;
-                                     User ID=raw3;
-                                     Password=raw3;
-                                     Database=raw3;
-                                     Port=3306;
-                                     Pooling=false";
-
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(ConnectionString.String))
             {
                 connection.Open();
                 var sql = string.Format("select id, tagname from tags where id = {0}", id);
