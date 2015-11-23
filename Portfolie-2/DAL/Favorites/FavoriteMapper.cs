@@ -5,6 +5,7 @@ using System.Web;
 using Portfolie_2.Models;
 using MySql.Data.MySqlClient;
 using Portfolie_2.Repository;
+using Portfolie_2.DAL.Favorites;
 
 namespace Portfolie_2.DAL.Favorites
 {
