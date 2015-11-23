@@ -72,14 +72,42 @@ namespace Portfolie_2.Repository
                             {
                                 UserId = rdr.GetInt32(8),
                                 Name = rdr["displayname"] as string
-                            }
+                            },
                         };
-
+                        detailedPost.FavoriteInstance = GetFavorite(123, 1);
                         detailedPost.Comments = GetComments(detailedPost.Id);
                         yield return detailedPost;
                     }           
                 }
                 connection.Close();
+            }
+        }
+
+        private DetailPost.Favorite GetFavorite(int postId, int userId)
+        {
+            var sql = string.Format(@"select
+                userId, postId, annotation
+                from favorites
+                where postId={0} and userId={1}", postId, userId);
+
+            using (var connect = new MySqlConnection(ConnectionString.String))
+            {
+                connect.Open();
+                var cmd = new MySqlCommand(sql, connect);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        var favorite = new DetailPost.Favorite()
+                        {
+                            UserId = (int)reader["userId"],
+                            PostId = (int)reader["postId"],
+                            Annotation = reader["annotation"] as string
+                        };
+                        return favorite;
+                    }
+                    return null;
+                }
             }
         }
 
