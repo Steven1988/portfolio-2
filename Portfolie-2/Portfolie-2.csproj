@@ -131,6 +131,9 @@
     <Compile Include="Controllers\TiController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="DAL\DataMapper.cs" />
+    <Compile Include="DAL\FavoriteRepository.cs" />
+    <Compile Include="DAL\IFavoriteRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
