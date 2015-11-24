@@ -116,6 +116,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AnnotationController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FavoriteController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Repository\CommentRepository.cs" />
+    <Compile Include="Repository\AnnotationRepository.cs" />
     <Compile Include="Repository\FavoriteRepository.cs" />
     <Compile Include="Repository\TagRepository.cs" />
     <Compile Include="Repository\TiRepository.cs" />
@@ -155,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Annotation\" />
     <Folder Include="Views\Tag\" />
   </ItemGroup>
   <PropertyGroup>
