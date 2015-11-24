@@ -17,22 +17,38 @@ namespace Portfolie_2.Repository
                 posts.Id, PostTypeId, ParentId,
                 AcceptedAnswerId, posts.CreationDate,
                 Body, Title, posts.UserId,
-                                    
-                pAuthor.id,
-                pAuthor.DisplayName as PostAuthorName,
+                users.DisplayName as PostAuthorName
 
-                comments.id, text,
-                comments.CreationDate, comments.userid,
-                cAuthor.id, cAuthor.DisplayName as CommentAuthorName
-
-                from posts, users as pAuthor, users as cAuthor, comments 
-                where posts.userid = pAuthor.id and comments.postId = posts.id and comments.userid = cAuthor.id
+                from posts, users
+                where posts.userid = users.id and PostTypeId=1
+                order by CreationDate desc
                 limit {0} offset {1}", limit, offset);
-         
-            foreach (var post in ExecuteQuery(sql))
-            { 
-                yield return post; 
-            }       
+
+            using (var connection = new MySqlConnection(ConnectionString.String))
+            {
+                connection.Open();
+
+                var cmd = new MySqlCommand(sql, connection);
+                using (var rdr = cmd.ExecuteReader())
+                {
+                    // as long as we have rows we can read
+                    while (rdr.HasRows && rdr.Read())
+                    {
+                        yield return new Post
+                        {
+                            Id = rdr.GetInt32(0),
+                            PostTypeId = rdr.GetInt32(1),
+                            ParentId = rdr.IsDBNull(2) ? (int?)null : rdr.GetInt32(2),
+                            AcceptedAnswersId = rdr.IsDBNull(3) ? (int?)null : rdr.GetInt32(3),
+                            CreationDate = rdr.GetDateTime(4),
+                            Body = rdr["body"] as string,
+                            Title = rdr["title"] as string,
+                            UserId = rdr.GetInt32(7),
+                        };
+                    }
+                }
+                connection.Close();
+            }
         }
 
         public IEnumerable<DetailPost> GetById(int id, int SesUserId)
@@ -177,48 +193,9 @@ namespace Portfolie_2.Repository
             conn.Close();
         }
 
-        private static IEnumerable<Post> ExecuteQuery(string sql)
-        { 
-            using (var connection = new MySqlConnection(ConnectionString.String))
-            {
-                connection.Open();
-
-                var cmd = new MySqlCommand(sql, connection);
-                using (var rdr = cmd.ExecuteReader())
-                {
-                    // as long as we have rows we can read
-                    while (rdr.HasRows && rdr.Read())
-                    {
-                        yield return new Post
-                        {
-                            Id = rdr.GetInt32(0),
-                            PostTypeId = rdr.GetInt32(1),
-                            ParentId = rdr.IsDBNull(2) ? (int?)null : rdr.GetInt32(2),
-                            AcceptedAnswersId = rdr.IsDBNull(3) ? (int?)null : rdr.GetInt32(3),
-                            CreationDate = rdr.GetDateTime(4),
-                            Body = rdr["body"] as string,
-                            Title = rdr["title"] as string,
-                            UserId = rdr.GetInt32(7),
-                            //UserInstance = new Post.User
-                            //{
-                            //    UserId = rdr.GetInt32(8),
-                            //    Name = rdr["displayname"] as string
-                            //},
-                            //Comments = new List<Post.Comment>()
-
-                            //{
-                            //    CommentId = rdr.GetInt32(10),
-                            //    Text = rdr["text"] as string,
-                            //    CreationDate = rdr.GetDateTime(12),
-                            //    CommentAuthorId = rdr.GetInt32(13),
-                            //    AuthorName = rdr["CommentAuthorName"] as string
-                            //    //PostId = rdr.GetInt32(13)
-                            //}
-
-                        };
-                    }
-                }
-            }
-        }  
+        //private static IEnumerable<Post> ExecuteQuery(string sql)
+        //{ 
+            
+        //}  
     }
 }
