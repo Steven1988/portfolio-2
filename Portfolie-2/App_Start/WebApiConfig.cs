@@ -62,8 +62,10 @@ namespace Portfolie_2
 
             config.Routes.MapHttpRoute(
                 name: "FavoriteApi",
-                routeTemplate: "api/Favorites/{userId}/{action}",
-                defaults: new { controller = "Favorite", userId = RouteParameter.Optional, action = RouteParameter.Optional }
+                routeTemplate: "api/Favorites/{userId}/{postId}",
+                defaults: new { controller = "Favorite",
+                                userId = RouteParameter.Optional,
+                                postId = RouteParameter.Optional }
             );
         }
     }

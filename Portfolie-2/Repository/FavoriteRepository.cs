@@ -58,7 +58,7 @@ namespace Portfolie_2.Repository
             return null;
         }
 
-        public void Create(Favorite favorite)
+        public void Create(int userId, int postId, string annotation)
         {
 
             MySqlConnection conn = new MySqlConnection(ConnectionString.String);
@@ -69,18 +69,18 @@ namespace Portfolie_2.Repository
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = conn;
 
-            cmd.Parameters.Add("@User_id", MySqlDbType.Int32).Value = 1;
-            cmd.Parameters.Add("@annotation1", MySqlDbType.VarChar, 500).Value = "some annotation";
-            cmd.Parameters.Add("@post_id", MySqlDbType.Int32).Value = 6;
+            cmd.Parameters.Add("@User_id", MySqlDbType.Int32).Value = userId;
+            cmd.Parameters.Add("@annotation1", MySqlDbType.VarChar, 500).Value = annotation;
+            cmd.Parameters.Add("@post_id", MySqlDbType.Int32).Value = postId;
             conn.Open();
 
             cmd.ExecuteNonQuery();
 
             conn.Close();
-            var postId = favorite.PostId;
-            var userId = favorite.UserId;
+            //var postId = favorite.PostId;
+            //var userId = favorite.UserId;
 
-            GetByUserId(userId, postId);
+            //GetByUserId(userId, postId);
 
         }
     }
