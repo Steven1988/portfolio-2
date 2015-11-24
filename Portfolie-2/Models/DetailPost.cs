@@ -19,25 +19,14 @@ namespace Portfolie_2.Models
 
         public User UserInstance { get; set; }
         public List<Comment> Comments { get; set; }
+        public Favorite FavoriteInstance { get; set; }
 
         // Make the instance of our subobjects. 
         public DetailPost()
         {
             UserInstance = new User();
             Comments = new List<Comment>();
-
-            //Comments.Add(new Comment()
-            //{
-            //    Text = "hfuhefijegfbeifgsjgebf",
-            //    CommentId = 6439
-
-            //});
-            //Comments.Add(new Comment()
-            //{
-            //    Text = "wgsfgeghertger",
-            //    CommentId = 3144657
-
-            //});
+            FavoriteInstance = new Favorite();
         }
 
 
@@ -61,5 +50,12 @@ namespace Portfolie_2.Models
             //public int PostId { get; set; }
         }
 
+        // Nested User Object.
+        public class Favorite
+        {
+            public int UserId { get; set; }
+            public int PostId { get; set; }
+            public string Annotation { get; set; }
+        }
     }
 }
