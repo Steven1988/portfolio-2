@@ -148,9 +148,11 @@
     <Compile Include="Repository\FavoriteRepository.cs" />
     <Compile Include="Repository\IFavoriteRepository.cs" />
     <Compile Include="Repository\IPostRepository.cs" />
+    <Compile Include="Repository\ISearchHistoryRepository.cs" />
     <Compile Include="Repository\ITagRepository.cs" />
     <Compile Include="Repository\ITiRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Repository\SearchHistoryRepository.cs" />
     <Compile Include="Repository\TagRepository.cs" />
     <Compile Include="Repository\TiRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
