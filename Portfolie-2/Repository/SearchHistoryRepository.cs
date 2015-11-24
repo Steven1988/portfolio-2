@@ -49,7 +49,7 @@ namespace Portfolie_2.Repository
 
                 from searchHistory
                 where userid = {1}
-                limit {2} offset {3}", userId, limit, offset);
+                limit {2} offset {3}", userId);
 
             using (var connection = new MySqlConnection(ConnectionString.String))
             {
