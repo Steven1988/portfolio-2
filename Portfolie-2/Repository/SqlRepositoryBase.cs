@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Portfolie_2.Repository
 {
-    public abstract class SqlBaseRepository<T>
+    public abstract class SqlRepositoryBase<T>
     {
         public virtual T FindById(int id, ISqlMapper<T> mapper)
         {
