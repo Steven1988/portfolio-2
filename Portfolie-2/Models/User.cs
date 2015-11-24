@@ -12,6 +12,6 @@ namespace Portfolie_2.Models
         public DateTime CreationDate { get; set; }
         public string Location { get; set; }
         public string AboutMe { get; set; }
-        public string Age { get; set; }
+        public int Age { get; set; }
     }
 }
