@@ -13,12 +13,17 @@ namespace Portfolie_2.Controllers
     {
         PostRepository _postRepository = new PostRepository();
 
-        public IEnumerable<SearchPost> GetSearch (string searchString)
+        public IEnumerable<SearchPost> GetSearch(string searchString)
         {
-            //var searchString = "Hello";
-            IEnumerable<SearchPost> s = _postRepository.GetSearch(searchString);
+            IEnumerable<SearchPost> s = _postRepository.GetSearch(searchString, 0);
             return s;
         }
 
+        public IEnumerable<SearchPost> GetSearch(string searchString, int sesUserId)
+        {
+            //var searchString = "Hello";
+            IEnumerable<SearchPost> s = _postRepository.GetSearch(searchString, sesUserId);
+            return s;
+        }
     }
 }

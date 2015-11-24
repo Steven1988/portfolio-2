@@ -14,9 +14,9 @@ namespace Portfolie_2.Controllers
     public class PostController : ApiController
     {
         PostRepository _postRepository = new PostRepository();
-        public IEnumerable<Post> Get()
+        public IEnumerable<SearchPost> Get()
         {
-            IEnumerable<Post> p = _postRepository.GetAll();
+            IEnumerable<SearchPost> p = _postRepository.GetAll();
             return p;
         }
 

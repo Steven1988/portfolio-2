@@ -11,16 +11,12 @@ namespace Portfolie_2.Repository
 {
     public class PostRepository : IPostRepository
     {
-        public IEnumerable<Post> GetAll(int limit = 20, int offset = 0)
+        public IEnumerable<SearchPost> GetAll(int limit = 20, int offset = 0)
         {
             var sql = string.Format(@"select 
-                posts.Id, PostTypeId, ParentId,
-                AcceptedAnswerId, posts.CreationDate,
-                Body, Title, posts.UserId,
-                users.DisplayName as PostAuthorName
-
-                from posts, users
-                where posts.userid = users.id and PostTypeId=1
+                posts.Id, Body, Title
+                from posts
+                where PostTypeId=1
                 order by CreationDate desc
                 limit {0} offset {1}", limit, offset);
 
@@ -34,16 +30,11 @@ namespace Portfolie_2.Repository
                     // as long as we have rows we can read
                     while (rdr.HasRows && rdr.Read())
                     {
-                        yield return new Post
+                        yield return new SearchPost
                         {
                             Id = rdr.GetInt32(0),
-                            PostTypeId = rdr.GetInt32(1),
-                            ParentId = rdr.IsDBNull(2) ? (int?)null : rdr.GetInt32(2),
-                            AcceptedAnswersId = rdr.IsDBNull(3) ? (int?)null : rdr.GetInt32(3),
-                            CreationDate = rdr.GetDateTime(4),
                             Body = rdr["body"] as string,
-                            Title = rdr["title"] as string,
-                            UserId = rdr.GetInt32(7),
+                            Title = rdr["title"] as string
                         };
                     }
                 }
@@ -161,7 +152,7 @@ namespace Portfolie_2.Repository
             }
         }
 
-        public IEnumerable<SearchPost> GetSearch(string searchString)
+        public IEnumerable<SearchPost> GetSearch(string searchString, int sesUserId)
         {
 
             // stored procedure call
@@ -175,6 +166,7 @@ namespace Portfolie_2.Repository
             cmd.Connection = conn;
             //cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = "Blah";
             cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = searchString;
+            cmd.Parameters.Add("@aUserId", MySqlDbType.Int32).Value = sesUserId;
             conn.Open();
 
             using (reader = cmd.ExecuteReader())
