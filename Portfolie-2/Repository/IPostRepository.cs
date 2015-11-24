@@ -6,7 +6,7 @@ namespace Portfolie_2.Repository
     public interface IPostRepository
     {
         IEnumerable<Post> GetAll(int limit = 10, int offset = 0);
-        IEnumerable<DetailPost> GetById(int id);
+        IEnumerable<DetailPost> GetById(int id, int userId);
         IEnumerable<SearchPost> GetSearch(string searchString);
     }
 }

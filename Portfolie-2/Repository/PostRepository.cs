@@ -35,7 +35,7 @@ namespace Portfolie_2.Repository
             }       
         }
 
-        public IEnumerable<DetailPost> GetById(int id)
+        public IEnumerable<DetailPost> GetById(int id, int SesUserId)
         {
             var sql = string.Format(@"select 
                 posts.Id, PostTypeId, ParentId,
@@ -74,7 +74,7 @@ namespace Portfolie_2.Repository
                                 Name = rdr["displayname"] as string
                             },
                         };
-                        detailedPost.FavoriteInstance = GetFavorite(123, 1);
+                        detailedPost.FavoriteInstance = GetFavorite(detailedPost.Id, SesUserId);
                         detailedPost.Comments = GetComments(detailedPost.Id);
                         yield return detailedPost;
                     }           
