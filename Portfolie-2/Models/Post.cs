@@ -17,41 +17,49 @@ namespace Portfolie_2.Models
         public int? AcceptedAnswersId { get; set; }
         public int? UserId { get; set; }
 
-        public class User
-        {
-            public int UserId { get; set; }
-            public string Name { get; set; }
-        }
+        //public User UserInstance { get; set; }
+        //public List<Comment> Comments { get; set; }
 
-        public User UserInstance { get; set; }
-
-        public Post()
-        {
-            UserInstance = new User();
-        }
-
-
+        //// Make the instance of our subobjects. 
         //public Post()
         //{
-        //    this.User = new User() { UserId = -1 };
+        //    UserInstance = new User();
+        //    Comments = new List<Comment>();
+
+        //    //Comments.Add(new Comment()
+        //    //{
+        //    //    Text = "hfuhefijegfbeifgsjgebf",
+        //    //    CommentId = 6439
+                
+        //    //});
+        //    //Comments.Add(new Comment()
+        //    //{
+        //    //    Text = "wgsfgeghertger",
+        //    //    CommentId = 3144657
+
+        //    //});
         //}
-    }
 
-    //public class PostUser
-    //{
-    //    public int UserId { get; set; }
-    //    public string Name { get; set; }
 
-        //Car car = new Car
+
+
+        //// Nested User Object.
+        //public class User
         //{
-        //    Name = "Chevrolet Corvette",
-        //    Color = Color.Yellow,
-        //    Manufacturer = new CarManufacturer
-        //    {
-        //        Name = "Chevrolet",
-        //        Country = "USA"
-        //    }
-        //};
-    //}
+        //    public int UserId { get; set; }
+        //    public string Name { get; set; }
+        //}
 
+        //// Nested Comment Object
+        //public class Comment
+        //{
+        //    public int CommentId { get; set; }
+        //    public string Text { get; set; }
+        //    public DateTime CreationDate { get; set; }
+        //    public int CommentAuthorId { get; set; }
+        //    public string AuthorName { get; set; }
+        //    //public int PostId { get; set; }
+        //}
+       
+    }
 }

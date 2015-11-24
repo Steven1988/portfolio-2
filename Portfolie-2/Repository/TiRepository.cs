@@ -7,18 +7,11 @@ using System.Web;
 
 namespace Portfolie_2.Repository
 {
-    public class TiRepository
+    public class TiRepository : ITiRepository
     {
         public IEnumerable<Ti> GetAll(int limit = 10, int offset = 0)
         {
-            var connectionString = @"Server=wt-220.ruc.dk;
-                                     User ID=raw3;
-                                     Password=raw3;
-                                     Database=raw3;
-                                     Port=3306;
-                                     Pooling=false";
-
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(ConnectionString.String))
 
             {
                 connection.Open();
@@ -47,14 +40,7 @@ namespace Portfolie_2.Repository
 
         public Ti GetByTid(int tid)
         {
-            var connectionString = @"Server=wt-220.ruc.dk;
-                                     User ID=raw3;
-                                     Password=raw3;
-                                     Database=raw3;
-                                     Port=3306;
-                                     Pooling=false";
-
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(ConnectionString.String))
             {
                 connection.Open();
                 var sql = string.Format("select pid, tid from ti where tid = {0}", tid);

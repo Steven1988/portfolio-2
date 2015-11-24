@@ -4,11 +4,17 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using Portfolie_2.Models;
+using System.Data;
 
 namespace Portfolie_2.Repository
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
+
+        //implementing Moq
+        public int Something { get; set; }
+
+
         /// <summary>
         /// selects all data from first 10 users
         /// </summary>
@@ -18,10 +24,18 @@ namespace Portfolie_2.Repository
         public IEnumerable<User> GetAll(int limit = 10, int offset = 0)
         {
             var sql = string.Format(@"select 
-                                    * 
+                                    Id, 
+                                    DisplayName, 
+                                    CreationDate, 
+                                    Location, 
+                                    AboutMe, 
+                                    Age
                                     from users limit {0} offset {1}", limit, offset);
             foreach (var user in ExecuteQuery(sql))
+            {
                 yield return user;
+            }
+                
         }
         /// <summary>
         /// selects data from user with specified id
@@ -48,14 +62,7 @@ namespace Portfolie_2.Repository
         /// <returns></returns>
         private static IEnumerable<User> ExecuteQuery(string sql)
         {
-            var connectionString = @"Server=wt-220.ruc.dk;
-                                     User ID=raw3;
-                                     Password=raw3;
-                                     Database=raw3;
-                                     Port=3306;
-                                     Pooling=false";
-
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = new MySqlConnection(ConnectionString.String))
             {
                 connection.Open();
 
@@ -72,11 +79,32 @@ namespace Portfolie_2.Repository
                             CreationDate    = rdr.GetDateTime(2),
                             Location        = rdr.GetString(3),
                             AboutMe         = rdr.GetString(4),
-                            Age             = rdr.GetString(5)
+                            Age             = rdr.IsDBNull(5) ? 0 : rdr.GetInt32(5)
                         };
                     }
                 }
             }
         }
+
+        //public void Add(Favorite favorite)
+        //{
+
+        //    MySqlConnection conn = new MySqlConnection("Server=wt-220.ruc.dk;User ID = raw3;Password = raw3;Database = raw3;Port = 3306;Pooling = false");
+        //    MySqlCommand cmd = new MySqlCommand();
+        //    //MySqlDataReader reader;
+
+        //    cmd.CommandText = "raw3.addFavorite";
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.Connection = conn;
+        
+        //    cmd.Parameters.Add("@User_id", MySqlDbType.Int32).Value = 1;
+        //    cmd.Parameters.Add("@annotation1", MySqlDbType.VarChar, 500).Value = "some annotation";
+        //    cmd.Parameters.Add("@post_id", MySqlDbType.Int32).Value = 6;
+        //    conn.Open();
+
+        //    //GetByUserId(favorite.UserId);
+
+        //}
+
     }
 }

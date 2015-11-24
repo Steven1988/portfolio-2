@@ -7,13 +7,14 @@ using System.Web.Http;
 using System.Web.Http.Routing;
 using Portfolie_2.Repository;
 using Portfolie_2.Models;
+using Newtonsoft.Json;
 
 namespace Portfolie_2.Controllers
 {
     // The UserController handles requests about users
     public class UserController : ApiController
     {
-        UserRepository _userRepository = new UserRepository();
+        IUserRepository _userRepository = new UserRepository();
         public IEnumerable<User> Get()
         {
             IEnumerable<User> u = _userRepository.GetAll();
@@ -24,5 +25,28 @@ namespace Portfolie_2.Controllers
         {
             return _userRepository.GetById(id);
         }
+
+        public UserController(IUserRepository repository)
+        {
+            _userRepository = repository;
+        }
+
+        public UserController()
+        {
+            _userRepository = new UserRepository();
+        }
+
+        public string GetUser(int id)
+        {
+            var User = _userRepository.GetById(id);
+
+            return JsonConvert.SerializeObject(User);
+        }
+
+        //public string AddAnnotation()
+        //{
+        //    return _userRepository.Add();
+        //}
+
     }
 }
