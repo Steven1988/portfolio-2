@@ -18,7 +18,13 @@ namespace Portfolie_2.Controllers
             return p;
         }
 
-        //public HttpRequestMessage Delete(int )
+        public HttpResponseMessage Delete(int userId)
+        {
+            _searchHistoryRepository.DeleteAllByUserId(userId);
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+            return response;
+        }
 
     }
 }

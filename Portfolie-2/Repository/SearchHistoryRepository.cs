@@ -9,14 +9,15 @@ namespace Portfolie_2.Repository
 {
     public class SearchHistoryRepository : ISearchHistoryRepository
     {
-        public IEnumerable<SearchHistory> GetByUserId(int userId, int limit = 10, int offset = 0)
+        public IEnumerable<SearchHistory> GetByUserId(int userId, int limit = 20, int offset = 0)
         {
             var sql = string.Format(@"select 
                 id, query, queryTime, userId
 
                 from searchHistory
-                where userid = {1}
-                limit {2} offset {3}", userId, limit, offset);
+                where userid = {0}
+                order by queryTime desc
+                limit {1} offset {2}", userId, limit, offset);
 
             using (var connection = new MySqlConnection(ConnectionString.String))
             {
@@ -42,21 +43,17 @@ namespace Portfolie_2.Repository
         }
 
 
-        public void DeleteAllUserId(int userId)
+        public void DeleteAllByUserId(int userId)
         {
-            var sql = string.Format(@"select 
-                id, query, queryTime, userId
-
-                from searchHistory
-                where userid = {1}
-                limit {2} offset {3}", userId);
+            var sql = string.Format(@"delete from searchHistory
+                where userid = {0}", userId);
 
             using (var connection = new MySqlConnection(ConnectionString.String))
             {
                 connection.Open();
 
                 var cmd = new MySqlCommand(sql, connection);
-                cmd.BeginExecuteNonQuery();
+                cmd.ExecuteNonQuery();
             }
         }
     }

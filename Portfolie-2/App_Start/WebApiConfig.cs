@@ -67,6 +67,16 @@ namespace Portfolie_2
                                 userId = RouteParameter.Optional,
                                 postId = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "SearchHistoryApi",
+                routeTemplate: "api/SearchHistory/{userId}",
+                defaults: new
+                {
+                    controller = "SearchHistory",
+                    userId = RouteParameter.Optional
+                }
+            );
         }
     }
 }

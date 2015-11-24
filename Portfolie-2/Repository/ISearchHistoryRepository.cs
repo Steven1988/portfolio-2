@@ -9,6 +9,6 @@ namespace Portfolie_2.Repository
     public interface ISearchHistoryRepository
     {
         IEnumerable<SearchHistory> GetByUserId(int UserId, int limit = 10, int offset = 0);
-        void DeleteAllUserId(int UserId);
+        void DeleteAllByUserId(int UserId);
     }
 }
