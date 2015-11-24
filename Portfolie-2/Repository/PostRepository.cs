@@ -35,7 +35,7 @@ namespace Portfolie_2.Repository
             }       
         }
 
-        public IEnumerable<DetailPost> GetById(int id)
+        public IEnumerable<DetailPost> GetById(int id, int SesUserId)
         {
             var sql = string.Format(@"select 
                 posts.Id, PostTypeId, ParentId,
@@ -47,13 +47,6 @@ namespace Portfolie_2.Repository
                 from posts, users
                 where (users.id = posts.UserId and posts.Id = {0}) OR  (users.id = posts.UserId and ParentId={0})
                 order by CreationDate asc", id);
-
-            //var connectionString = @"Server=wt-220.ruc.dk;
-            //                         User ID=raw3;
-            //                         Password=raw3;
-            //                         Database=raw3;
-            //                         Port=3306;
-            //                         Pooling=false";
 
             using (var connection = new MySqlConnection(ConnectionString.String))
             {
@@ -79,14 +72,42 @@ namespace Portfolie_2.Repository
                             {
                                 UserId = rdr.GetInt32(8),
                                 Name = rdr["displayname"] as string
-                            }
+                            },
                         };
-
+                        detailedPost.FavoriteInstance = GetFavorite(detailedPost.Id, SesUserId);
                         detailedPost.Comments = GetComments(detailedPost.Id);
                         yield return detailedPost;
                     }           
                 }
                 connection.Close();
+            }
+        }
+
+        private DetailPost.Favorite GetFavorite(int postId, int userId)
+        {
+            var sql = string.Format(@"select
+                userId, postId, annotation
+                from favorites
+                where postId={0} and userId={1}", postId, userId);
+
+            using (var connect = new MySqlConnection(ConnectionString.String))
+            {
+                connect.Open();
+                var cmd = new MySqlCommand(sql, connect);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        var favorite = new DetailPost.Favorite()
+                        {
+                            UserId = (int)reader["userId"],
+                            PostId = (int)reader["postId"],
+                            Annotation = reader["annotation"] as string
+                        };
+                        return favorite;
+                    }
+                    return null;
+                }
             }
         }
 

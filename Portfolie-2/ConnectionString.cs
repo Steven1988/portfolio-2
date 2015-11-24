@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Portfolie_2.Repository
+namespace Portfolie_2
 {
     public static class ConnectionString
     {

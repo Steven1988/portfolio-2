@@ -58,7 +58,7 @@ namespace Portfolie_2.Repository
             return null;
         }
 
-        public void Create(Favorite favorite)
+        public void Create(int userId, int postId, string annotation)
         {
 
             MySqlConnection conn = new MySqlConnection(ConnectionString.String);
@@ -69,19 +69,68 @@ namespace Portfolie_2.Repository
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = conn;
 
-            cmd.Parameters.Add("@User_id", MySqlDbType.Int32).Value = 1;
-            cmd.Parameters.Add("@annotation1", MySqlDbType.VarChar, 500).Value = "some annotation";
-            cmd.Parameters.Add("@post_id", MySqlDbType.Int32).Value = 6;
+            cmd.Parameters.Add("@User_id", MySqlDbType.Int32).Value = userId;
+            cmd.Parameters.Add("@annotation1", MySqlDbType.VarChar, 500).Value = annotation;
+            cmd.Parameters.Add("@post_id", MySqlDbType.Int32).Value = postId;
             conn.Open();
 
             cmd.ExecuteNonQuery();
 
             conn.Close();
-            var postId = favorite.PostId;
-            var userId = favorite.UserId;
+            //var postId = favorite.PostId;
+            //var userId = favorite.UserId;
 
-            GetByUserId(userId, postId);
+            //GetByUserId(userId, postId);
 
         }
+
+          
+
+        public void Delete(int userId, int postId)
+        {
+
+            MySqlConnection conn = new MySqlConnection(ConnectionString.String);
+            MySqlCommand cmd = new MySqlCommand("Delete from favorites where userId= @User_id and postId=@post_id", conn);
+            //MySqlDataReader reader;
+
+            cmd.Connection = conn;
+
+            cmd.Parameters.Add("@User_id", MySqlDbType.Int32).Value = userId;
+            //cmd.Parameters.Add("@annotation1", MySqlDbType.VarChar, 500).Value = annotation;
+            cmd.Parameters.Add("@post_id", MySqlDbType.Int32).Value = postId;
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            //var postId = favorite.PostId;
+            //var userId = favorite.UserId;
+
+            //GetByUserId(userId, postId);
+
+        }
+
+       
+
+        public void Update(int userId, int postId, string annotation)
+        {
+
+            using (var connection = new MySqlConnection(ConnectionString.String))
+            {
+                connection.Open();
+                
+                var sql = string.Format("Update favorites set annotation=@annotation where userId=@User_id and postId=@post_id");
+                var cmd = new MySqlCommand(sql, connection);
+
+                cmd.Parameters.AddWithValue("@User_id", userId);
+                cmd.Parameters.AddWithValue("@annotation", annotation);
+                cmd.Parameters.AddWithValue("@post_id", postId);
+
+                cmd.ExecuteNonQuery();
+
+                connection.Close();
+            }
+
+         }
     }
 }

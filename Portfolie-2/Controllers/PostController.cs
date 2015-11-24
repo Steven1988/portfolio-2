@@ -20,9 +20,9 @@ namespace Portfolie_2.Controllers
             return p;
         }
 
-        public IEnumerable<DetailPost> Get(int id)
+        public IEnumerable<DetailPost> Get(int id, int sesUserId)
         {
-            IEnumerable<DetailPost> p = _postRepository.GetById(id);
+            IEnumerable<DetailPost> p = _postRepository.GetById(id, sesUserId);
             return p;
         }
 
