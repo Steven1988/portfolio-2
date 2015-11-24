@@ -27,8 +27,8 @@ namespace Portfolie_2
             */
             config.Routes.MapHttpRoute(
                 name: "PostApi",
-                routeTemplate: "api/posts/{id}",
-                defaults: new { controller = "Post", id = RouteParameter.Optional }
+                routeTemplate: "api/posts/{id}/{sesUserId}",
+                defaults: new { controller = "Post", id = RouteParameter.Optional, sesUserId = RouteParameter.Optional }
             );
             config.Routes.MapHttpRoute(
                 name: "SearchApi",
@@ -62,8 +62,10 @@ namespace Portfolie_2
 
             config.Routes.MapHttpRoute(
                 name: "FavoriteApi",
-                routeTemplate: "api/Favorites/{userId}/{action}",
-                defaults: new { controller = "Favorite", userId = RouteParameter.Optional, action = RouteParameter.Optional }
+                routeTemplate: "api/Favorites/{userId}/{postId}",
+                defaults: new { controller = "Favorite",
+                                userId = RouteParameter.Optional,
+                                postId = RouteParameter.Optional }
             );
         }
     }
