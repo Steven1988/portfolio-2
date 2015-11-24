@@ -54,14 +54,14 @@ namespace Portfolie_2.Controllers
 
         }
         // Update an annotation
-        public HttpResponseMessage put(int userId, int postId, string annotation, [FromBody] Favorite fav)
-        {
-            _favoriteRepository.Update(fav.UserId, fav.PostId, fav.Annotation);
+        public HttpResponseMessage Put(int userId, int postId,string annotation)
+       {
+            _favoriteRepository.Update(userId, postId, annotation);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
 
-        }
+        }
 
     }
 }
