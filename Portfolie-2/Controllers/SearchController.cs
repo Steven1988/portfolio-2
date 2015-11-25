@@ -15,14 +15,10 @@ namespace Portfolie_2.Controllers
 
         public IEnumerable<SearchPost> GetSearch(string searchString)
         {
-            IEnumerable<SearchPost> s = _postRepository.GetSearch(searchString, 0);
-            return s;
-        }
-
-        public IEnumerable<SearchPost> GetSearch(string searchString, int sesUserId)
-        {
-            //var searchString = "Hello";
-            IEnumerable<SearchPost> s = _postRepository.GetSearch(searchString, sesUserId);
+            int limit = QueryStringCall.Limit();
+            int offset = QueryStringCall.String("offset");
+            int sesUserId = QueryStringCall.String("sesUserId");
+            IEnumerable<SearchPost> s = _postRepository.GetSearch(searchString, sesUserId, limit, offset);
             return s;
         }
     }

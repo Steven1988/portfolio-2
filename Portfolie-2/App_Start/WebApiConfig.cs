@@ -27,13 +27,13 @@ namespace Portfolie_2
             */
             config.Routes.MapHttpRoute(
                 name: "PostApi",
-                routeTemplate: "api/posts/{id}/{sesUserId}",
-                defaults: new { controller = "Post", id = RouteParameter.Optional, sesUserId = RouteParameter.Optional }
+                routeTemplate: "api/posts/{id}",
+                defaults: new { controller = "Post", id = RouteParameter.Optional}
             );
             config.Routes.MapHttpRoute(
                 name: "SearchApi",
-                routeTemplate: "api/search/{searchString}/{sesUserId}",
-                defaults: new { controller = "Search", searchString = RouteParameter.Optional, sesUserId = RouteParameter.Optional }
+                routeTemplate: "api/search/{searchString}",
+                defaults: new { controller = "Search", searchString = RouteParameter.Optional }
                 );
 
             config.Routes.MapHttpRoute(

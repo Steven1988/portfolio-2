@@ -11,7 +11,7 @@ namespace Portfolie_2.Repository
 {
     public class PostRepository : IPostRepository
     {
-        public IEnumerable<SearchPost> GetAll(int limit = 20, int offset = 0)
+        public IEnumerable<SearchPost> GetAll(int limit, int offset)
         {
             var sql = string.Format(@"select 
                 posts.Id, Body, Title
@@ -42,7 +42,7 @@ namespace Portfolie_2.Repository
             }
         }
 
-        public IEnumerable<DetailPost> GetById(int id, int SesUserId)
+        public IEnumerable<DetailPost> GetById(int id, int SesUserId, int limit, int offset)
         {
             var sql = string.Format(@"select 
                 posts.Id, PostTypeId, ParentId,
@@ -53,7 +53,7 @@ namespace Portfolie_2.Repository
                 
                 from posts, users
                 where (users.id = posts.UserId and posts.Id = {0}) OR  (users.id = posts.UserId and ParentId={0})
-                order by CreationDate asc", id);
+                order by CreationDate asc limit {1} offset {2}", id, limit, offset);
 
             using (var connection = new MySqlConnection(ConnectionString.String))
             {
@@ -152,7 +152,7 @@ namespace Portfolie_2.Repository
             }
         }
 
-        public IEnumerable<SearchPost> GetSearch(string searchString, int sesUserId)
+        public IEnumerable<SearchPost> GetSearch(string searchString, int sesUserId, int limit, int offset)
         {
 
             // stored procedure call
@@ -167,6 +167,9 @@ namespace Portfolie_2.Repository
             //cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = "Blah";
             cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = searchString;
             cmd.Parameters.Add("@aUserId", MySqlDbType.Int32).Value = sesUserId;
+            cmd.Parameters.Add("@aLimit", MySqlDbType.Int32).Value = limit;
+            cmd.Parameters.Add("@aOffset", MySqlDbType.Int32).Value = offset;
+
             conn.Open();
 
             using (reader = cmd.ExecuteReader())
