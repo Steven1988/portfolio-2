@@ -55,12 +55,6 @@ namespace Portfolie_2
             );
 
             config.Routes.MapHttpRoute(
-                name: "TiApi",
-                routeTemplate: "api/ti/{tid}",
-                defaults: new { controller = "Ti", tid = RouteParameter.Optional }
-            );
-
-            config.Routes.MapHttpRoute(
                 name: "FavoriteApi",
                 routeTemplate: "api/Favorites/{userId}/{postId}/{annotation}",
                 defaults: new { controller = "Favorite",
