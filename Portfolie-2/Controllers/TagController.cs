@@ -18,9 +18,14 @@ namespace Portfolie_2.Controllers
             return p;
         }
 
+        //public Tag Get(int id)
+        //{
+        //    return _tagRepository.GetById(id);
+        //}
+
         public Tag Get(int id)
         {
-            return _tagRepository.GetById(id);
+            return _tagRepository.GetTagFromRepository(id);
         }
     }
 }
