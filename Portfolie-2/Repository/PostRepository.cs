@@ -90,7 +90,7 @@ namespace Portfolie_2.Repository
             }
         }
 
-        private DetailPost.Favorite GetFavorite(int postId, int userId)
+        private Favorite GetFavorite(int postId, int userId)
         {
             var sql = string.Format(@"select
                 userId, postId, annotation
@@ -105,11 +105,11 @@ namespace Portfolie_2.Repository
                 {
                     if (reader.Read())
                     {
-                        var favorite = new DetailPost.Favorite()
+                        var favorite = new Favorite()
                         {
                             UserId = (int)reader["userId"],
                             PostId = (int)reader["postId"],
-                            Annotation = reader["annotation"] as string
+                            Annotation = (string)reader["annotation"]
                         };
                         return favorite;
                     }
@@ -164,7 +164,7 @@ namespace Portfolie_2.Repository
             cmd.CommandText = "raw3.search";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = conn;
-            //cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = "Blah";
+
             cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = searchString;
             cmd.Parameters.Add("@aUserId", MySqlDbType.Int32).Value = sesUserId;
             cmd.Parameters.Add("@aLimit", MySqlDbType.Int32).Value = limit;
@@ -187,10 +187,5 @@ namespace Portfolie_2.Repository
             }     
             conn.Close();
         }
-
-        //private static IEnumerable<Post> ExecuteQuery(string sql)
-        //{ 
-            
-        //}  
     }
 }

@@ -32,19 +32,5 @@ namespace Portfolie_2.Controllers
             IEnumerable<DetailPost> p = _postRepository.GetById(id, sesUserId, limit, offset);
             return p;
         }
-
-
-        //public object Get()
-        //{
-        //    return "hello from PostController";
-        //}
-
-        //PostRepository _postRepository = new PostRepository();
-
-        //public IEnumerable<Post> Get()
-        //{
-        //    var helper = new UrlHelper(Request);
-        //    return _postRepository.GetAll().Select(post => ModelFactory.Create(post));
-        //}
     }
 }

@@ -44,8 +44,6 @@ namespace Portfolie_2.Controllers
         {
             _favoriteRepository.Create(fav.UserId, fav.PostId, fav.Annotation);
 
-
-
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
            
             string uri = Url.Link("FavoriteApi", new { userId = fav.UserId });
