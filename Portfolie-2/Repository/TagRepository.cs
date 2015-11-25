@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Portfolie_2.DataMapper;
 using Portfolie_2.Models;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,13 @@ namespace Portfolie_2.Repository
             }
             // Data is accessible through the DataReader object here.
             conn.Close();
+        }
+
+        public Tag GetTagFromRepository(int id)
+        {
+            TagSqlRepository tagRepo = new TagSqlRepository();
+            Tag tag = tagRepo.FindById(id, new TagMapper());
+            return tag;
         }
 
         public Tag GetById(int id)

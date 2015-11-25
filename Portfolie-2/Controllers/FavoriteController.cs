@@ -1,4 +1,5 @@
-﻿using Portfolie_2.Models;
+﻿using Portfolie_2.DataMapper;
+using Portfolie_2.Models;
 using Portfolie_2.Repository;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,19 @@ namespace Portfolie_2.Controllers
         //    return _favoriteRepository.GetByUserId(userId, postId);
         //}
 
-        public Favorite Get(int userId, int postId)
+        public Favorite Get(int userId)
         {
-            return _favoriteRepository.GetFavoriteFromRepository(userId, postId);
+
+            return _favoriteRepository.GetFavoriteFromRepository(userId);
         }
+
+        //public Favorite GetFavoriteFromRepository(int id)
+        //{
+        //    FavoritesSqlRepository repo = new FavoritesSqlRepository();
+        //    Favorite fav = repo.FindById(id, new FavoriteMapper());
+        //    return fav;
+        //}
+
 
 
         // Create Fav
