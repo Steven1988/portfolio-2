@@ -146,6 +146,7 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Quarks\TypeExtensions\IsNullable.cs" />
     <Compile Include="ConnectionString.cs" />
+    <Compile Include="QueryStringCall.cs" />
     <Compile Include="Repository\FavoriteRepository.cs" />
     <Compile Include="Repository\IFavoriteRepository.cs" />
     <Compile Include="Repository\IPostRepository.cs" />

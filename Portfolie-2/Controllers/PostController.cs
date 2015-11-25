@@ -14,26 +14,22 @@ namespace Portfolie_2.Controllers
     // The PostController handles requests about posts
     public class PostController : ApiController
     {
-        private int GetIntQueryString(string S)
-        {
-            var str_sesUserId = HttpContext.Current.Request.QueryString[S];
-            int aInt = 0;
-            int.TryParse(str_sesUserId, out aInt);
-
-            return aInt;
-        }
 
         PostRepository _postRepository = new PostRepository();
         public IEnumerable<SearchPost> Get()
         {
-            IEnumerable<SearchPost> p = _postRepository.GetAll();
+            int limit = QueryStringCall.Limit();
+            int offset = QueryStringCall.String("offset");
+            IEnumerable<SearchPost> p = _postRepository.GetAll(limit, offset);
             return p;
         }
 
         public IEnumerable<DetailPost> Get(int id)
         {
-            int sesUserId = GetIntQueryString("sesUserId");
-            IEnumerable<DetailPost> p = _postRepository.GetById(id, sesUserId);
+            int limit = QueryStringCall.Limit();
+            int offset = QueryStringCall.String("offset");
+            int sesUserId = QueryStringCall.String("sesUserId");
+            IEnumerable<DetailPost> p = _postRepository.GetById(id, sesUserId, limit, offset);
             return p;
         }
 
