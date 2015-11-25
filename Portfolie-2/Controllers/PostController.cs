@@ -7,12 +7,22 @@ using System.Web.Http;
 using System.Web.Http.Routing;
 using Portfolie_2.Repository;
 using Portfolie_2.Models;
+using System.Web;
 
 namespace Portfolie_2.Controllers
 {
     // The PostController handles requests about posts
     public class PostController : ApiController
     {
+        private int GetIntQueryString(string S)
+        {
+            var str_sesUserId = HttpContext.Current.Request.QueryString[S];
+            int aInt = 0;
+            int.TryParse(str_sesUserId, out aInt);
+
+            return aInt;
+        }
+
         PostRepository _postRepository = new PostRepository();
         public IEnumerable<SearchPost> Get()
         {
@@ -22,13 +32,7 @@ namespace Portfolie_2.Controllers
 
         public IEnumerable<DetailPost> Get(int id)
         {
-            int sesUserId = 0;
-            IEnumerable<DetailPost> p = _postRepository.GetById(id, sesUserId);
-            return p;
-        }
-
-        public IEnumerable<DetailPost> Get(int id, int sesUserId)
-        {
+            int sesUserId = GetIntQueryString("sesUserId");
             IEnumerable<DetailPost> p = _postRepository.GetById(id, sesUserId);
             return p;
         }
