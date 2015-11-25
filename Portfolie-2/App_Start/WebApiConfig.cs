@@ -32,8 +32,8 @@ namespace Portfolie_2
             );
             config.Routes.MapHttpRoute(
                 name: "SearchApi",
-                routeTemplate: "api/search/{searchString}",
-                defaults: new { controller = "Search", searchString = RouteParameter.Optional }
+                routeTemplate: "api/search/{searchString}/{sesUserId}",
+                defaults: new { controller = "Search", searchString = RouteParameter.Optional, sesUserId = RouteParameter.Optional }
                 );
 
             config.Routes.MapHttpRoute(
@@ -52,12 +52,6 @@ namespace Portfolie_2
                 name: "TagApi",
                 routeTemplate: "api/tags/{id}",
                 defaults: new { controller = "Tag", id = RouteParameter.Optional }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "TiApi",
-                routeTemplate: "api/ti/{tid}",
-                defaults: new { controller = "Ti", tid = RouteParameter.Optional }
             );
 
             config.Routes.MapHttpRoute(

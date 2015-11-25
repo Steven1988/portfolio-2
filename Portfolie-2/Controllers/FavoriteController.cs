@@ -18,10 +18,17 @@ namespace Portfolie_2.Controllers
             return _favoriteRepository.GetAll();
         }
 
+        //public Favorite Get(int userId, int postId)
+        //{
+        //    return _favoriteRepository.GetByUserId(userId, postId);
+        //}
+
         public Favorite Get(int userId, int postId)
         {
-            return _favoriteRepository.GetByUserId(userId, postId);
+            return _favoriteRepository.GetFavoriteFromRepository(userId, postId);
         }
+
+
         // Create Fav
         public HttpResponseMessage Post([FromBody] Favorite fav)
         {

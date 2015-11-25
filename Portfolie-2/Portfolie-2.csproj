@@ -129,9 +129,12 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SearchHistoryController.cs" />
     <Compile Include="Controllers\TagController.cs" />
-    <Compile Include="Controllers\TiController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="DataMapper\FavoriteDataAccess.cs" />
+    <Compile Include="DataMapper\FavoriteMapper.cs" />
+    <Compile Include="DataMapper\ISqlMapper.cs" />
+    <Compile Include="DataMapper\SqlMapperBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -141,7 +144,6 @@
     <Compile Include="Models\SearchHistory.cs" />
     <Compile Include="Models\SearchPost.cs" />
     <Compile Include="Models\Tag.cs" />
-    <Compile Include="Models\Ti.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Quarks\TypeExtensions\IsNullable.cs" />
@@ -151,11 +153,11 @@
     <Compile Include="Repository\IPostRepository.cs" />
     <Compile Include="Repository\ISearchHistoryRepository.cs" />
     <Compile Include="Repository\ITagRepository.cs" />
-    <Compile Include="Repository\ITiRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Repository\FavoritesSqlRepository.cs" />
     <Compile Include="Repository\SearchHistoryRepository.cs" />
+    <Compile Include="Repository\SqlRepositoryBase.cs" />
     <Compile Include="Repository\TagRepository.cs" />
-    <Compile Include="Repository\TiRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\PostRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
