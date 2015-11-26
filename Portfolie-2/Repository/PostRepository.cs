@@ -57,7 +57,7 @@ namespace Portfolie_2.Repository
                     {
                         var detailedPost = new DetailPost
                         {
-                            Url = HttpContext.Current.Request.Url.AbsoluteUri,
+                            
                             Id = rdr.GetInt32(0),
                             PostTypeId = rdr.GetInt32(1),
                             ParentId = rdr.IsDBNull(2) ? (int?)null : rdr.GetInt32(2),
