@@ -16,20 +16,22 @@ namespace Portfolie_2.Controllers
     {
 
         PostRepository _postRepository = new PostRepository();
-        public IEnumerable<SearchPost> Get()
+        public Page<SearchPost> Get()
         {
             int limit = QueryStringCall.Limit();
             int offset = QueryStringCall.String("offset");
-            IEnumerable<SearchPost> p = _postRepository.GetAll(limit, offset);
+            IEnumerable<SearchPost> items = _postRepository.GetAll(limit, offset);
+            Page<SearchPost> p = new Page<SearchPost>(items);
             return p;
         }
 
-        public IEnumerable<DetailPost> Get(int id)
+        public Page<DetailPost> Get(int id)
         {
             int limit = QueryStringCall.Limit();
             int offset = QueryStringCall.String("offset");
             int sesUserId = QueryStringCall.String("sesUserId");
-            IEnumerable<DetailPost> p = _postRepository.GetById(id, sesUserId, limit, offset);
+            IEnumerable<DetailPost> items = _postRepository.GetById(id, sesUserId, limit, offset);
+            Page<DetailPost> p = new Page<DetailPost>(items);
             return p;
         }
     }
