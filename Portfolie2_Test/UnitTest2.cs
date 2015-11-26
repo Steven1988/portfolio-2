@@ -22,7 +22,9 @@ namespace Portfolie2_Test
 
             //Act
             //var contains = pfDetails.GetPfEmployerControlSoFar(1);
-            var getPostById = postRepoTest.GetById(1);
+            int postId = 45325;
+            int userId = 2975;
+            var getPostById = postRepoTest.GetById(postId, userId);
 
             //Assert
             Assert.That(getPostById,Is.EqualTo(45325), "It's not as expected");

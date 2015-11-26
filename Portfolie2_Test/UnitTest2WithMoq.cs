@@ -18,7 +18,7 @@ namespace Portfolie2_Test
         public void TestPostRepo() 
         {
             //Mock user object
-            var moqPost = new Mock<Post>();
+            var moqPost = new Mock<DetailPost>();
             //Arrange
             var postRepoTest = new PostRepository();
 
