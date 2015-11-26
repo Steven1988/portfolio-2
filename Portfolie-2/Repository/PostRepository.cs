@@ -39,6 +39,7 @@ namespace Portfolie_2.Repository
                     {
                         yield return new SearchPost
                         {
+                            Url = HttpContext.Current.Request.Url.AbsoluteUri,
                             Id = rdr.GetInt32(0),
                             Body = rdr["body"] as string,
                             Title = rdr["title"] as string
@@ -74,7 +75,7 @@ namespace Portfolie_2.Repository
                     {
                         var detailedPost = new DetailPost
                         {
-                            Url = HttpContext.Current.Request.Url.AbsoluteUri,
+                            Url = HttpContext.Current.Request.Url.AbsoluteUri + "/" + rdr.GetInt32(0),
                             Id = rdr.GetInt32(0),
                             PostTypeId = rdr.GetInt32(1),
                             ParentId = rdr.IsDBNull(2) ? (int?)null : rdr.GetInt32(2),
@@ -85,6 +86,7 @@ namespace Portfolie_2.Repository
                             UserId = rdr.GetInt32(7),
                             UserInstance = new DetailPost.User
                             {
+                                Url = HttpContext.Current.Request.Url.AbsoluteUri +"/"+rdr.GetInt32(8),
                                 UserId = rdr.GetInt32(8),
                                 Name = rdr["displayname"] as string
                             },
@@ -124,6 +126,7 @@ namespace Portfolie_2.Repository
                         result.Add(
                             new DetailPost.Comment
                             {
+                                Url = HttpContext.Current.Request.Url.AbsoluteUri + "/" + reader.GetInt32(0),
                                 CommentId = reader.GetInt32(0),
                                 Text = reader["text"] as string,
                                 CreationDate = reader.GetDateTime(2),
@@ -164,7 +167,7 @@ namespace Portfolie_2.Repository
                     // Data is accessible through the DataReader object here.
                     yield return new SearchPost
                     {
-                        Url = HttpContext.Current.Request.Url.AbsoluteUri,
+                        Url = HttpContext.Current.Request.Url.AbsoluteUri + "/" + reader.GetInt32(0),
                         Id = reader.GetInt32(0),
                         Title = reader["title"] as string,
                         Body = reader["body"] as string
