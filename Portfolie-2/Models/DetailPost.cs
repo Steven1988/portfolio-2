@@ -40,7 +40,7 @@ namespace Portfolie_2.Models
         // Nested Comment Object
         public class Comment
         {
-            
+            public string Url { get; set; }
             public int CommentId { get; set; }
             public string Text { get; set; }
             public DateTime CreationDate { get; set; }
