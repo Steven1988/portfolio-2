@@ -26,6 +26,7 @@ namespace Portfolie_2.Controllers
 
         public Favorite Get(int userId)
         {
+            var helper = new UrlHelper(Request);
 
             return _favoriteRepository.GetFavoriteFromRepository(userId);
         }
@@ -44,16 +45,34 @@ namespace Portfolie_2.Controllers
         {
             _favoriteRepository.Create(fav.UserId, fav.PostId, fav.Annotation);
 
+
+            var helper = new UrlHelper(Request);
+
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
            
-            string uri = Url.Link("FavoriteApi", new { userId = fav.UserId });
+            string uri = Url.Link("FavoriteApi", new {fav.UserId, fav.PostId});
             response.Headers.Location = new Uri(uri);
 
             return response;
 
         }
 
-       
+        // Update an annotation
+        public HttpResponseMessage Put([FromBody]Favorite fav)
+        {
+
+            _favoriteRepository.Update(fav.UserId, fav.PostId, fav.Annotation);
+
+            var helper = new UrlHelper(Request);
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+            string uri = Url.Link("FavoriteApi", new { fav });
+            response.Headers.Location = new Uri(uri);
+
+            return response;
+
+        }
+
         // Delete annotation
         public HttpResponseMessage Delete(int userId, int postId)
         {
@@ -65,20 +84,7 @@ namespace Portfolie_2.Controllers
             return response; 
 
         }
-        // Update an annotation
-        public HttpResponseMessage Put(int userId, int postId,string annotation)
-       {
-
-            _favoriteRepository.Update(userId, postId, annotation);
-
-
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-            string uri = Url.Link("FavoriteApi", new { userId,postId,annotation });
-            response.Headers.Location = new Uri(uri);
-
-            return response;
-
-        }
+        
 
 
     }
