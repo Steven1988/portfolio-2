@@ -80,7 +80,7 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTest2WithMoq.cs" />
-    <Compile Include="UnitTestUserRepo.cs" />
+    <Compile Include="UserIdMatchesDisplayName.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

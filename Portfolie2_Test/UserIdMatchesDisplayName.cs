@@ -9,10 +9,10 @@ using System.Web.Http;
 namespace Portfolie2_Test
 {
     /// <summary>
-    /// Summary description for UnitTestUserRepo
+    /// Test whether ID of user is in agreement with DisplayName of user
     /// </summary>
     [TestFixture]
-    public class UnitTestUserRepo
+    public class UserIdMatchesDisplayName
     {
         [Test]
         public void TestUserRepo()
@@ -21,7 +21,6 @@ namespace Portfolie2_Test
             var userRepoTest = new UserRepository();
 
             //Act
-            //var contains = pfDetails.GetPfEmployerControlSoFar(1);
             var user = userRepoTest.GetById(4);
 
             //Assert
