@@ -20,7 +20,7 @@ namespace Portfolie2_Test
             //Mock user object
             var moqPost = new Mock<DetailPost>();
             //Arrange
-            var postRepoTest = new PostRepository();
+            var postRepoTest = new PostRepository(new Portfolie_2.DataMapper.FavoriteMapper());
 
             //Act
             int postId = 45325;
