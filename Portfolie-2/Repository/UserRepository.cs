@@ -85,26 +85,5 @@ namespace Portfolie_2.Repository
                 }
             }
         }
-
-        //public void Add(Favorite favorite)
-        //{
-
-        //    MySqlConnection conn = new MySqlConnection("Server=wt-220.ruc.dk;User ID = raw3;Password = raw3;Database = raw3;Port = 3306;Pooling = false");
-        //    MySqlCommand cmd = new MySqlCommand();
-        //    //MySqlDataReader reader;
-
-        //    cmd.CommandText = "raw3.addFavorite";
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.Connection = conn;
-        
-        //    cmd.Parameters.Add("@User_id", MySqlDbType.Int32).Value = 1;
-        //    cmd.Parameters.Add("@annotation1", MySqlDbType.VarChar, 500).Value = "some annotation";
-        //    cmd.Parameters.Add("@post_id", MySqlDbType.Int32).Value = 6;
-        //    conn.Open();
-
-        //    //GetByUserId(favorite.UserId);
-
-        //}
-
     }
 }

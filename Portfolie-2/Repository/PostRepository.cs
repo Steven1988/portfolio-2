@@ -5,12 +5,19 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using Portfolie_2.Models;
 using System.Data;
-using Portfolie_2.Repository;
+using Portfolie_2.DataMapper;
 
 namespace Portfolie_2.Repository
 {
     public class PostRepository : IPostRepository
     {
+        private FavoriteMapper _mapper;
+
+        public PostRepository(FavoriteMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         public IEnumerable<SearchPost> GetAll(int limit, int offset)
         {
             var sql = string.Format(@"select 
@@ -92,30 +99,7 @@ namespace Portfolie_2.Repository
 
         private Favorite GetFavorite(int postId, int userId)
         {
-            var sql = string.Format(@"select
-                userId, postId, annotation
-                from favorites
-                where postId={0} and userId={1}", postId, userId);
-
-            using (var connect = new MySqlConnection(ConnectionString.String))
-            {
-                connect.Open();
-                var cmd = new MySqlCommand(sql, connect);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        var favorite = new Favorite()
-                        {
-                            UserId = (int)reader["userId"],
-                            PostId = (int)reader["postId"],
-                            Annotation = (string)reader["annotation"]
-                        };
-                        return favorite;
-                    }
-                    return null;
-                }
-            }
+            return _mapper.GetById(userId, postId);
         }
 
         private List<DetailPost.Comment> GetComments(int postId)

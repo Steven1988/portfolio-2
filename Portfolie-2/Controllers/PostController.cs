@@ -15,7 +15,7 @@ namespace Portfolie_2.Controllers
     public class PostController : ApiController
     {
 
-        PostRepository _postRepository = new PostRepository();
+        PostRepository _postRepository = new PostRepository(new DataMapper.FavoriteMapper());
         public Page<SearchPost> Get()
         {
             int limit = QueryStringCall.Limit();
