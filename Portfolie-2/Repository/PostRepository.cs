@@ -74,6 +74,7 @@ namespace Portfolie_2.Repository
                     {
                         var detailedPost = new DetailPost
                         {
+                            Url = HttpContext.Current.Request.Url.AbsoluteUri,
                             Id = rdr.GetInt32(0),
                             PostTypeId = rdr.GetInt32(1),
                             ParentId = rdr.IsDBNull(2) ? (int?)null : rdr.GetInt32(2),
@@ -163,6 +164,7 @@ namespace Portfolie_2.Repository
                     // Data is accessible through the DataReader object here.
                     yield return new SearchPost
                     {
+                        Url = HttpContext.Current.Request.Url.AbsoluteUri,
                         Id = reader.GetInt32(0),
                         Title = reader["title"] as string,
                         Body = reader["body"] as string
