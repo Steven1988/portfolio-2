@@ -7,15 +7,15 @@ using System.Data;
 
 namespace Portfolie_2.DataMapper
 {
-    public class FavoriteMapper : SqlMapperBase<Favorite>
+    public class FavoriteMapper
     {
-        public override Favorite MapFromSource(IDataRecord record)
+        /*public override Favorite MapFromSource(IDataRecord record)
         {
             Favorite fav = new Favorite();
             fav.PostId = (int)record["postId"];
             fav.UserId = (int)record["userId"];
             fav.Annotation = (string)record["annotation"];
             return fav;
-        }
+        }*/
     }
 }

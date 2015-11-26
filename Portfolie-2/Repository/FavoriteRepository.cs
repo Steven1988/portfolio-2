@@ -59,14 +59,6 @@ namespace Portfolie_2.Repository
             return null;
         }
 
-
-        public Favorite GetFavoriteFromRepository(int id)
-        {
-            FavoritesSqlRepository repo = new FavoritesSqlRepository();
-            Favorite fav = repo.FindById(1, new FavoriteMapper());
-            return fav;
-        }
-
         public void Create(int userId, int postId, string annotation)
         {
 
