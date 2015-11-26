@@ -142,7 +142,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Favorite.cs" />
-    <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\DetailPost.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\SearchHistory.cs" />
@@ -170,6 +169,7 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
