@@ -14,13 +14,14 @@ namespace Portfolie_2.Controllers
     // The PostController handles requests about posts
     public class PostController : ApiController
     {
-
-        PostRepository _postRepository = new PostRepository();
+        PostRepository _postRepository_search = new PostRepository(new DataMapper.PostMapper());
+        PostRepository _postRepository = new PostRepository(new DataMapper.FavoriteMapper());
+        
         public Page<SearchPost> Get()
         {
             int limit = QueryStringCall.Limit();
             int offset = QueryStringCall.String("offset");
-            IEnumerable<SearchPost> items = _postRepository.GetAll(limit, offset);
+            IEnumerable<SearchPost> items = _postRepository_search.GetAll(limit, offset);
             Page<SearchPost> p = new Page<SearchPost>(items);
             return p;
         }

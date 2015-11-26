@@ -5,41 +5,31 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using Portfolie_2.Models;
 using System.Data;
-using Portfolie_2.Repository;
+using Portfolie_2.DataMapper;
 
 namespace Portfolie_2.Repository
 {
     public class PostRepository : IPostRepository
     {
+
+        // Constructors for our Mappers
+        private FavoriteMapper _mapper;
+        public PostRepository(FavoriteMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
+        private PostMapper _pMapper;
+        public PostRepository(PostMapper mapper)
+        {
+            _pMapper = mapper;
+        }
+
+
+        // Repository Methods
         public IEnumerable<SearchPost> GetAll(int limit, int offset)
         {
-            var sql = string.Format(@"select 
-                posts.Id, Body, Title
-                from posts
-                where PostTypeId=1
-                order by CreationDate desc
-                limit {0} offset {1}", limit, offset);
-
-            using (var connection = new MySqlConnection(ConnectionString.String))
-            {
-                connection.Open();
-
-                var cmd = new MySqlCommand(sql, connection);
-                using (var rdr = cmd.ExecuteReader())
-                {
-                    // as long as we have rows we can read
-                    while (rdr.HasRows && rdr.Read())
-                    {
-                        yield return new SearchPost
-                        {
-                            Id = rdr.GetInt32(0),
-                            Body = rdr["body"] as string,
-                            Title = rdr["title"] as string
-                        };
-                    }
-                }
-                connection.Close();
-            }
+            return _pMapper.GetAll(limit, offset);
         }
 
         public IEnumerable<DetailPost> GetById(int id, int SesUserId, int limit, int offset)
@@ -67,6 +57,7 @@ namespace Portfolie_2.Repository
                     {
                         var detailedPost = new DetailPost
                         {
+                            Url = HttpContext.Current.Request.Url.AbsoluteUri,
                             Id = rdr.GetInt32(0),
                             PostTypeId = rdr.GetInt32(1),
                             ParentId = rdr.IsDBNull(2) ? (int?)null : rdr.GetInt32(2),
@@ -92,30 +83,7 @@ namespace Portfolie_2.Repository
 
         private Favorite GetFavorite(int postId, int userId)
         {
-            var sql = string.Format(@"select
-                userId, postId, annotation
-                from favorites
-                where postId={0} and userId={1}", postId, userId);
-
-            using (var connect = new MySqlConnection(ConnectionString.String))
-            {
-                connect.Open();
-                var cmd = new MySqlCommand(sql, connect);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        var favorite = new Favorite()
-                        {
-                            UserId = (int)reader["userId"],
-                            PostId = (int)reader["postId"],
-                            Annotation = (string)reader["annotation"]
-                        };
-                        return favorite;
-                    }
-                    return null;
-                }
-            }
+            return _mapper.GetById(userId, postId);
         }
 
         private List<DetailPost.Comment> GetComments(int postId)
@@ -154,38 +122,7 @@ namespace Portfolie_2.Repository
 
         public IEnumerable<SearchPost> GetSearch(string searchString, int sesUserId, int limit, int offset)
         {
-
-            // stored procedure call
-
-            MySqlConnection conn = new MySqlConnection(ConnectionString.String);
-            MySqlCommand cmd = new MySqlCommand();
-            MySqlDataReader reader;
-
-            cmd.CommandText = "raw3.search";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Connection = conn;
-
-            cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = searchString;
-            cmd.Parameters.Add("@aUserId", MySqlDbType.Int32).Value = sesUserId;
-            cmd.Parameters.Add("@aLimit", MySqlDbType.Int32).Value = limit;
-            cmd.Parameters.Add("@aOffset", MySqlDbType.Int32).Value = offset;
-
-            conn.Open();
-
-            using (reader = cmd.ExecuteReader())
-            {
-                while (reader.HasRows && reader.Read())
-                {
-                    // Data is accessible through the DataReader object here.
-                    yield return new SearchPost
-                    {
-                        Id = reader.GetInt32(0),
-                        Title = reader["title"] as string,
-                        Body = reader["body"] as string
-                    };
-                }
-            }     
-            conn.Close();
-        }
+            return _pMapper.GetSearch(searchString, sesUserId, limit, offset);
+        }     
     }
 }

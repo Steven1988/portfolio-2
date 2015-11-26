@@ -7,7 +7,7 @@ namespace Portfolie_2.Models
 {
     public class DetailPost
     {
-        //public string Url { get; set; }
+        public string Url { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
@@ -32,6 +32,7 @@ namespace Portfolie_2.Models
         // Nested User Object.
         public class User
         {
+            public string Url { get; set; }
             public int UserId { get; set; }
             public string Name { get; set; }
         }
@@ -39,6 +40,7 @@ namespace Portfolie_2.Models
         // Nested Comment Object
         public class Comment
         {
+            public string Url { get; set; }
             public int CommentId { get; set; }
             public string Text { get; set; }
             public DateTime CreationDate { get; set; }

@@ -135,10 +135,8 @@
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\PostController.cs" />
-    <Compile Include="DataMapper\DataAccess.cs" />
     <Compile Include="DataMapper\FavoriteMapper.cs" />
-    <Compile Include="DataMapper\ISqlMapper.cs" />
-    <Compile Include="DataMapper\SqlMapperBase.cs" />
+    <Compile Include="DataMapper\PostMapper.cs" />
     <Compile Include="DataMapper\TagMapper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -161,12 +159,9 @@
     <Compile Include="Repository\ISearchHistoryRepository.cs" />
     <Compile Include="Repository\ITagRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
-    <Compile Include="Repository\FavoritesSqlRepository.cs" />
     <Compile Include="Repository\PageRepository.cs" />
     <Compile Include="Repository\SearchHistoryRepository.cs" />
-    <Compile Include="Repository\SqlRepositoryBase.cs" />
     <Compile Include="Repository\TagRepository.cs" />
-    <Compile Include="Repository\TagSqlRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\PostRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

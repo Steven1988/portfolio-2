@@ -12,20 +12,17 @@ namespace Portfolie2_Test
     /// Summary description for UnitTest2
     /// </summary>
     [TestFixture]
-    public class UnitTest2WithMoq
+    public class PostRepoTest
     {
         [Test]
-        public void TestPostRepo() 
+        public void TestPostRepo()
         {
-            //Mock user object
-            var moqPost = new Mock<DetailPost>();
             //Arrange
-            var postRepoTest = new PostRepository(new Portfolie_2.DataMapper.FavoriteMapper());
+            var postRepoTest = new PostRepository();
 
             //Act
-            int postId = 45325;
-            int userId = 2975;
-            var getPostById = postRepoTest.GetById(postId, userId, 10, 0);
+            //var contains = pfDetails.GetPfEmployerControlSoFar(1);
+            var getPostById = postRepoTest.GetById(28894151, );
 
             //Assert
             Assert.That(getPostById,Is.EqualTo(45325), "It's not as expected");
