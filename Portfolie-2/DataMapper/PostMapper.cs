@@ -17,12 +17,11 @@ namespace Portfolie_2.DataMapper
 
             MySqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = string.Format(@"select 
-                posts.Id, Body, Title
-                from posts
-                where PostTypeId=1
-                order by CreationDate desc
-                limit {0} offset {1}", limit, offset);
+            cmd.CommandText = string.Format(@"select posts.Id, Body, Title
+                from posts where PostTypeId=1
+                order by CreationDate desc limit @limit offset @offset");
+            cmd.Parameters.AddWithValue("@limit", limit);
+            cmd.Parameters.AddWithValue("@offset", offset);
 
             using (var rdr = cmd.ExecuteReader())
             {

@@ -80,6 +80,7 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTest2WithMoq.cs" />
+    <Compile Include="Favorite_PostIdMatchesUserId.cs" />
     <Compile Include="UserIdMatchesDisplayName.cs" />
   </ItemGroup>
   <ItemGroup>
