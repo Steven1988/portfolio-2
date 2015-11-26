@@ -12,41 +12,20 @@ namespace Portfolie_2.Repository
     public class PostRepository : IPostRepository
     {
         private FavoriteMapper _mapper;
-
         public PostRepository(FavoriteMapper mapper)
         {
             _mapper = mapper;
         }
 
+        private PostMapper _pMapper;
+        public PostRepository(PostMapper mapper)
+        {
+            _pMapper = mapper;
+        }
+
         public IEnumerable<SearchPost> GetAll(int limit, int offset)
         {
-            var sql = string.Format(@"select 
-                posts.Id, Body, Title
-                from posts
-                where PostTypeId=1
-                order by CreationDate desc
-                limit {0} offset {1}", limit, offset);
-
-            using (var connection = new MySqlConnection(ConnectionString.String))
-            {
-                connection.Open();
-
-                var cmd = new MySqlCommand(sql, connection);
-                using (var rdr = cmd.ExecuteReader())
-                {
-                    // as long as we have rows we can read
-                    while (rdr.HasRows && rdr.Read())
-                    {
-                        yield return new SearchPost
-                        {
-                            Id = rdr.GetInt32(0),
-                            Body = rdr["body"] as string,
-                            Title = rdr["title"] as string
-                        };
-                    }
-                }
-                connection.Close();
-            }
+            return _pMapper.GetAll(limit, offset);
         }
 
         public IEnumerable<DetailPost> GetById(int id, int SesUserId, int limit, int offset)
@@ -138,7 +117,6 @@ namespace Portfolie_2.Repository
 
         public IEnumerable<SearchPost> GetSearch(string searchString, int sesUserId, int limit, int offset)
         {
-
             // stored procedure call
 
             MySqlConnection conn = new MySqlConnection(ConnectionString.String);
