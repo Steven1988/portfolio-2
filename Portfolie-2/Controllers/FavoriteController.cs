@@ -67,7 +67,7 @@ namespace Portfolie_2.Controllers
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
             string uri = Url.Link("FavoriteApi", new { fav });
-            response.Headers.Location = new Uri(uri);
+            
 
             return response;
 
