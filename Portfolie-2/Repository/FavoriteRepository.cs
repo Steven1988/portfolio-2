@@ -92,8 +92,6 @@ namespace Portfolie_2.Repository
 
         }
 
-          
-
         public void Delete(int userId, int postId)
         {
 
