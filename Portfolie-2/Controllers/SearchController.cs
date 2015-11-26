@@ -11,7 +11,7 @@ namespace Portfolie_2.Controllers
 {
     public class SearchController : ApiController
     {
-        PostRepository _postRepository = new PostRepository();
+        PostRepository _postRepository = new PostRepository(new DataMapper.FavoriteMapper());
 
         public Page<SearchPost> GetSearch(string searchString)
         {

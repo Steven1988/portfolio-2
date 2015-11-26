@@ -13,7 +13,7 @@ namespace Portfolie_2.Controllers
 {
     public class FavoriteController : ApiController
     {
-        FavoriteRepository _favoriteRepository = new FavoriteRepository();
+        FavoriteRepository _favoriteRepository = new FavoriteRepository(new DataMapper.FavoriteMapper());
         public IEnumerable<Favorite> Get()
         {
             return _favoriteRepository.GetAll();
@@ -24,19 +24,12 @@ namespace Portfolie_2.Controllers
         //    return _favoriteRepository.GetByUserId(userId, postId);
         //}
 
-        public Favorite Get(int userId)
+        public Favorite Get(int userId, int postId)
         {
             var helper = new UrlHelper(Request);
 
-            return _favoriteRepository.GetFavoriteFromRepository(userId);
+            return _favoriteRepository.GetByUserId(userId, postId);
         }
-
-        //public Favorite GetFavoriteFromRepository(int id)
-        //{
-        //    FavoritesSqlRepository repo = new FavoritesSqlRepository();
-        //    Favorite fav = repo.FindById(id, new FavoriteMapper());
-        //    return fav;
-        //}
 
 
 

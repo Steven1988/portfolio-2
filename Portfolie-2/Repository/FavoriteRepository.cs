@@ -11,6 +11,14 @@ namespace Portfolie_2.Repository
 {
     public class FavoriteRepository : IFavoriteRepository
     {
+        private FavoriteMapper _mapper;
+
+        public FavoriteRepository(FavoriteMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
+
         public IEnumerable<Favorite> GetAll(int limit = 10, int offset = 0)
         {
             using (var connection = new MySqlConnection(ConnectionString.String))
@@ -37,34 +45,29 @@ namespace Portfolie_2.Repository
 
         public Favorite GetByUserId(int userId, int postId)
         {
-            using (var connection = new MySqlConnection(ConnectionString.String))
-            {
-                connection.Open();
-                var sql = string.Format("select userid, postid, annotation from favorites where userid = {0} and postId = {1}", userId, postId);
-
-                var cmd = new MySqlCommand(sql, connection);
-                using (var rdr = cmd.ExecuteReader())
-                {
-                    if (rdr.HasRows && rdr.Read())
-                    {
-                        return new Favorite
-                        {
-                            UserId = rdr.GetInt32(0),
-                            PostId = rdr.GetInt32(1),
-                            Annotation = rdr["annotation"] as string
-                        };
-                    }
-                }
-            }
-            return null;
-        }
+            return _mapper.GetById(userId, postId);
 
 
-        public Favorite GetFavoriteFromRepository(int id)
-        {
-            FavoritesSqlRepository repo = new FavoritesSqlRepository();
-            Favorite fav = repo.FindById(1, new FavoriteMapper());
-            return fav;
+            //    using (var connection = new MySqlConnection(ConnectionString.String))
+            //    {
+            //        connection.Open();
+            //        var sql = string.Format("select userid, postid, annotation from favorites where userid = {0} and postId = {1}", userId, postId);
+
+            //        var cmd = new MySqlCommand(sql, connection);
+            //        using (var rdr = cmd.ExecuteReader())
+            //        {
+            //            if (rdr.HasRows && rdr.Read())
+            //            {
+            //                return new Favorite
+            //                {
+            //                    UserId = rdr.GetInt32(0),
+            //                    PostId = rdr.GetInt32(1),
+            //                    Annotation = rdr["annotation"] as string
+            //                };
+            //            }
+            //        }
+            //    }
+            //    return null;
         }
 
         public void Create(int userId, int postId, string annotation)

@@ -9,6 +9,6 @@ namespace Portfolie_2.Models
     {
         public int Id { get; set; }
         public string Tagname { get; set; }
-        public int TagCount { get; set; }
+        public int? TagCount { get; set; }
     }
 }

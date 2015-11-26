@@ -11,21 +11,16 @@ namespace Portfolie_2.Controllers
 {
     public class TagController : ApiController
     {
-        TagRepository _tagRepository = new TagRepository();
+        TagRepository _tagRepository = new TagRepository(new DataMapper.TagMapper());
         public IEnumerable<Tag> Get()
         {
             IEnumerable<Tag> p = _tagRepository.GetAll();
             return p;
         }
 
-        //public Tag Get(int id)
-        //{
-        //    return _tagRepository.GetById(id);
-        //}
-
         public Tag Get(int id)
         {
-            return _tagRepository.GetTagFromRepository(id);
+            return _tagRepository.GetById(id);
         }
     }
 }

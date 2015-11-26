@@ -9,23 +9,24 @@ using System.Web.Http;
 namespace Portfolie2_Test
 {
     /// <summary>
-    /// Summary description for UnitTest2
+    /// Summary description for UnitTestUserRepo
     /// </summary>
     [TestFixture]
-    public class UnitTest2
+    public class UnitTestUserRepo
     {
         [Test]
-        public void TestPostRepo()
+        public void TestUserRepo()
         {
             //Arrange
-            var postRepoTest = new PostRepository();
+            var userRepoTest = new UserRepository();
 
             //Act
             //var contains = pfDetails.GetPfEmployerControlSoFar(1);
-            var getPostById = postRepoTest.GetById(1,0, 10, 0);
+            var user = userRepoTest.GetById(4);
 
             //Assert
-            Assert.That(getPostById,Is.EqualTo(45325), "It's not as expected");
+            Assert.That(user.Id,Is.EqualTo(4), "ID");
+            Assert.That(user.DisplayName,Is.EqualTo("Joel Spolsky"), "Name");
         }
 
 
