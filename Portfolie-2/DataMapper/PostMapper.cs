@@ -2,6 +2,7 @@
 using Portfolie_2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -10,7 +11,7 @@ namespace Portfolie_2.DataMapper
     public class PostMapper
     {
         public IEnumerable<SearchPost> GetAll(int limit, int offset)
-        { 
+        {
             MySqlConnection conn = new MySqlConnection(ConnectionString.String);
             conn.Open();
 
@@ -31,6 +32,35 @@ namespace Portfolie_2.DataMapper
                     yield return Map(rdr);
                 }
             }
+        }
+
+        public IEnumerable<SearchPost> GetSearch(string searchString, int sesUserId, int limit, int offset)
+        {
+            // stored procedure call
+
+            MySqlConnection conn = new MySqlConnection(ConnectionString.String);
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = "raw3.search";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = conn;
+
+            cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = searchString;
+            cmd.Parameters.Add("@aUserId", MySqlDbType.Int32).Value = sesUserId;
+            cmd.Parameters.Add("@aLimit", MySqlDbType.Int32).Value = limit;
+            cmd.Parameters.Add("@aOffset", MySqlDbType.Int32).Value = offset;
+
+            conn.Open();
+
+            using (var rdr = cmd.ExecuteReader())
+            {
+                while (rdr.HasRows && rdr.Read())
+                {
+                    // Data is accessible through the DataReader object here.
+                    yield return Map(rdr);
+                }
+            }
+            conn.Close();
         }
 
         public SearchPost Map(MySqlDataReader rdr)

@@ -11,6 +11,8 @@ namespace Portfolie_2.Repository
 {
     public class PostRepository : IPostRepository
     {
+
+        // Constructors for our Mappers
         private FavoriteMapper _mapper;
         public PostRepository(FavoriteMapper mapper)
         {
@@ -23,6 +25,8 @@ namespace Portfolie_2.Repository
             _pMapper = mapper;
         }
 
+
+        // Repository Methods
         public IEnumerable<SearchPost> GetAll(int limit, int offset)
         {
             return _pMapper.GetAll(limit, offset);
@@ -118,38 +122,7 @@ namespace Portfolie_2.Repository
 
         public IEnumerable<SearchPost> GetSearch(string searchString, int sesUserId, int limit, int offset)
         {
-            // stored procedure call
-
-            MySqlConnection conn = new MySqlConnection(ConnectionString.String);
-            MySqlCommand cmd = new MySqlCommand();
-            MySqlDataReader reader;
-
-            cmd.CommandText = "raw3.search";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Connection = conn;
-
-            cmd.Parameters.Add("@titles", MySqlDbType.VarChar, 50).Value = searchString;
-            cmd.Parameters.Add("@aUserId", MySqlDbType.Int32).Value = sesUserId;
-            cmd.Parameters.Add("@aLimit", MySqlDbType.Int32).Value = limit;
-            cmd.Parameters.Add("@aOffset", MySqlDbType.Int32).Value = offset;
-
-            conn.Open();
-
-            using (reader = cmd.ExecuteReader())
-            {
-                while (reader.HasRows && reader.Read())
-                {
-                    // Data is accessible through the DataReader object here.
-                    yield return new SearchPost
-                    {
-                        Url = HttpContext.Current.Request.Url.AbsoluteUri,
-                        Id = reader.GetInt32(0),
-                        Title = reader["title"] as string,
-                        Body = reader["body"] as string
-                    };
-                }
-            }     
-            conn.Close();
-        }
+            return _pMapper.GetSearch(searchString, sesUserId, limit, offset);
+        }     
     }
 }
