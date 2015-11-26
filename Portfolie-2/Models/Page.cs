@@ -28,27 +28,39 @@ namespace Portfolie_2.Models
             int dataLength = data.Count();
 
             int limit = QueryStringCall.Limit();
-            var cur_Query = HttpContext.Current.Request.QueryString.ToString();
-            var nameValues = HttpUtility.ParseQueryString(cur_Query);
-            
-
-            //if (cur_Query.Contains("offset"))
-            //{
-            //    int cur_offset = QueryStringCall.String("offset");  
-            //    int new_offset = cur_offset+limit;
-            //    nameValues.Set("offset", new_offset.ToString());
-            //}
-            //else
-            //{
-            //    nameValues.Set("offset", limit.ToString());
-            //}
+            int cur_offset = QueryStringCall.String("offset");
 
             string url = HttpContext.Current.Request.Url.AbsolutePath;
-            string nextQueryString = url + "?" + nameValues.ToString();
-            
 
-            paging.prevUrl = nextQueryString;
-            paging.nextUrl = nextQueryString;
+            var cur_Query = HttpContext.Current.Request.QueryString.ToString();
+            var Query_up = HttpUtility.ParseQueryString(cur_Query);
+            var Query_down = HttpUtility.ParseQueryString(cur_Query);
+
+            string prev = "";
+            string next = "";
+
+            if (cur_Query.Contains("offset"))
+            {
+                int new_offset_up = cur_offset + limit;
+                int new_offset_down = cur_offset + limit;
+
+                if (new_offset_up < dataLength + limit)
+                    Query_up.Set("offset", new_offset_up.ToString());
+                next = url + "?" + Query_up.ToString();
+
+                if (new_offset_down >= 0)
+                    Query_down.Set("offset", new_offset_down.ToString());
+                prev = url + "?" + Query_up.ToString();
+
+            }
+            else
+            {
+                next = Query_up.ToString() + "offset=" + limit;
+            }
+
+
+            paging.nextUrl =  next;
+            paging.prevUrl = prev;
 
 
 
