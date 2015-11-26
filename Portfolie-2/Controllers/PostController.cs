@@ -17,18 +17,6 @@ namespace Portfolie_2.Controllers
         PostRepository _postRepository_search = new PostRepository(new DataMapper.PostMapper());
         PostRepository _postRepository = new PostRepository(new DataMapper.FavoriteMapper());
 
-        public IPostRepository IPostRepository
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
         public Page<SearchPost> Get()
         {
             int limit = QueryStringCall.Limit();
