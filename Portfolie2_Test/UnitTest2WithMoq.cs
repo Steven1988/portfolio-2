@@ -25,7 +25,7 @@ namespace Portfolie2_Test
             //Act
             int postId = 45325;
             int userId = 2975;
-            var getPostById = postRepoTest.GetById(postId, userId);
+            var getPostById = postRepoTest.GetById(postId, userId, 10, 0);
 
             //Assert
             Assert.That(getPostById,Is.EqualTo(45325), "It's not as expected");

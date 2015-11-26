@@ -29,9 +29,6 @@ namespace Portfolie_2.Models
             FavoriteInstance = new Favorite();
         }
 
-
-
-
         // Nested User Object.
         public class User
         {
@@ -48,14 +45,6 @@ namespace Portfolie_2.Models
             public int CommentAuthorId { get; set; }
             public string AuthorName { get; set; }
             //public int PostId { get; set; }
-        }
-
-        // Nested User Object.
-        public class Favorite
-        {
-            public int UserId { get; set; }
-            public int PostId { get; set; }
-            public string Annotation { get; set; }
         }
     }
 }
