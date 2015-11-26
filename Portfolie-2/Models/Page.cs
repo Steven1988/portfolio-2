@@ -22,22 +22,39 @@ namespace Portfolie_2.Models
         public Page(IEnumerable<T> Items)
         {
             data = new List<T>(Items);
+            paging = new PagingInfo();
 
 
             int dataLength = data.Count();
 
-            //var nameValues = HttpUtility.ParseQueryString(Request.QueryString.ToString());
-            //nameValues.Set("sortBy", "4");
-            //string url = Request.Url.AbsolutePath;
-            //string updatedQueryString = "?" + nameValues.ToString();
-            //Response.Redirect(url + updatedQueryString);
+            int limit = QueryStringCall.Limit();
+            var cur_Query = HttpContext.Current.Request.QueryString.ToString();
+            var nameValues = HttpUtility.ParseQueryString(cur_Query);
+            
+
+            //if (cur_Query.Contains("offset"))
+            //{
+            //    int cur_offset = QueryStringCall.String("offset");  
+            //    int new_offset = cur_offset+limit;
+            //    nameValues.Set("offset", new_offset.ToString());
+            //}
+            //else
+            //{
+            //    nameValues.Set("offset", limit.ToString());
+            //}
+
+            string url = HttpContext.Current.Request.Url.AbsolutePath;
+            string nextQueryString = url + "?" + nameValues.ToString();
+            
+
+            paging.prevUrl = nextQueryString;
+            paging.nextUrl = nextQueryString;
 
 
-            paging = new PagingInfo
-            {
-                prevUrl = "URL1",
-                nextUrl = "URL2"
-            };
+
+
+
+
         }
     }
 }
