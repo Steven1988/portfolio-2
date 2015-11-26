@@ -148,7 +148,6 @@
     <Compile Include="Models\SearchPost.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Post.cs" />
     <Compile Include="Quarks\TypeExtensions\IsNullable.cs" />
     <Compile Include="ConnectionString.cs" />
     <Compile Include="QueryStringCall.cs" />
@@ -158,7 +157,6 @@
     <Compile Include="Repository\ISearchHistoryRepository.cs" />
     <Compile Include="Repository\ITagRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
-    <Compile Include="Repository\PageRepository.cs" />
     <Compile Include="Repository\SearchHistoryRepository.cs" />
     <Compile Include="Repository\TagRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />

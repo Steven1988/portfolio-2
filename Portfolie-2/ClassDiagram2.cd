@@ -14,20 +14,6 @@
       <FileName>App_Start\WebApiConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Portfolie_2.ConnectionString" Collapsed="true">
-    <Position X="1.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ConnectionString.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Portfolie_2.Global" Collapsed="true">
-    <Position X="1.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
-      <FileName>Global.asax.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Portfolie_2.QueryStringCall" Collapsed="true">
     <Position X="5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
@@ -36,56 +22,59 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Controllers.FavoriteController" Collapsed="true">
-    <Position X="6.75" Y="0.75" Width="1.5" />
+    <Position X="4.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAUAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Controllers\FavoriteController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Controllers.PostController" Collapsed="true">
-    <Position X="10.25" Y="1.75" Width="1.5" />
+    <Position X="0.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAAAABAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQgAAAAAAABAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\PostController.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IPostRepository" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Portfolie_2.Controllers.SearchController" Collapsed="true">
-    <Position X="8.5" Y="2.75" Width="1.5" />
+    <Position X="2.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\SearchController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Controllers.SearchHistoryController" Collapsed="true">
-    <Position X="1.5" Y="3.75" Width="1.5" />
+    <Position X="10" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAABAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\SearchHistoryController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Controllers.TagController" Collapsed="true">
-    <Position X="8.5" Y="3.75" Width="1.5" />
+    <Position X="6.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\TagController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Controllers.UserController" Collapsed="true">
-    <Position X="6.75" Y="4.75" Width="1.5" />
+    <Position X="8.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\UserController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.DataMapper.FavoriteMapper" Collapsed="true">
-    <Position X="8.5" Y="0.75" Width="1.5" />
+    <Position X="12.25" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
       <FileName>DataMapper\FavoriteMapper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.DataMapper.PostMapper" Collapsed="true">
-    <Position X="1.5" Y="2.75" Width="1.5" />
+    <Position X="12.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAABAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>DataMapper\PostMapper.cs</FileName>
@@ -99,31 +88,36 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Models.DetailPost" Collapsed="true">
-    <Position X="3.25" Y="0.75" Width="1.5" />
+    <Position X="12.25" Y="6.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Portfolie_2.Models.DetailPost.User" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\DetailPost.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Portfolie_2.Models.DetailPost.Comment" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\DetailPost.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>QAACAAAAAAAAAEAAAAABABgBAAAAAAAACgAAAgAAIAA=</HashCode>
+      <HashCode>QAACAAAAAAAAAEAAAAABABgBAAAAAAAAAgAAAgAAIAA=</HashCode>
       <FileName>Models\DetailPost.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Models.Favorite" Collapsed="true">
-    <Position X="5" Y="0.75" Width="1.5" />
+    <Position X="12.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAAAAAgAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Favorite.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Models.Page&lt;T&gt;" Collapsed="true">
-    <Position X="5" Y="1.75" Width="1.5" />
+    <Position X="0.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Models\Page.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Portfolie_2.Models.Post" Collapsed="true">
-    <Position X="8.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAACAAAAAAAAAEAAAAABABgAAAAAAAAACgAAAgAAAAA=</HashCode>
-      <FileName>Models\Post.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Models.SearchHistory" Collapsed="true">
@@ -134,21 +128,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Models.SearchPost" Collapsed="true">
-    <Position X="5" Y="3.75" Width="1.5" />
+    <Position X="12.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAEAAAAABAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Models\SearchPost.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Models.Tag" Collapsed="true">
-    <Position X="6.75" Y="3.75" Width="1.5" />
+    <Position X="12.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
       <FileName>Models\Tag.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Models.User" Collapsed="true">
-    <Position X="5" Y="4.75" Width="1.5" />
+    <Position X="12.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAACEAAAAAAAAAAAAEIAAAAACAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\User.cs</FileName>
@@ -162,22 +156,15 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Portfolie_2.Repository.FavoriteRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="10.5" Y="0.75" Width="1.5" />
+    <Position X="7.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEQAAAAAAAAAAAAAAAABAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
       <FileName>Repository\FavoriteRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.494" Collapsed="true" />
   </Class>
-  <Class Name="Portfolie_2.Repository.PageRepository" Collapsed="true">
-    <Position X="6.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Repository\PageRepository.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Portfolie_2.Repository.PostRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="3.25" Y="2.75" Width="1.5" />
+    <Position X="0.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAgAAAAAAAAAAABAAAAAAAAAAIAAggAAAAAAIA=</HashCode>
       <FileName>Repository\PostRepository.cs</FileName>
@@ -185,7 +172,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Portfolie_2.Repository.SearchHistoryRepository" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="3.25" Y="3.75" Width="1.5" />
+    <Position X="10" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Repository\SearchHistoryRepository.cs</FileName>
@@ -216,11 +203,14 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="Portfolie_2.Repository.IPostRepository" Collapsed="true">
-    <Position X="3.25" Y="6" Width="1.5" />
+    <Position X="0.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAIA=</HashCode>
+      <HashCode>AAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAIA=</HashCode>
       <FileName>Repository\IPostRepository.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PostRepository" />
+    </ShowAsAssociation>
   </Interface>
   <Interface Name="Portfolie_2.Repository.ISearchHistoryRepository" Collapsed="true">
     <Position X="5" Y="6" Width="1.5" />
