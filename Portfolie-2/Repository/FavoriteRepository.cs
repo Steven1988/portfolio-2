@@ -110,7 +110,7 @@ namespace Portfolie_2.Repository
             conn.Close();
         }
 
-       
+
 
         public void Update(int userId, int postId, string annotation)
         {

@@ -26,22 +26,24 @@ namespace Portfolie_2.Controllers
             return _userRepository.GetById(id);
         }
 
-        public UserController(IUserRepository repository)
-        {
-            _userRepository = repository;
-        }
+        //we cannot have multiple methodes with the same parameters in the controller. Error when calling users.
 
-        public UserController()
-        {
-            _userRepository = new UserRepository();
-        }
+        //public UserController(IUserRepository repository)
+        //{
+        //    _userRepository = repository;
+        //}
 
-        public string GetUser(int id)
-        {
-            var User = _userRepository.GetById(id);
+        //public UserController()
+        //{
+        //    _userRepository = new UserRepository();
+        //}
 
-            return JsonConvert.SerializeObject(User);
-        }
+        //public string GetUser(int id)
+        //{
+        //    var User = _userRepository.GetById(id);
+
+        //    return JsonConvert.SerializeObject(User);
+        //}
 
         //public string AddAnnotation()
         //{
