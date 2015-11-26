@@ -142,6 +142,7 @@
     <Compile Include="Models\Favorite.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\DetailPost.cs" />
+    <Compile Include="Models\Page.cs" />
     <Compile Include="Models\SearchHistory.cs" />
     <Compile Include="Models\SearchPost.cs" />
     <Compile Include="Models\Tag.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Repository\ITagRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\FavoritesSqlRepository.cs" />
+    <Compile Include="Repository\PageRepository.cs" />
     <Compile Include="Repository\SearchHistoryRepository.cs" />
     <Compile Include="Repository\SqlRepositoryBase.cs" />
     <Compile Include="Repository\TagRepository.cs" />

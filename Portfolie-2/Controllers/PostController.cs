@@ -20,7 +20,8 @@ namespace Portfolie_2.Controllers
         {
             int limit = QueryStringCall.Limit();
             int offset = QueryStringCall.String("offset");
-            IEnumerable<SearchPost> p = _postRepository.GetAll(limit, offset);
+            IEnumerable<SearchPost> items = _postRepository.GetAll(limit, offset);
+
             return p;
         }
 
