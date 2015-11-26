@@ -66,7 +66,7 @@ namespace Portfolie_2.DataMapper
         public SearchPost Map(MySqlDataReader rdr)
         {
             SearchPost SP = new SearchPost();
-            SP.Url = HttpContext.Current.Request.Url.AbsoluteUri + "/" + rdr.GetInt32("id");
+            SP.Url = HttpContext.Current.Request.Url.AbsoluteUri + "/"+ rdr.GetInt32("id");
             SP.Id = rdr.GetInt32("id");
             SP.Body = rdr.GetString("body");
             SP.Title = rdr.GetString("title");

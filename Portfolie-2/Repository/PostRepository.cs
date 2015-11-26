@@ -107,6 +107,7 @@ namespace Portfolie_2.Repository
                         result.Add(
                             new DetailPost.Comment
                             {
+                                Url =  "api/posts/" + reader.GetInt32(0),
                                 CommentId = reader.GetInt32(0),
                                 Text = reader["text"] as string,
                                 CreationDate = reader.GetDateTime(2),
