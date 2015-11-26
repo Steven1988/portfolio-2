@@ -29,6 +29,9 @@ namespace Portfolie_2.Models
 
             int limit = QueryStringCall.Limit();
             int cur_offset = QueryStringCall.String("offset");
+            int new_offset_up = cur_offset + limit;
+            int new_offset_down = cur_offset - limit;
+
 
             string url = HttpContext.Current.Request.Url.AbsolutePath;
 
@@ -36,30 +39,30 @@ namespace Portfolie_2.Models
             var Query_up = HttpUtility.ParseQueryString(cur_Query);
             var Query_down = HttpUtility.ParseQueryString(cur_Query);
 
-            string prev = "";
-            string next = "";
+            string prev = null;
+            string next = null;
 
             if (cur_Query.Contains("offset"))
             {
-                int new_offset_up = cur_offset + limit;
-                int new_offset_down = cur_offset + limit;
-
-                if (new_offset_up < dataLength + limit)
+                if (dataLength - limit >= 0)
+                {
                     Query_up.Set("offset", new_offset_up.ToString());
-                next = url + "?" + Query_up.ToString();
-
+                    next = url + "?" + Query_up.ToString();
+                }
                 if (new_offset_down >= 0)
+                {
                     Query_down.Set("offset", new_offset_down.ToString());
-                prev = url + "?" + Query_up.ToString();
-
+                    prev = url + "?" + Query_down.ToString();
+                }
             }
             else
             {
-                next = Query_up.ToString() + "offset=" + limit;
+                if (dataLength - limit >= 0)
+                    next = url + "?" + Query_up.ToString() + "&offset=" + limit;
             }
 
 
-            paging.nextUrl =  next;
+            paging.nextUrl = next;
             paging.prevUrl = prev;
 
 
