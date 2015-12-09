@@ -189,7 +189,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="ClassDiagram2.cd" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -203,7 +202,6 @@
   <ItemGroup>
     <Folder Include="app\images\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Tag\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
