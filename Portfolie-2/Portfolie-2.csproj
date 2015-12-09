@@ -148,6 +148,8 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\knockout-3.4.0.debug.js" />
     <Content Include="Scripts\knockout-3.4.0.js" />
+    <Content Include="Scripts\requirejs.js" />
+    <Content Include="Scripts\text.js" />
     <Content Include="Views\postdetail.html" />
     <Content Include="Web.config" />
   </ItemGroup>

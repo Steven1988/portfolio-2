@@ -5,10 +5,10 @@ app.mainViewModel = function () {
     this.lastName = "Nima";
 }
 
-
 ko.components.register('postDetail', {
-    viewModel: { require: 'postdetail.js' },
-    template: { require: '../../Views/postdetail.html' }
+    viewModel: { require: 'app/js/postdetail' },
+    template: { require: 'Scripts/text!Views/postdetail.html' },
+    synchronous: true
 });
 
 ko.applyBindings(new app.mainViewModel())
