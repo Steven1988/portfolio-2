@@ -125,6 +125,7 @@
   <ItemGroup>
     <Content Include="app\css\main.css" />
     <Content Include="app\css\normalize.css" />
+    <Content Include="app\js\tags.js" />
     <Content Include="app\js\postdetail.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -156,6 +157,7 @@
     <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="Scripts\requirejs.js" />
     <Content Include="Scripts\text.js" />
+    <Content Include="Views\tags.html" />
     <Content Include="Views\postdetail.html" />
     <Content Include="Web.config" />
   </ItemGroup>
