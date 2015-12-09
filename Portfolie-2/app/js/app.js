@@ -11,4 +11,10 @@ ko.components.register('postDetail', {
     synchronous: true
 });
 
+ko.components.register('Tags', {
+    viewModel: { require: 'app/js/tags' },
+    template: { require: 'Scripts/text!Views/tags.html' },
+    synchronous: true
+});
+
 ko.applyBindings(new app.mainViewModel())
