@@ -157,6 +157,7 @@
     <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="Scripts\requirejs.js" />
     <Content Include="Scripts\text.js" />
+    <Content Include="Views\history.html" />
     <Content Include="Views\tags.html" />
     <Content Include="Views\postdetail.html" />
     <Content Include="Web.config" />
