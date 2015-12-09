@@ -4,6 +4,7 @@
     <title>SOVA</title>
 	<meta charset="utf-8" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="app/css/main.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -19,12 +20,18 @@
         </ul>
 
         <button class="btn btn-primary">Button</button>
+
+        <div id="postdetails" data-bind="component: 'postDetail'">
+
+        </div>
+
+
     </div>
     <footer>
         Footer
     </footer>
     <script src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/knockout-3.4.0.js"></script>
-    <script src="js/app.js"></script>
+    <script src="app/js/app.js"></script>
 </body>
 </html>

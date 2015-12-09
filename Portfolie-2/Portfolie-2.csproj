@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\css\main.css" />
+    <Content Include="app\js\postdetail.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -147,6 +148,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\knockout-3.4.0.debug.js" />
     <Content Include="Scripts\knockout-3.4.0.js" />
+    <Content Include="Views\postdetail.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
