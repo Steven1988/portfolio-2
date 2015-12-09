@@ -127,6 +127,7 @@
     <Content Include="app\css\normalize.css" />
     <Content Include="app\js\tags.js" />
     <Content Include="app\js\postdetail.js" />
+    <Content Include="app\js\posts.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -155,11 +156,14 @@
     <Content Include="Scripts\jquery.bootstrap-autohidingnavbar.min.js" />
     <Content Include="Scripts\knockout-3.4.0.debug.js" />
     <Content Include="Scripts\knockout-3.4.0.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
     <Content Include="Scripts\requirejs.js" />
     <Content Include="Scripts\text.js" />
     <Content Include="Views\history.html" />
     <Content Include="Views\tags.html" />
     <Content Include="Views\postdetail.html" />
+    <Content Include="Views\posts.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

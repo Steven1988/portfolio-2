@@ -3,7 +3,14 @@
 app.mainViewModel = function () {
     this.firstName = "Alexander";
     this.lastName = "Nima";
+
 }
+
+ko.components.register('posts', {
+    viewModel: { require: 'app/js/posts' },
+    template: { require: 'Scripts/text!Views/posts.html' },
+    synchronous: true
+});
 
 ko.components.register('postDetail', {
     viewModel: { require: 'app/js/postdetail' },

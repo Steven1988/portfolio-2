@@ -9,20 +9,22 @@
 <body>
     <div class="container">
         <section id="body" class="col-md-12" >
-            <header>
-                Header
-            </header>
+    <header>
+        Header 
+    </header>
             <div>
-                <h1>Here is our head Title</h1>
-                <p>Some data from the view model. </p>
+        <h1>Here is our head Title</h1>
+        <p>Some data from the view model. </p>
+        
+        <ul>
+            <li data-bind="text: firstName"></li>
+            <li data-bind="text: lastName"></li>
+        </ul>
 
-                <ul>
-                    <li data-bind="text: firstName"></li>
-                    <li data-bind="text: lastName"></li>
-                </ul>
+        <button class="btn btn-primary">Button</button>
 
-                <button class="btn btn-primary">Button</button>
-
+        <div id="postdetails" data-bind='component: "postDetail"'></div>
+        <div data-bind='component: "posts"'></div>
                 <div id="postdetails" data-bind='component: "postDetail"'>
                     </div>
                 <div id="postdetails" data-bind='component: "Tags"'>
@@ -31,16 +33,17 @@
                     </div>
 
 
-                </div>
+    </div>
             </section>
 
             <footer class="panel-footer">
-                Footer
-            </footer>
+        Footer
+    </footer>
         </div>
-            <script src="Scripts/jquery-1.9.1.min.js"></script>
-            <script src="Scripts/knockout-3.4.0.js"></script>
-            <script src="Scripts/requirejs.js"></script>
-            <script src="app/js/app.js"></script>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/knockout-3.4.0.js"></script>
+    <script src="Scripts/require.js"></script>
+    <!--<script src="Scripts/requirejs.js"></script>-->
+    <script src="app/js/app.js"></script>
 </body>
 </html>
