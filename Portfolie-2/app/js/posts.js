@@ -11,6 +11,8 @@
         return {
             posts: data
         }
+        console.log(data);
+
     };
    
     return postViewModel;

@@ -4,7 +4,7 @@
 
         var id = 105975;
         $.getJSON("/api/posts/" + id, function (data) {
-            console.log(data);
+            //console.log(data);
         });
 
         //console.log(data);
