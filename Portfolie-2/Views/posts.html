@@ -1,7 +1,14 @@
 ﻿<div>
     <h2>Posts list</h2>
+    <div data-bind="text: hello"></div> 
     <ul data-bind="foreach: posts">
-        <li data-bind="text: title"></li>
         <li data-bind="text: Id"></li>
+        <li data-bind="text: Title"></li>
+        <li>
+            <div class="panel panel-default">
+                <a data-bind="attr: { href: Url, title: Title }, text: Url" ></a>
+            </div>
+        </li>
+         
     </ul>
 </div>
