@@ -27,9 +27,21 @@ ko.components.register('posts2', {
 });
 
 ko.components.register('postDetail', {
-    viewModel: { require: 'app/js/postdetail' },
-    template: { require: 'Scripts/text!Views/postdetail.html' },
-    synchronous: true
+    viewModel: {
+        createViewModel: function () {
+            var data = ko.observableArray([]);
+            var id = 105975;
+
+            $.getJSON("/api/posts/" + id, function (pd) {
+                data(pd.data[0]);
+                console.log(pd.data[0]);
+            });
+            return {
+                data: data
+            };
+        }
+    },
+    template: { require: 'Scripts/text!Views/postdetail.html' }
 });
 
 ko.components.register('Tags', {
