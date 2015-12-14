@@ -125,6 +125,7 @@
   <ItemGroup>
     <Content Include="app\css\main.css" />
     <Content Include="app\css\normalize.css" />
+    <Content Include="app\js\annotation.js" />
     <Content Include="app\js\tags.js" />
     <Content Include="app\js\postdetail.js" />
     <Content Include="app\js\posts.js" />
@@ -160,6 +161,7 @@
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\requirejs.js" />
     <Content Include="Scripts\text.js" />
+    <Content Include="Views\annotation.html" />
     <Content Include="Views\history.html" />
     <Content Include="Views\tags.html" />
     <Content Include="Views\postdetail.html" />

@@ -4,16 +4,17 @@ app.mainViewModel = function () {
     this.firstName = "Alexander";
     this.lastName = "Nima";
 }
-ko.components.register('tags2', {
+
+ko.components.register('Annotation2', {
     viewModel: {
         createViewModel: function () {
-            var hello = ko.observable("");
+            var hello = ko.observable("hello my");
             var data = ko.observableArray([]);
 
-            $.getJSON("/api/tags", function (tags) {
+            $.getJSON("/api/posts", function (posts) {
 
-                data(tags.data);
-                console.log(tags);
+                data(posts.data);
+                console.log(posts);
             });
             return {
                 hello: hello,
@@ -22,7 +23,13 @@ ko.components.register('tags2', {
         }
         //require: 'app/js/posts.js'     
     },
-    template: { require: 'Scripts/text!Views/tags.html' }
+    template: { require: 'Scripts/text!Views/posts.html' }
+});
+
+ko.components.register('postDetail', {
+    viewModel: { require: 'app/js/postdetail' },
+    template: { require: 'Scripts/text!Views/postdetail.html' },
+    synchronous: true
 });
 
 ko.components.register('Tags', {
