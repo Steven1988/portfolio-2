@@ -5,6 +5,18 @@ app.mainViewModel = function () {
     this.lastName = "Nima";
 }
 
+
+ko.components.register('navbarComponent', {
+    viewModel: {
+        createViewModel: function () {
+            var hello = "hello from navbar";
+
+            console.log(hello);
+        }
+    },
+    template: { require: 'Scripts/text!Views/navbar.html' }
+});
+
 ko.components.register('posts2', {
     viewModel: {
         createViewModel: function () {
@@ -52,6 +64,7 @@ ko.components.register('Tags', {
     template: { require: 'Scripts/text!Views/tags.html' },
     synchronous: true
 });
+
 
 ko.applyBindings(new app.mainViewModel())
 //ko.applyBindings(new postViewModel())

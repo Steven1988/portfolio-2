@@ -9,9 +9,9 @@
 <body>
     <div class="container">
         <header>
-            Header 
+            <div data-bind="component: 'navbarComponent'"></div>
         </header>
-        <div class="content">
+        <div class="content col-sm-12">
             <h1>Here is our head Title</h1>
         
             <ul>
@@ -20,7 +20,6 @@
             </ul>
 
                 
-            <div class="col-sm-12"></div>
             <!--<div data-bind='component: "posts2"'></div>-->
             <div data-bind='component: "postDetail"'></div>
             <!--<div data-bind='component: "Tags"'></div>-->
@@ -33,7 +32,13 @@
     <script src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/knockout-3.4.0.debug.js"></script>
     <script src="Scripts/require.js"></script>
-    <!--<script src="Scripts/requirejs.js"></script>-->
+    
+    <script src="Scripts/jquery.bootstrap-autohidingnavbar.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
     <script src="app/js/app.js"></script>
+    
+    <script>
+        $("div.navbar-fixed-top").autoHidingNavbar();
+    </script>
 </body>
 </html>
