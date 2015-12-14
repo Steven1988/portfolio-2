@@ -1,5 +1,18 @@
 ﻿/*feel free to import other stylesheet*/
 
+@import url('postdetail.css');
+
+
+
+ /*********** Global Styles ***********/
 body {
         margin-top: 90px;
+        background-color: rgb(230,230,220);
+}
+
+.content {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #000;
+    padding: 10px;
 }

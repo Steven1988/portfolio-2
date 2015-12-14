@@ -125,6 +125,7 @@
   <ItemGroup>
     <Content Include="app\css\main.css" />
     <Content Include="app\css\normalize.css" />
+    <Content Include="app\css\postdetail.css" />
     <Content Include="app\js\navbar.js" />
     <Content Include="app\js\tags.js" />
     <Content Include="app\js\postdetail.js" />

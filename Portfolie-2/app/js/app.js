@@ -29,14 +29,17 @@ ko.components.register('posts2', {
 ko.components.register('postDetail', {
     viewModel: {
         createViewModel: function () {
+
+            var hello = ko.observable("New hello in PD")
             var data = ko.observableArray([]);
-            var id = 105975;
+            var id = 105568;
 
             $.getJSON("/api/posts/" + id, function (pd) {
-                data(pd.data[0]);
-                console.log(pd.data[0]);
+                data(pd.data);
+                console.log(pd.data);
             });
             return {
+                hello: hello,
                 data: data
             };
         }

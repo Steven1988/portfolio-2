@@ -1,0 +1,32 @@
+﻿.postdetail-container {
+    background-color: #ffffff;
+    padding: 10px;
+}
+.postTitle > h2:first-child {
+    font-family: Calibri;
+    font-size: 22px;
+    border-bottom: 1px solid grey;
+}
+.postdetail {
+    background-color: #C8D6DB;
+}
+.postUser {
+    vertical-align: top;
+    font-weight: bold;
+}
+.postBody {
+    border-radius: 5px;
+    padding: 15px;
+    background-color: lightyellow;
+    margin: 10px 0;
+}
+.commentBox {
+    border: 1px solid grey;
+    padding: 5px;
+    background-color: Highlight;
+}
+
+.commentAuthor {
+    font-weight: bold;
+
+}
