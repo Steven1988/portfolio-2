@@ -8,24 +8,23 @@
 </head>
 <body>
     <div class="container">
-        <section id="body" class="col-md-12" >
-            <header>
-                Header 
-            </header>
-            <div>
-                <h1>Here is our head Title</h1>
+        <header>
+            Header 
+        </header>
+        <div class="content">
+            <h1>Here is our head Title</h1>
         
-                <ul>
-                    <li data-bind="text: firstName"></li>
-                    <li data-bind="text: lastName"></li>
-                </ul>
+            <ul>
+                <li data-bind="text: firstName"></li>
+                <li data-bind="text: lastName"></li>
+            </ul>
 
                 
-                <!--<div data-bind='component: "posts2"'></div>-->
-                <div data-bind='component: "postDetail"'></div>
-                <!--<div data-bind='component: "Tags"'></div>-->
-            </div>
-        </section>
+            <div class="col-sm-12"></div>
+            <!--<div data-bind='component: "posts2"'></div>-->
+            <div data-bind='component: "postDetail"'></div>
+            <!--<div data-bind='component: "Tags"'></div>-->
+        </div>
 
         <footer class="panel-footer">
             Footer
