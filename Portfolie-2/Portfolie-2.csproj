@@ -164,6 +164,7 @@
     <Content Include="Scripts\text.js" />
     <Content Include="Views\favorites.html" />
     <Content Include="Views\history.html" />
+    <Content Include="Views\navbar.html" />
     <Content Include="Views\tags.html" />
     <Content Include="Views\postdetail.html" />
     <Content Include="Views\posts.html" />
