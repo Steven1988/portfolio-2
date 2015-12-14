@@ -8,18 +8,34 @@ app.mainViewModel = function () {
 
 ko.components.register('navbarComponent', {
     viewModel: {
-        createViewModel: function () {
-            var hello = "hello from navbar";
+        createViewModel: navbarVM = function () {
+            var menuItems =
+                [{mItem: "posts"},
+                { mItem: "tags" },
+                { mItem: "postdetail" }],
+                currentComponent = ko.observable('posts')
+            
+            //showContent = function (mItem) {
+            //    currentComponent(mItem);
+            //}
+          
 
-            console.log(hello);
+            showPosts = function (menu) {
+                currentComponent('posts');
+                ko.components.get('posts', showPosts());
+            }
+            return {
+                menuItems: menuItems,
+                currentComponent: currentComponent
+            }
         }
     },
     template: { require: 'Scripts/text!Views/navbar.html' }
 });
 
-ko.components.register('posts2', {
+ko.components.register('posts', {
     viewModel: {
-        createViewModel: function () {
+        createViewModel: postVM = function () {
             var hello = ko.observable("hello my");
             var data = ko.observableArray([]);
 
