@@ -5,6 +5,18 @@ app.mainViewModel = function () {
     this.lastName = "Nima";
 }
 
+
+ko.components.register('navbarComponent', {
+    viewModel: {
+        createViewModel: function () {
+            var hello = "hello from navbar";
+
+            console.log(hello);
+        }
+    },
+    template: { require: 'Scripts/text!Views/navbar.html' }
+});
+
 ko.components.register('posts2', {
     viewModel: {
         createViewModel: function () {
@@ -27,9 +39,24 @@ ko.components.register('posts2', {
 });
 
 ko.components.register('postDetail', {
-    viewModel: { require: 'app/js/postdetail' },
-    template: { require: 'Scripts/text!Views/postdetail.html' },
-    synchronous: true
+    viewModel: {
+        createViewModel: function () {
+
+            var hello = ko.observable("New hello in PD")
+            var data = ko.observableArray([]);
+            var id = 105568;
+
+            $.getJSON("/api/posts/" + id, function (pd) {
+                data(pd.data);
+                console.log(pd.data);
+            });
+            return {
+                hello: hello,
+                data: data
+            };
+        }
+    },
+    template: { require: 'Scripts/text!Views/postdetail.html' }
 });
 
 ko.components.register('Tags', {
@@ -37,6 +64,7 @@ ko.components.register('Tags', {
     template: { require: 'Scripts/text!Views/tags.html' },
     synchronous: true
 });
+
 
 ko.applyBindings(new app.mainViewModel())
 //ko.applyBindings(new postViewModel())

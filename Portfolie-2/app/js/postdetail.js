@@ -1,4 +1,4 @@
-﻿define([''], function (ko) {
+﻿define(['Scripts/knockout-3.4.0'], function (ko) {
     function postdetailViewModel() {
         this.MyName = "Stefan";
 
