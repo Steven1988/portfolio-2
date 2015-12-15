@@ -3,68 +3,24 @@
 require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
 
     app.mainViewModel = function () {
-    this.firstName = "Alexander";
-    this.lastName = "Nima";
+        var currentComponent = ko.observable("posts");
+
+        return {
+            currentComponent: currentComponent,
+            //change: function () {
+            //    this.currentComponent("postDetail")
+            //}
         }
 
     //************ All of our components **************
     ko.components.register('navbarComponent', {
-    viewModel: {
-        createViewModel: function () {
-            var hello = "hello from navbar";
-
-            console.log(hello);
-        }
-    },
-    template: { require: 'Scripts/text!Views/navbar.html' }
-});
-
-ko.components.register('posts2', {
-    viewModel: {
-        createViewModel: function () {
-            var hello = ko.observable("hello my");
-            var data = ko.observableArray([]);
-
-            $.getJSON("/api/posts", function (posts) {
-
-                data(posts.data);
-                console.log(posts);
-            });
-            return {
-                hello: hello,
-                posts: data
-            };
-        }
-        //require: 'app/js/posts.js'     
-    },
-    template: { require: 'Scripts/text!Views/posts.html' }
-});
-
-ko.components.register('saveAnnotation', {
-    viewModel: {
-        createViewModel: function () {
-            
-            var datas = function () {
-                this.UserId = 1;
-                this.PostId = 205064;
-                this.annotation = "Please god me help me... Please Please";
-            };
-            return {
-                UserId: UserId,
-                PostId: PostId,
-                annotation: annotation
-            };
-
-            $.post("/api/favorites", datas, function (posts) {
-                alert("Your data has been posted to the server!");
-                //data(posts.data);
-                //console.log(posts);
+        viewModel: { require: 'app/js/navbar' },
+        template: { require: 'Scripts/text!Views/navbar.html' }
     });
 
-        }
-        //require: 'app/js/posts.js'     
-    },
-    template: { require: 'Scripts/text!Views/fav.html' }
+    ko.components.register('posts', {
+        viewModel: { require: 'app/js/posts' },
+        template: { require: 'Scripts/text!Views/posts.html' }
     });
 
     ko.components.register('tags', {
@@ -83,21 +39,20 @@ ko.components.register('saveAnnotation', {
     //            var hello = ko.observable("hello my");
     //            var data = ko.observableArray([]);
 
-            $.post("/api/favorites/" + UserId + "/" + PostId, function (annotation) {
+    //            $.getJSON("/api/posts", function (posts) {
 
-                data(annotation.data);
-                console.log(annotation);
-            });
-            //return {
-            //    UserId: UserId,
-            //    PostId:PostId,
-            //    posts: data
-            //};
-        }
-        //require: 'app/js/posts.js'     
-    },
-    template: { require: 'Scripts/text!Views/fav.html' }
-});
+    //                data(posts.data);
+    //                console.log(posts);
+    //            });
+    //            return {
+    //                hello: hello,
+    //                posts: data
+    //            };
+    //        }
+    //        //require: 'app/js/posts.js'     
+    //    },
+    //    template: { require: 'Scripts/text!Views/posts.html' }
+    //});
 
     ko.components.register('postDetail', {
         viewModel: { require: 'app/js/postdetail' },
