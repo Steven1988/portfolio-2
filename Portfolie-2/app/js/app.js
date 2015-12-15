@@ -1,6 +1,6 @@
 ﻿var app = app || {};
 
-require(['knockout','jQuery'], function (ko) {
+require(['knockout', 'jQuery'], function (ko) {
 
     app.mainViewModel = function () {
 
@@ -46,6 +46,10 @@ require(['knockout','jQuery'], function (ko) {
         template: { require: 'Scripts/text!Views/posts.html' }
     });
 
+    ko.components.register('tags', {
+        viewModel: { require: 'app/js/tags' },
+        template: { require: 'Scripts/text!Views/tags.html' }
+    });
     //ko.components.register('posts', {
     //    viewModel: {
     //        createViewModel: postVM = function () {
