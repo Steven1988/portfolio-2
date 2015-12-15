@@ -38,6 +38,30 @@ ko.components.register('posts2', {
     template: { require: 'Scripts/text!Views/posts.html' }
 });
 
+ko.components.register('annotation2', {
+    viewModel: {
+        createViewModel: function () {
+            var UserId = 1;
+            var PostId = 142816;
+            var Annotation = ko.observable("");
+            var data = ko.observable([]);
+
+            $.getJSON("/api/favorites/" + UserId + "/" + PostId, function (annotation) {
+
+                data(annotation.data);
+                console.log(annotation);
+            });
+            return {
+                UserId: UserId,
+                PostId:PostId,
+                posts: data
+            };
+        }
+        //require: 'app/js/posts.js'     
+    },
+    template: { require: 'Scripts/text!Views/annotation.html' }
+});
+
 ko.components.register('postDetail', {
     viewModel: {
         createViewModel: function () {

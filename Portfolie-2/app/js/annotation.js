@@ -5,25 +5,32 @@ app.mainViewModel = function () {
     this.lastName = "Nima";
 }
 
-ko.components.register('Annotation2', {
+ko.components.register('saveAnnotation', {
     viewModel: {
         createViewModel: function () {
-            var hello = ko.observable("hello my");
-            var data = ko.observableArray([]);
-
-            $.getJSON("/api/posts", function (posts) {
-
-                data(posts.data);
-                console.log(posts);
-            });
-            return {
-                hello: hello,
-                posts: data
+            //var hello = ko.observable("hello my");
+            //var data = ko.observableArray([]);
+            var datas= function() {
+                this.UserId = 1;
+                this.PostId = 205064;
+                this.annotation = "Please god me help me... Please Please";
             };
+            return {
+                UserId : UserId,
+                PostId :PostId,
+                annotation :annotation
+            };
+
+            $.post("/api/annotation",datas, function (posts) {
+                alert("Your data has been posted to the server!");
+                //data(posts.data);
+                //console.log(posts);
+            });
+            
         }
         //require: 'app/js/posts.js'     
     },
-    template: { require: 'Scripts/text!Views/posts.html' }
+    template: { require: 'Scripts/text!Views/annotation.html' }
 });
 
 ko.components.register('postDetail', {
