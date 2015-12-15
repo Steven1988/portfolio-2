@@ -1,12 +1,14 @@
 ﻿var app = app || {};
 
-app.mainViewModel = function () {
+require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
+
+    app.mainViewModel = function () {
     this.firstName = "Alexander";
     this.lastName = "Nima";
-}
+        }
 
-
-ko.components.register('navbarComponent', {
+    //************ All of our components **************
+    ko.components.register('navbarComponent', {
     viewModel: {
         createViewModel: function () {
             var hello = "hello from navbar";
@@ -57,21 +59,29 @@ ko.components.register('saveAnnotation', {
                 alert("Your data has been posted to the server!");
                 //data(posts.data);
                 //console.log(posts);
-            });
+    });
 
         }
         //require: 'app/js/posts.js'     
     },
     template: { require: 'Scripts/text!Views/fav.html' }
-});
+    });
 
-ko.components.register('annotation2', {
-    viewModel: {
-        createViewModel: function () {
-            var UserId = ko.observable("1");
-            var PostId = ko.observable("142816");
-            var Annotation = ko.observable("Blo Blo Blo Blo");
-            var data = ko.observable([]);
+    ko.components.register('tags', {
+        viewModel: { require: 'app/js/tags' },
+        template: { require: 'Scripts/text!Views/tags.html' }
+    });
+
+    ko.components.register('searchHistoryPost', {
+        viewModel: { require: 'app/js/queries' },
+        template: { require: 'Scripts/text!Views/history.html' }
+    });
+
+    //ko.components.register('posts', {
+    //    viewModel: {
+    //        createViewModel: postVM = function () {
+    //            var hello = ko.observable("hello my");
+    //            var data = ko.observableArray([]);
 
             $.post("/api/favorites/" + UserId + "/" + PostId, function (annotation) {
 
@@ -89,33 +99,11 @@ ko.components.register('annotation2', {
     template: { require: 'Scripts/text!Views/fav.html' }
 });
 
-ko.components.register('postDetail', {
-    viewModel: {
-        createViewModel: function () {
+    ko.components.register('postDetail', {
+        viewModel: { require: 'app/js/postdetail' },
+        template: { require: 'Scripts/text!Views/postdetail.html' }
+    });
 
-            var hello = ko.observable("New hello in PD")
-            var data = ko.observableArray([]);
-            var id = 105568;
 
-            $.getJSON("/api/posts/" + id, function (pd) {
-                data(pd.data);
-                console.log(pd.data);
-            });
-            return {
-                hello: hello,
-                data: data
-            };
-        }
-    },
-    template: { require: 'Scripts/text!Views/postdetail.html' }
+    ko.applyBindings(new app.mainViewModel());
 });
-
-ko.components.register('Tags', {
-    viewModel: { require: 'app/js/tags' },
-    template: { require: 'Scripts/text!Views/tags.html' },
-    synchronous: true
-});
-
-
-ko.applyBindings(new app.mainViewModel())
-//ko.applyBindings(new postViewModel())

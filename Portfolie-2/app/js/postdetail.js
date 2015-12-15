@@ -1,16 +1,16 @@
-﻿define(['Scripts/knockout-3.4.0'], function (ko) {
-    function postdetailViewModel() {
+﻿define(['knockout', 'jQuery'], function (ko) {
+    postdetailVM = function () {
         this.MyName = "Stefan";
 
-        var id = 105975;
-        $.getJSON("/api/posts/" + id, function (data) {
-            //console.log(data);
+        var id = 105568;
+        var data = ko.observableArray([]);
+        $.getJSON("/api/posts/" + id, function (pd) {
+            data(pd.data);
+            console.log(data);
         });
-
-        //console.log(data);
-        //console.log("the id is: " + id)
+        return {
+            data: data
+        }
     }
-
-    return postdetailViewModel;
-
+    return postdetailVM;
 });
