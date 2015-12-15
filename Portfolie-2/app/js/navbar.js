@@ -1,4 +1,4 @@
-﻿define(['knockout', 'jQuery'], function (ko) {
+﻿define(['knockout', 'jQuery','bootstrap'], function (ko) {
     navbarVM = function (params) {
         var menuItems =
             [{ mItem: "posts" },

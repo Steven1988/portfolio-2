@@ -1,6 +1,6 @@
 ﻿var app = app || {};
 
-require(['knockout', 'jQuery'], function (ko) {
+require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
 
     app.mainViewModel = function () {
 
