@@ -29,6 +29,11 @@ require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
         template: { require: 'Scripts/text!Views/tags.html' }
     });
 
+    ko.components.register('searchHistoryPost', {
+        viewModel: { require: 'app/js/queries' },
+        template: { require: 'Scripts/text!Views/history.html' }
+    });
+
     ko.components.register('postdetail', {
         viewModel: { require: 'app/js/postdetail' },
         template: { require: 'Scripts/text!Views/postdetail.html' }

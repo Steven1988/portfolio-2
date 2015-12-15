@@ -13,9 +13,14 @@
         <header>
             <div data-bind='component: {name: "navbarComponent", params: { selectedComponent: currentComponent}}'></div>
         </header>
+
+        <div data-bind='component: {name: "searchHistoryPost"}'></div>
+
         <div class="content col-sm-12">
             <div data-bind='component: {name: currentComponent}'></div>
         </div>
+
+
 
         <footer class="panel-footer">
             Footer
