@@ -3,44 +3,25 @@
 require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
 
     app.mainViewModel = function () {
-    this.firstName = "Alexander";
-    this.lastName = "Nima";
+        var currentComponent = ko.observable("posts");
+
+        return {
+            currentComponent: currentComponent,
+            //change: function () {
+            //    this.currentComponent("postDetail")
+            //}
         }
 
     //************ All of our components **************
     ko.components.register('navbarComponent', {
-    viewModel: {
-        createViewModel: function () {
-            var hello = "hello from navbar";
+        viewModel: { require: 'app/js/navbar' },
+        template: { require: 'Scripts/text!Views/navbar.html' }
+    });
 
-            console.log(hello);
-        }
-    },
-    template: { require: 'Scripts/text!Views/navbar.html' }
-});
-
-ko.components.register('posts2', {
-    viewModel: {
-        createViewModel: function () {
-            var hello = ko.observable("hello my");
-            var data = ko.observableArray([]);
-
-            $.getJSON("/api/posts", function (posts) {
-
-                data(posts.data);
-                console.log(posts);
-            });
-            return {
-                hello: hello,
-                posts: data
-            };
-        }
-        //require: 'app/js/posts.js'     
-    },
-    template: { require: 'Scripts/text!Views/posts.html' }
-});
-
-
+    ko.components.register('posts', {
+        viewModel: { require: 'app/js/posts' },
+        template: { require: 'Scripts/text!Views/posts.html' }
+    });
 
     ko.components.register('tags', {
         viewModel: { require: 'app/js/tags' },
@@ -52,6 +33,26 @@ ko.components.register('posts2', {
         template: { require: 'Scripts/text!Views/history.html' }
     });
 
+    //ko.components.register('posts', {
+    //    viewModel: {
+    //        createViewModel: postVM = function () {
+    //            var hello = ko.observable("hello my");
+    //            var data = ko.observableArray([]);
+
+    //            $.getJSON("/api/posts", function (posts) {
+
+    //                data(posts.data);
+    //                console.log(posts);
+    //            });
+    //            return {
+    //                hello: hello,
+    //                posts: data
+    //            };
+    //        }
+    //        //require: 'app/js/posts.js'     
+    //    },
+    //    template: { require: 'Scripts/text!Views/posts.html' }
+    //});
 
     ko.components.register('postDetail', {
         viewModel: { require: 'app/js/postdetail' },

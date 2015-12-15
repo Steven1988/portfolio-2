@@ -5,15 +5,22 @@
 	<meta charset="utf-8" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="app/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <div class="container">
         <header>
             <div data-bind='component: {name: "navbarComponent", params: { selectedComponent: currentComponent}}'></div>
         </header>
+
+        <div data-bind='component: {name: "searchHistoryPost"}'></div>
+
         <div class="content col-sm-12">
             <div data-bind='component: {name: currentComponent}'></div>
         </div>
+
+
 
         <footer class="panel-footer">
             Footer
