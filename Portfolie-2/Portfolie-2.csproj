@@ -126,6 +126,7 @@
     <Content Include="app\css\main.css" />
     <Content Include="app\css\normalize.css" />
     <Content Include="app\js\annotation.js" />
+    <Content Include="app\js\navbar.js" />
     <Content Include="app\js\tags.js" />
     <Content Include="app\js\postdetail.js" />
     <Content Include="app\js\posts.js" />
@@ -145,7 +146,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="app\js\modernizr-2.8.3.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="app\js\app.js" />
     <Content Include="postview.html" />
