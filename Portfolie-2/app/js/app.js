@@ -11,6 +11,7 @@ require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
             //    this.currentComponent("postDetail")
             //}
         }
+    }
 
     //************ All of our components **************
     ko.components.register('navbarComponent', {
@@ -32,27 +33,6 @@ require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
         viewModel: { require: 'app/js/queries' },
         template: { require: 'Scripts/text!Views/history.html' }
     });
-
-    //ko.components.register('posts', {
-    //    viewModel: {
-    //        createViewModel: postVM = function () {
-    //            var hello = ko.observable("hello my");
-    //            var data = ko.observableArray([]);
-
-    //            $.getJSON("/api/posts", function (posts) {
-
-    //                data(posts.data);
-    //                console.log(posts);
-    //            });
-    //            return {
-    //                hello: hello,
-    //                posts: data
-    //            };
-    //        }
-    //        //require: 'app/js/posts.js'     
-    //    },
-    //    template: { require: 'Scripts/text!Views/posts.html' }
-    //});
 
     ko.components.register('postDetail', {
         viewModel: { require: 'app/js/postdetail' },
