@@ -126,6 +126,7 @@
     <Content Include="app\css\main.css" />
     <Content Include="app\css\normalize.css" />
     <Content Include="app\css\postdetail.css" />
+    <Content Include="app\css\posts.css" />
     <Content Include="app\js\annotation.js" />
     <Content Include="app\js\navbar.js" />
     <Content Include="app\js\queries.js" />

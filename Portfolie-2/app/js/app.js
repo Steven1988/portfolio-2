@@ -34,7 +34,7 @@ require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
         template: { require: 'Scripts/text!Views/history.html' }
     });
 
-    ko.components.register('postDetail', {
+    ko.components.register('postdetail', {
         viewModel: { require: 'app/js/postdetail' },
         template: { require: 'Scripts/text!Views/postdetail.html' }
     });

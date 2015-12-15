@@ -19,7 +19,6 @@
             currentComponent(name);
             console.log(name);
 
-
         }
         return {
             menuItems: menuItems,
