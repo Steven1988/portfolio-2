@@ -1,32 +1,38 @@
 ﻿var app = app || {};
 
 app.mainViewModel = function () {
-    this.firstName = "Alexander";
-    this.lastName = "Nima";
+
+    var currentComponent = ko.observable("posts");
+
+    return {
+        currentComponent: currentComponent,
+        //change: function () {
+        //    this.currentComponent("postDetail")
+        //}
+    }
 }
 
 
 ko.components.register('navbarComponent', {
     viewModel: {
-        createViewModel: navbarVM = function () {
+        createViewModel: navbarVM = function (params) {
             var menuItems =
-                [{mItem: "posts"},
+                [{ mItem: "posts" },
                 { mItem: "tags" },
-                { mItem: "postdetail" }],
-                currentComponent = ko.observable('posts')
-            
-            //showContent = function (mItem) {
-            //    currentComponent(mItem);
-            //}
-          
+                { mItem: "postDetail" }];
 
-            showPosts = function (menu) {
-                currentComponent('posts');
-                ko.components.get('posts', showPosts());
+
+            var currentComponent = params.selectedComponent;
+            var mItem = ko.observable();
+
+            showContent = function (mItem) {
+                currentComponent(mItem);
+                console.log(mItem);
             }
             return {
                 menuItems: menuItems,
-                currentComponent: currentComponent
+                currentComponent: currentComponent,
+                showContent: showContent
             }
         }
     },

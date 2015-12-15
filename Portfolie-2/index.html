@@ -9,13 +9,10 @@
 <body>
     <div class="container">
         <header>
-            <div data-bind="component: 'navbarComponent'"></div>
+            <div data-bind='component: {name: "navbarComponent", params: { selectedComponent: currentComponent}}'></div>
         </header>
         <div class="content col-sm-12">
-                
             <div data-bind='component: {name: currentComponent}'></div>
-            <!--<div data-bind='component: "postDetail", if: currentComponent'></div>-->
-            <!--<div data-bind='component: "Tags"'></div>-->
         </div>
 
         <footer class="panel-footer">
