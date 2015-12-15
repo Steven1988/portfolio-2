@@ -160,10 +160,11 @@
     <Content Include="Scripts\knockout-3.4.0.debug.js" />
     <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.config.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\requirejs.js" />
     <Content Include="Scripts\text.js" />
-    <Content Include="Views\annotation.html" />
+    <Content Include="Views\fav.html" />
     <Content Include="Views\favorites.html" />
     <Content Include="Views\history.html" />
     <Content Include="Views\navbar.html" />

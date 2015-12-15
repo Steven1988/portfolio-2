@@ -38,28 +38,55 @@ ko.components.register('posts2', {
     template: { require: 'Scripts/text!Views/posts.html' }
 });
 
+ko.components.register('saveAnnotation', {
+    viewModel: {
+        createViewModel: function () {
+            
+            var datas = function () {
+                this.UserId = 1;
+                this.PostId = 205064;
+                this.annotation = "Please god me help me... Please Please";
+            };
+            return {
+                UserId: UserId,
+                PostId: PostId,
+                annotation: annotation
+            };
+
+            $.post("/api/favorites", datas, function (posts) {
+                alert("Your data has been posted to the server!");
+                //data(posts.data);
+                //console.log(posts);
+            });
+
+        }
+        //require: 'app/js/posts.js'     
+    },
+    template: { require: 'Scripts/text!Views/fav.html' }
+});
+
 ko.components.register('annotation2', {
     viewModel: {
         createViewModel: function () {
-            var UserId = 1;
-            var PostId = 142816;
-            var Annotation = ko.observable("");
+            var UserId = ko.observable("1");
+            var PostId = ko.observable("142816");
+            var Annotation = ko.observable("Blo Blo Blo Blo");
             var data = ko.observable([]);
 
-            $.getJSON("/api/favorites/" + UserId + "/" + PostId, function (annotation) {
+            $.post("/api/favorites/" + UserId + "/" + PostId, function (annotation) {
 
                 data(annotation.data);
                 console.log(annotation);
             });
-            return {
-                UserId: UserId,
-                PostId:PostId,
-                posts: data
-            };
+            //return {
+            //    UserId: UserId,
+            //    PostId:PostId,
+            //    posts: data
+            //};
         }
         //require: 'app/js/posts.js'     
     },
-    template: { require: 'Scripts/text!Views/annotation.html' }
+    template: { require: 'Scripts/text!Views/fav.html' }
 });
 
 ko.components.register('postDetail', {

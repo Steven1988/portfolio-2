@@ -1,0 +1,25 @@
+﻿<div class="row">
+
+    <div class="col-md-6 col-md-offset-3">
+        <h1>Favorites !</h1>
+        <form action="" method="POST">
+            <div class="form-group">
+                <label asp-for="UserId">User Id</label>
+                <input data-bind="value: UserId" name="UserId">
+                <br>
+                <label asp-for="PostId">Post Id</label>
+                <input data-bind = "value: PostId" class="form-control" />
+               <br>
+                <div class="form-group">
+                    <label asp-for="Message">Annotation</label>
+                    <textarea data-bind="value: Annotation" rows="4" asp-for="Message" class="form-control"></textarea>
+                    <span asp-validation-for="Message" class="text-muted"></span>
+                </div>
+                <button> Create Annotation</button>
+            </div>
+        </form>
+        <p class="lead">So much text on this page</p>
+    </div>
+
+
+</div>
