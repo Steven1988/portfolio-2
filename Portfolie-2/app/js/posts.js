@@ -25,7 +25,7 @@
             posts: data,
             page: page
         }
-    };
+    } ;
     return postViewModel;
 })
 
