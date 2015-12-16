@@ -2,7 +2,7 @@
 
     <div class="col-md-6 col-md-offset-3">
         <h1>Favorites !</h1>
-        <form action="" method="POST">
+        <form>
             <div class="form-group">
                 <label asp-for="UserId">User Id</label>
                 <input data-bind="value: UserId" name="UserId">
@@ -15,8 +15,13 @@
                     <textarea data-bind="value: Annotation" rows="4" asp-for="Message" class="form-control"></textarea>
                     <span asp-validation-for="Message" class="text-muted"></span>
                 </div>
-                <button> Create Annotation</button>
+                <button> Create Annotation</button><br>
+                <button data-bind='click: loadUserData'>Load Data</button><br>
+                <button data-bind="click: function() { saveUserData(UserId, PostId) }">Save Data</button><br>
+                <button data-bind="click: updateUserData">Update Data</button><br>
+                <button data-bind="click: deleteUserData">Delete Data</button>
             </div>
+            
         </form>
         <p class="lead">So much text on this page</p>
     </div>

@@ -168,6 +168,7 @@
     <Content Include="Scripts\requirejs.js" />
     <Content Include="Scripts\text.js" />
     <Content Include="Views\annotation.html" />
+    <Content Include="Views\fav.html" />
     <Content Include="Views\favorites.html" />
     <Content Include="Views\history.html" />
     <Content Include="Views\navbar.html" />

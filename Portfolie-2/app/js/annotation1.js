@@ -1,28 +1,68 @@
-﻿function FavoriteViewModel() {
-    var self = this;
-    self.UserId = ko.observable("282");
-    self.PostId = ko.observable("124462");
-    self.Annotation = ko.observable("");
-    
-}
+﻿define(['knockout', 'jQuery'], function (ko) {
+    favoriteVM = function () {
+        var self = this;
+        self.PostId = ko.observable();
+        self.UserId = ko.observable();
+        self.Annotation = ko.observable("");
 
-//self.loadUserData = function () {
-//    $.getJSON("/api/favorite/"+UserId+"/"+PostId, function (data) {
-//        alert(data.UserId);
-//    });
-//}
+        self.loadUserData = function () {
+            var data_to_send = ko.toJSON(self);
+            console.log(data_to_send);
 
-//self.saveUserData = function () {
-//    alert(ko.toJSON(self)
-//        );
-//}
+            var jObjects = JSON.parse(data_to_send);
+            console.log(jObjects);
+            var userId = jObjects.UserId;
+            postId = jObjects.PostId;
+            
+            console.log(jObjects.UserId);
 
-//self.saveUserData = function () {
-//    var data_to_send = {
-//        userData: ko.toJSON(self)
-//    };
-//    $.post("/api/favorites", data_to_send, function (data) {
-//        alert("Your data has been posted to the server!");
-//    });
-//}
-ko.applyBindings(new FavoriteViewModel());
+            $.getJSON("/api/Favorites/"+userId+"/"+postId, function (datas) {
+                
+                self.UserId(datas.UserId);
+                self.PostId(datas.PostId);
+               
+                
+                self.Annotation(datas.Annotation);
+            });
+        }
+
+        self.saveUserData = function (UserId, PostId) {
+
+           
+
+            var data_to_send = ko.toJSON(self);
+            //alert(ko.toJSON(self));
+
+            console.log(data_to_send);
+            $.post("api/Favorites/"+UserId+"/"+PostId,  function () {
+                // alert("Your data is saved");
+                console.log("Your data is saved")
+            });
+        }
+
+        self.updateUserData = function () {
+            $.ajax({
+                url: "api/Favorites/" + UserId,
+                type: "PUT",
+                dataType: "json",
+                contentType: "application/json",
+                data: ko.toJSON(self),
+            });
+        };
+
+        self.deleteUserData = function () {
+            $.ajax({
+                url: "api/Favorites/" + UserId + PostId,
+                type: "DELETE",
+                dataType: "json",
+                contentType: "application/json",
+                data: ko.toJSON(self),
+
+
+            });
+        };
+
+    }
+    return favoriteVM;
+
+});
