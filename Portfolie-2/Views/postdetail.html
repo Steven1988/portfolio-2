@@ -1,6 +1,8 @@
 ﻿<div class="panel panel-default">
     <div class="postdetail-container">
         <h2>Post details</h2>
+
+        <!--<h3 data-bind="text: Title"></h3>-->
        
         <div class="postLoop" data-bind="foreach: data">
             <div class="postdetail panel panel-body">
@@ -15,7 +17,7 @@
                     
                 </div>
                 <div class="postBody">
-                    <p data-bind="text: Body"></p>
+                    <p data-bind="html: Body"></p>
                 </div>
                 <div class="commentBox">
                     <div data-bind="foreach: Comments">

@@ -4,11 +4,11 @@
 }
 .postTitle > h2:first-child {
     font-family: Calibri;
-    font-size: 22px;
+    font-size: 24px;
     border-bottom: 1px solid grey;
 }
 .postdetail {
-    background-color: #C8D6DB;
+    background-color: rgb(227,212,161);
 }
 .postUser {
     vertical-align: top;

@@ -2,11 +2,16 @@
  
 }
 .postItem {
-    background-color: lightgrey;
+    background-color: rgb(227,212,161);
     border-radius: 8px;
     padding: 10px;
-    margin: 5px 0;
-    box-shadow: 2px 2px 6px black;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    /*box-shadow: 2px 2px 6px black;*/
+}
+.postItem > h4 > a {
+    color: #75A7BD;
+    cursor: pointer;    
 }
 .headline {
     text-align: center;
