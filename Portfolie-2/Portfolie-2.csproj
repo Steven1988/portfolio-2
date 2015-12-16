@@ -127,6 +127,7 @@
     <Content Include="app\css\normalize.css" />
     <Content Include="app\css\postdetail.css" />
     <Content Include="app\js\annotation.js" />
+    <Content Include="app\js\annotation1.js" />
     <Content Include="app\js\navbar.js" />
     <Content Include="app\js\queries.js" />
     <Content Include="app\js\tags.js" />
@@ -165,6 +166,7 @@
     <Content Include="Scripts\requirejs.js" />
     <Content Include="Scripts\text.js" />
     <Content Include="Views\annotation.html" />
+    <Content Include="Views\fav.html" />
     <Content Include="Views\favorites.html" />
     <Content Include="Views\history.html" />
     <Content Include="Views\navbar.html" />

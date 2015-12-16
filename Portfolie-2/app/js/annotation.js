@@ -1,19 +1,26 @@
 ﻿define(['knockout', 'jQuery'], function (ko) {
     favoriteVM = function () {
-        this.MyName = "Nima";
+        var self = this;
+        self.MyName = "Nima";
 
-        var PostId = 105568;
-        var UserId = 1;
-        var Anotation = "Something is not awsome";
+        self.PostId = ko.observable();
+        self.UserId = ko.observable();
+        self.Annotation = ko.observable("");
+        
 
         var data = ko.observableArray([]);
-        $.getJSON("/api/posts/" + UserId + "/" +PostId, function (fav) {
+        $.getJSON("/api/favorites/" + UserId + "/" + PostId, function (fav) {
+           
             data(fav.data);
             console.log(data);
         });
         return {
-            data: data
+            data: data,
+            PostId: PostId,
+            UserId: UserId,
+            Annotation : Annotation
         }
     }
     return favoriteVM;
+
 });

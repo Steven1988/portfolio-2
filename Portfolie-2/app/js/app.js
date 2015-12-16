@@ -3,7 +3,7 @@
 require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
 
     app.mainViewModel = function () {
-        var currentComponent = ko.observable("posts");
+        var currentComponent = ko.observable("Annotation");
 
         return {
             currentComponent: currentComponent,
@@ -11,52 +11,52 @@ require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
             //    this.currentComponent("postDetail")
             //}
         }
+    }
 
-    //************ All of our components **************
-    ko.components.register('navbarComponent', {
-        viewModel: { require: 'app/js/navbar' },
-        template: { require: 'Scripts/text!Views/navbar.html' }
+        //************ All of our components **************
+        ko.components.register('navbarComponent', {
+            viewModel: { require: 'app/js/navbar'
+        },
+            template: { require: 'Scripts/text!Views/navbar.html'
+    }
     });
 
     ko.components.register('posts', {
-        viewModel: { require: 'app/js/posts' },
-        template: { require: 'Scripts/text!Views/posts.html' }
+            viewModel: { require: 'app/js/posts'
+    },
+            template: { require: 'Scripts/text!Views/posts.html'
+    }
     });
 
     ko.components.register('tags', {
-        viewModel: { require: 'app/js/tags' },
-        template: { require: 'Scripts/text!Views/tags.html' }
+            viewModel: { require: 'app/js/tags'
+    },
+            template: { require: 'Scripts/text!Views/tags.html'
+    }
     });
 
     ko.components.register('searchHistoryPost', {
-        viewModel: { require: 'app/js/queries' },
-        template: { require: 'Scripts/text!Views/history.html' }
+            viewModel: { require: 'app/js/queries'
+    },
+            template: { require: 'Scripts/text!Views/history.html'
+    }
     });
 
-    //ko.components.register('posts', {
-    //    viewModel: {
-    //        createViewModel: postVM = function () {
-    //            var hello = ko.observable("hello my");
-    //            var data = ko.observableArray([]);
-
-    //            $.getJSON("/api/posts", function (posts) {
-
-    //                data(posts.data);
-    //                console.log(posts);
-    //            });
-    //            return {
-    //                hello: hello,
-    //                posts: data
-    //            };
-    //        }
-    //        //require: 'app/js/posts.js'     
-    //    },
-    //    template: { require: 'Scripts/text!Views/posts.html' }
-    //});
 
     ko.components.register('postDetail', {
-        viewModel: { require: 'app/js/postdetail' },
-        template: { require: 'Scripts/text!Views/postdetail.html' }
+            viewModel: { require: 'app/js/postdetail'
+    },
+            template: { require: 'Scripts/text!Views/postdetail.html'
+    }
+    });
+
+    ko.components.register('Annotation', {
+        viewModel: {
+            require: 'app/js/annotation1'
+        },
+        template: {
+            require: 'Scripts/text!Views/fav.html'
+        }
     });
 
 
