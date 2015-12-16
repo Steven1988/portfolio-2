@@ -8,3 +8,11 @@
     margin: 5px 0;
     box-shadow: 2px 2px 6px black;
 }
+.headline {
+    text-align: center;
+}
+
+.search-input {
+    width: 80% !important;
+
+}

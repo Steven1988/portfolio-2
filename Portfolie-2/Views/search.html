@@ -1,0 +1,46 @@
+﻿<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="form-group">
+            
+            <div class="headline">
+                <h3> Search for anything you want</h3>
+            </div>
+            <div class="form-inline">
+                <input class="form-control search-input" type="text" data-bind="value: searchItem" />
+                <button class="btn btn-primary" data-bind="click: function (){ getResult(searchItem)}">Search</button>
+            </div>
+
+            <h5>You have searched for: <span class="boldtext" data-bind="text: searchItem"></span></h5>
+    
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="postContainer">
+            <div data-bind="foreach: searchPosts">
+
+                <div class="postItem">
+                    <h4>
+                        <a data-bind="text: Title, click: function() { goToPost(Id, Url) }"></a>
+                    </h4>
+                    <div data-bind="text: Id"></div>
+                    <div data-bind="text: Body"></div>
+
+                    <!--<div class="panel panel-default">
+                    <a data-bind="attr: { href: Url, title: Title }, text: Url"></a>
+                </div>-->
+                </div>
+
+
+            </div>
+
+            <!--<nav>
+                <ul class="pager">
+                    <li><a data-bind='attr: { href: prevUrl, title: "Prev"}'>Previous</a></li>
+                    <li>
+                        <a data-bind="attr: { href: nextUrl, title: nextUrl }">Next</a>
+                    </li>
+                </ul>
+            </nav>-->
+        </div>
+    </div>
+</div>

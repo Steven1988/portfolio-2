@@ -4,7 +4,7 @@
 
         <div class="postItem">
             <h4>
-                <a data-bind="attr: { href: Url, title: Title }, text: Title, click: goToPost()"></a>
+                <a data-bind="text: Title, click: function() { goToPost(Id, Url) }"></a>
             </h4>
             <div data-bind="text: Id"></div>
             <div data-bind="text: Body"></div>
