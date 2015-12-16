@@ -16,6 +16,9 @@
         var mItem = ko.observable();
 
         showContent = function (mItem) {
+            if (mItem == "Search History") {
+                mItem = mItem.replace(/\s+/g, '');
+            }
             name = mItem.toLowerCase();
             currentComponent(name);
             console.log(name);
