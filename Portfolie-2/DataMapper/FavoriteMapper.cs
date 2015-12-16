@@ -37,8 +37,8 @@ namespace Portfolie_2.DataMapper
         public Favorite Map(MySqlDataReader reader)
         {
             Favorite fav = new Favorite();
-            fav.PostId = reader.GetInt32(0);
-            fav.UserId = reader.GetInt32(1);
+            fav.UserId = reader.GetInt32(0);
+            fav.PostId = reader.GetInt32(1);
             fav.Annotation = reader.GetString("annotation");
             return fav;
         }

@@ -1,14 +1,28 @@
-﻿<div>
-    <h2>Posts list</h2>
-    <div data-bind="text: hello"></div> 
-    <ul data-bind="foreach: posts">
-        <li data-bind="text: Id"></li>
-        <li data-bind="text: Title"></li>
-        <li>
-            <div class="panel panel-default">
+﻿<div class="postContainer">
+    <h2>Posts list</h2> 
+    <div data-bind="foreach: posts">
+
+        <div class="postItem">
+            <h4>
+                <a data-bind="attr: { href: Url, title: Title }, text: Title, click: goToPost()"></a>
+            </h4>
+            <div data-bind="text: Id"></div>
+            <div data-bind="text: Body"></div>
+
+            <!--<div class="panel panel-default">
                 <a data-bind="attr: { href: Url, title: Title }, text: Url"></a>
-            </div>
-        </li>
+            </div>-->
+        </div>
+       
          
-    </ul>
+    </div>
+
+    <nav>
+        <ul class="pager">
+            <!--<li><a data-bind='attr: { href: prevUrl, title: "Prev"}'>Previous</a></li>-->
+            <li>
+                <a data-bind="attr: { href: nextUrl, title: nextUrl }">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
