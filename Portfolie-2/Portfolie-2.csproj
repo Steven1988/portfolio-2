@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -127,7 +128,6 @@
     <Content Include="app\css\normalize.css" />
     <Content Include="app\css\postdetail.css" />
     <Content Include="app\css\posts.css" />
-    <Content Include="app\js\annotation.js" />
     <Content Include="app\js\annotation1.js" />
     <Content Include="app\js\navbar.js" />
     <Content Include="app\js\queries.js" />
