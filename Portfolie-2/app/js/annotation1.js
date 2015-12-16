@@ -6,26 +6,35 @@
         self.Annotation = ko.observable("");
 
         self.loadUserData = function () {
-            $.getJSON("/api/Favorites/255/124462", function (datas) {
+            var data_to_send = ko.toJSON(self);
+            console.log(data_to_send);
+
+            var jObjects = JSON.parse(data_to_send);
+            console.log(jObjects);
+            var userId = jObjects.UserId;
+            postId = jObjects.PostId;
+            
+            console.log(jObjects.UserId);
+
+            $.getJSON("/api/Favorites/"+userId+"/"+postId, function (datas) {
                 
                 self.UserId(datas.UserId);
                 self.PostId(datas.PostId);
-                console.log(datas.UserId);
+               
                 
                 self.Annotation(datas.Annotation);
             });
         }
 
-        self.saveUserData = function () {
+        self.saveUserData = function (UserId, PostId) {
 
-            var userId = self.UserId,
-                postId = self.PostId,
-                anno = this.Annotation;
+           
 
-            var data_to_send = { userData: ko.toJSON(self) };
+            var data_to_send = ko.toJSON(self);
             //alert(ko.toJSON(self));
-            console.log(this.Annotation);
-            $.post("api/Favorites/" + UserId + "/" + PostId + "/" + Annotation, function () {
+
+            console.log(data_to_send);
+            $.post("api/Favorites/"+UserId+"/"+PostId,  function () {
                 // alert("Your data is saved");
                 console.log("Your data is saved")
             });
@@ -34,7 +43,7 @@
         self.updateUserData = function () {
             $.ajax({
                 url: "api/Favorites/" + UserId,
-                type: "DELETE",
+                type: "PUT",
                 dataType: "json",
                 contentType: "application/json",
                 data: ko.toJSON(self),

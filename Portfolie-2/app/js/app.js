@@ -3,7 +3,7 @@
 require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
 
     app.mainViewModel = function () {
-        var currentComponent = ko.observable("posts");
+        var currentComponent = ko.observable("Annotation");
 
         return {
             currentComponent: currentComponent,
@@ -36,14 +36,6 @@ require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
         template: { require: 'Scripts/text!Views/history.html' }
     });
 
-
-    ko.components.register('postDetail', {
-            viewModel: { require: 'app/js/postdetail'
-    },
-            template: { require: 'Scripts/text!Views/postdetail.html'
-    }
-    });
-
     ko.components.register('Annotation', {
         viewModel: {
             require: 'app/js/annotation1'
@@ -51,6 +43,7 @@ require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
         template: {
             require: 'Scripts/text!Views/fav.html'
         }
+    });
     ko.components.register('postdetail', {
         viewModel: { require: 'app/js/postdetail' },
         template: { require: 'Scripts/text!Views/postdetail.html' }
