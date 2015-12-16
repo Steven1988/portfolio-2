@@ -3,7 +3,8 @@
 require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
 
     app.mainViewModel = function () {
-        var currentComponent = ko.observable("Annotation");
+        mainVM = this;
+        var currentComponent = ko.observable("search");
 
         return {
             currentComponent: currentComponent,
@@ -15,10 +16,8 @@ require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
 
     //************ All of our components **************
     ko.components.register('navbarComponent', {
-            viewModel: { require: 'app/js/navbar'
-        },
-            template: { require: 'Scripts/text!Views/navbar.html'
-    }
+        viewModel: { require: 'app/js/navbar' },
+        template: { require: 'Scripts/text!Views/navbar.html' }
     });
 
     ko.components.register('posts', {
@@ -47,6 +46,11 @@ require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
     ko.components.register('postdetail', {
         viewModel: { require: 'app/js/postdetail' },
         template: { require: 'Scripts/text!Views/postdetail.html' }
+    });
+
+    ko.components.register('search', {
+        viewModel: { require: 'app/js/search' },
+        template: { require: 'Scripts/text!Views/search.html' }
     });
 
 

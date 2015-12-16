@@ -131,6 +131,7 @@
     <Content Include="app\js\annotation1.js" />
     <Content Include="app\js\navbar.js" />
     <Content Include="app\js\queries.js" />
+    <Content Include="app\js\search.js" />
     <Content Include="app\js\tags.js" />
     <Content Include="app\js\postdetail.js" />
     <Content Include="app\js\posts.js" />
@@ -171,6 +172,7 @@
     <Content Include="Views\favorites.html" />
     <Content Include="Views\history.html" />
     <Content Include="Views\navbar.html" />
+    <Content Include="Views\search.html" />
     <Content Include="Views\tags.html" />
     <Content Include="Views\postdetail.html" />
     <Content Include="Views\posts.html" />
