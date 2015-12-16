@@ -26,7 +26,7 @@
             //currentComponent('postdetail');
             ko.navbarVM().showContent('postdetail')
             ko.components.get('postdetail', ko.postdetailVM(Id));
-          
+
             //postdetailVM(Id)
             //$.getJSON(Url, function (posts) {
             //    data(posts.data);

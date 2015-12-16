@@ -127,6 +127,7 @@
     <Content Include="app\css\normalize.css" />
     <Content Include="app\css\postdetail.css" />
     <Content Include="app\css\posts.css" />
+    <Content Include="app\images\UI_design.jpg" />
     <Content Include="app\js\annotation.js" />
     <Content Include="app\js\annotation1.js" />
     <Content Include="app\js\navbar.js" />
@@ -228,7 +229,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\images\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Tag\" />
   </ItemGroup>

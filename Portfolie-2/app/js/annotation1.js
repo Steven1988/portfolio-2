@@ -7,61 +7,73 @@
 
         self.loadUserData = function () {
             var data_to_send = ko.toJSON(self);
-            console.log(data_to_send);
+            //console.log(data_to_send);
 
             var jObjects = JSON.parse(data_to_send);
-            console.log(jObjects);
+            //console.log(jObjects);
             var userId = jObjects.UserId;
-            postId = jObjects.PostId;
-            
-            console.log(jObjects.UserId);
+                postId = jObjects.PostId;
 
+            //console.log(jObjects.UserId);
+        
             $.getJSON("/api/Favorites/"+userId+"/"+postId, function (datas) {
-                
+
                 self.UserId(datas.UserId);
                 self.PostId(datas.PostId);
-               
-                
                 self.Annotation(datas.Annotation);
             });
         }
-
         self.saveUserData = function (UserId, PostId) {
 
-           
-
             var data_to_send = ko.toJSON(self);
-            //alert(ko.toJSON(self));
-
-            console.log(data_to_send);
-            $.post("api/Favorites/"+UserId+"/"+PostId,  function () {
-                // alert("Your data is saved");
-                console.log("Your data is saved")
+            var jObjects = JSON.parse(data_to_send);
+                //console.log(jObjects);
+            var userId = jObjects.UserId;
+                postId = jObjects.PostId;
+                $.post("api/Favorites/" + userId + "/" + postId, jObjects, function () {
+                alert("Your data is saved");
+                //console.log("Your data is saved")
             });
         }
 
         self.updateUserData = function () {
+
+            var data_to_send = ko.toJSON(self);
+            var jObjects = JSON.parse(data_to_send);
+            var userId = jObjects.UserId;
+                postId = jObjects.PostId;
+
             $.ajax({
-                url: "api/Favorites/" + UserId,
+                url: "api/Favorites/"+userId+"/"+postId, jObjects,
                 type: "PUT",
-                dataType: "json",
+               // dataType: "json",
                 contentType: "application/json",
                 data: ko.toJSON(self),
+                success: function () {
+                alert("Your data is Updated");
+        }        
             });
         };
 
         self.deleteUserData = function () {
+            var data_to_send = ko.toJSON(self);
+            var jObjects = JSON.parse(data_to_send);
+            var userId = jObjects.UserId;
+                postId = jObjects.PostId;
+
             $.ajax({
-                url: "api/Favorites/" + UserId + PostId,
+                url: "api/Favorites/" + userId +"/"+ postId, 
                 type: "DELETE",
-                dataType: "json",
+                //dataType: "json",
                 contentType: "application/json",
                 data: ko.toJSON(self),
-
-
+                 success: function () {
+                    alert("Your data is Deleted");
+                }
             });
         };
-
+         
+       
     }
     return favoriteVM;
 
