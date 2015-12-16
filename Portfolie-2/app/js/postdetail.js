@@ -2,7 +2,7 @@
     postdetailVM = function () {
         this.MyName = "Stefan";
 
-        var id = 105568;
+        var id = 142816;
         var data = ko.observableArray([]);
         $.getJSON("/api/posts/" + id, function (pd) {
             data(pd.data);
