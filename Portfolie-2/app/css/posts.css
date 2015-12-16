@@ -11,7 +11,10 @@
 .headline {
     text-align: center;
 }
-
+.search-btn {
+    width: 19%;
+    min-width: 70px;
+}
 .search-input {
     width: 80% !important;
 

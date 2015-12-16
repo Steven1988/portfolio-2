@@ -7,14 +7,14 @@
             </div>
             <div class="form-inline">
                 <input class="form-control search-input" type="text" data-bind="value: searchItem" />
-                <button class="btn btn-primary" data-bind="click: function (){ getResult(searchItem)}">Search</button>
+                <button class="btn btn-primary search-btn" data-bind="click: function (){ getResult(searchItem)}">Search</button>
             </div>
 
             <h5>You have searched for: <span class="boldtext" data-bind="text: searchItem"></span></h5>
     
         </div>
     </div>
-    <div class="col-sm-12">
+    <div class="col-sm-12 col-lg-8">
         <div class="postContainer">
             <div data-bind="foreach: searchPosts">
 

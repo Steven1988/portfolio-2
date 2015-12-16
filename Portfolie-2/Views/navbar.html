@@ -21,7 +21,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> User Menu <b class="caret"></b></a>
                     <ul class="dropdown-menu" data-bind="foreach: dropdownMenu">
                         <li>
-                            <a href="" data-bind="text: dropItem">
+                            <a href="" data-bind="text: dropItem, click: function () { showContent(dropItem)}">
                                 
                                 <i data-bind="css: { className: 'fa ' + icon }"></i>
 

@@ -130,8 +130,8 @@
     <Content Include="app\js\annotation.js" />
     <Content Include="app\js\annotation1.js" />
     <Content Include="app\js\navbar.js" />
-    <Content Include="app\js\queries.js" />
     <Content Include="app\js\search.js" />
+    <Content Include="app\js\searchHistory.js" />
     <Content Include="app\js\tags.js" />
     <Content Include="app\js\postdetail.js" />
     <Content Include="app\js\posts.js" />
@@ -162,6 +162,7 @@
     <Content Include="Scripts\jquery.bootstrap-autohidingnavbar.min.js" />
     <Content Include="Scripts\knockout-3.4.0.debug.js" />
     <Content Include="Scripts\knockout-3.4.0.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.config.js" />
     <Content Include="Scripts\require.js" />

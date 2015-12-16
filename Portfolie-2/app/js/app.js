@@ -1,10 +1,10 @@
 ﻿var app = app || {};
 
-require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
+require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
 
     app.mainViewModel = function () {
         mainVM = this;
-        var currentComponent = ko.observable("search");
+        var currentComponent = ko.observable("searchhistory");
 
         return {
             currentComponent: currentComponent,
@@ -30,8 +30,8 @@ require(['knockout', 'jQuery', 'bootstrap'], function (ko) {
         template: { require: 'Scripts/text!Views/tags.html' }
     });
 
-    ko.components.register('searchHistoryPost', {
-        viewModel: { require: 'app/js/queries' },
+    ko.components.register('searchhistory', {
+        viewModel: { require: 'app/js/searchHistory' },
         template: { require: 'Scripts/text!Views/history.html' }
     });
 
