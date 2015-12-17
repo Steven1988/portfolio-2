@@ -4,9 +4,11 @@ body {
     background-color: rgb(210,210,200);
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
+.footer{
+    margin-top:6em;
+    text-align:center;
+    font-size:1.5em;
+    padding-bottom:3em;
 }
 .main-container {
     padding-top: 60px;
