@@ -35,13 +35,9 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
         template: { require: 'Scripts/text!Views/history.html' }
     });
 
-    ko.components.register('Annotation', {
-        viewModel: {
-            require: 'app/js/annotation1'
-        },
-        template: {
-            require: 'Scripts/text!Views/fav.html'
-        }
+    ko.components.register('favorites', {
+        viewModel: { require: 'app/js/annotation1' },
+        template: { require: 'Scripts/text!Views/fav.html' }
     });
     ko.components.register('postdetail', {
         viewModel: { require: 'app/js/postdetail' },

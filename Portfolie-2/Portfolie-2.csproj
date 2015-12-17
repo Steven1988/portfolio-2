@@ -145,7 +145,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="indexWithMenu.html" />
     <Content Include="index.html" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -157,7 +156,6 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="app\js\app.js" />
-    <Content Include="postview.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -172,9 +170,7 @@
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\requirejs.js" />
     <Content Include="Scripts\text.js" />
-    <Content Include="Views\annotation.html" />
     <Content Include="Views\fav.html" />
-    <Content Include="Views\favorites.html" />
     <Content Include="Views\history.html" />
     <Content Include="Views\navbar.html" />
     <Content Include="Views\search.html" />
@@ -233,7 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Tag\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
