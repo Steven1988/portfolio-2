@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Net.Http;
+using System.Web.Http.Routing;
 using MySql.Data.MySqlClient;
 using Portfolie_2.Models;
 using System.Data;
@@ -24,7 +26,12 @@ namespace Portfolie_2.Repository
         {
             _pMapper = mapper;
         }
-
+        //URL Helper
+        //private UrlHelper _urlHelper;
+        //public PostRepository(HttpRequestMessage request)
+        //{
+        //    _urlHelper = new UrlHelper(request);
+        //}
 
         // Repository Methods
         public IEnumerable<SearchPost> GetAll(int limit, int offset)
@@ -108,6 +115,7 @@ namespace Portfolie_2.Repository
                             new DetailPost.Comment
                             {
                                 Url =  "api/posts/" + reader.GetInt32(0),
+                              // Url = _urlHelper.Link("api", new { id = reader.GetInt32(0)}),
                                 CommentId = reader.GetInt32(0),
                                 Text = reader["text"] as string,
                                 CreationDate = reader.GetDateTime(2),
