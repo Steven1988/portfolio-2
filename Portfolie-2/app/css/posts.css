@@ -24,3 +24,6 @@
     width: 80% !important;
 
 }
+.pagination-centered {
+    text-align: center;
+}
