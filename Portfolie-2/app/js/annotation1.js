@@ -5,15 +5,28 @@
         self.UserId = ko.observable();
         self.Annotation = ko.observable("");
 
-        self.loadUserData = function () {
+        var sesUserId = 1;
+        sesUserId = self.UserId;
+
+        var selectedPostId = 124462;
+        selectedPostId = self.PostId;
+
+        self.loadUserData = function (UserId, PostId) {
             var data_to_send = ko.toJSON(self);
             //console.log(data_to_send);
 
+          
             var jObjects = JSON.parse(data_to_send);
             //console.log(jObjects);
-            var userId = jObjects.UserId;
-                postId = jObjects.PostId;
 
+            //var userId = jObjects.UserId;
+            //    postId = jObjects.PostId;
+
+            console.log(UserId)
+            var userId = UserId,
+                postId = PostId;
+           
+           
             //console.log(jObjects.UserId);
         
             $.getJSON("/api/Favorites/"+userId+"/"+postId, function (datas) {

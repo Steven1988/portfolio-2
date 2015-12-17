@@ -3,9 +3,11 @@
 @import url('global-styles.css');
 
 
+
 /*components stylesheets*/
 
 @import url('postdetail.css');
 @import url('posts.css');
 @import url('tag.css');
 @import url('ad.css');
+@import url('favorites.css');

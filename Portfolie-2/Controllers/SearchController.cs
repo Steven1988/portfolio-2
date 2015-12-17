@@ -13,11 +13,11 @@ namespace Portfolie_2.Controllers
     {
         PostRepository _postRepository = new PostRepository(new DataMapper.PostMapper());
 
-        public Page<SearchPost> GetSearch(string searchString)
+        public Page<SearchPost> GetSearch(string searchString, int sesUserId)
         {
             int limit = QueryStringCall.Limit();
             int offset = QueryStringCall.String("offset");
-            int sesUserId = QueryStringCall.String("sesUserId");
+            //int sesUserId = QueryStringCall.String("sesUserId");
             IEnumerable<SearchPost> items = _postRepository.GetSearch(searchString, sesUserId, limit, offset);
             Page<SearchPost> p = new Page<SearchPost>(items);
             return p;
