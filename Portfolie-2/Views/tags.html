@@ -1,9 +1,16 @@
-﻿<div>
-    <h2>Tags list</h2>
-    <div data-bind="text: hello"></div>
-    <ul data-bind="foreach: tags">
-        <p>The tag ID is </p> <span data-bind="text: Id"></span>
-    <li data-bind="text: Tagname"></li>
-    <li data-bind="text: TagCount"></li>
-</ul>
+﻿<div class="row component-item" data-bind="">
+    <div class="col-sm-12 col-lg-8">
+        <div class="postContainer">
+            <h2 class="headline">Tags
+                <i class="fa fa-tags"></i>
+            </h2>
+            <div data-bind="foreach: tags">
+                <div class="panel panel-default tag">
+                    <div class="tagname" data-bind="text: Tagname"></div>
+                    <span class="boldtext tagcount" data-bind="text: TagCount"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
