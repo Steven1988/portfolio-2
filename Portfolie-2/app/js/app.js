@@ -4,7 +4,7 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
 
     app.mainViewModel = function () {
         mainVM = this;
-        var currentComponent = ko.observable("searchhistory");
+        var currentComponent = ko.observable("search");
 
         return {
             currentComponent: currentComponent,
