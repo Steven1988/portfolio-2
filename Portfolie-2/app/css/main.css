@@ -11,9 +11,12 @@ body {
     background-color: rgb(210,210,200);
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
+.footer{
+    margin-top:6em;
+    text-align:center;
+    font-size:1.5em;
+    padding-bottom:3em;
+}
 }
 .main-container {
     padding-top: 60px;
@@ -45,4 +48,27 @@ footer {
 }
 .custom-navbar {
     background-color: rgba(30,30,30,0.9);
+}
+
+/*********** Advertisement ***********/
+#close {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ffffff;
+}
+
+#close:hover {
+    float:right;
+    display:inline-block;
+    /*padding:2px 5px;*/
+    padding-bottom:3em;
+    background:rgb(210,210,200);
+    color:#000000;
+}
+
+#closeAdButton {
+    float:right;
+    top: 0;
+    right: 0;
 }
