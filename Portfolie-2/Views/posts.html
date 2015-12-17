@@ -1,28 +1,29 @@
-﻿<div class="postContainer">
-    <h2>Posts list</h2> 
-    <div data-bind="foreach: posts">
+﻿<div class="row component-item">
+    <div class="postContainer">
+        <h2>Newest Posts</h2>
 
-        <div class="postItem">
-            <h4>
-                <a data-bind="text: Title, click: function() { goToPost(Id, Url) }"></a>
-            </h4>
-            <div data-bind="text: Id"></div>
-            <div data-bind="text: Body"></div>
+        <div data-bind="foreach: posts">
+            <div class="postItem">
+                <h4>
+                    <a data-bind="text: Title, click: function() { goToPost(Id, Url) }"></a>
+                </h4>
+                <div data-bind="text: Id"></div>
+                <div data-bind="html: Body"></div>
+                <!--<div class="panel panel-default">
+                    <a data-bind="attr: { href: Url, title: Title }, text: Url"></a>
+                </div>-->
+            </div>
+            <hr />
 
-            <!--<div class="panel panel-default">
-                <a data-bind="attr: { href: Url, title: Title }, text: Url"></a>
-            </div>-->
+
         </div>
-       
-         
+        <nav>
+            <!--<ul class="pager">
+                <li><a data-bind='attr: { href: prevUrl, title: "Prev"}'>Previous</a></li>
+                <li>
+                    <a data-bind="attr: { href: nextUrl, title: nextUrl }">Next</a>
+                </li>
+            </ul>-->
+        </nav>
     </div>
-
-    <nav>
-        <ul class="pager">
-            <!--<li><a data-bind='attr: { href: prevUrl, title: "Prev"}'>Previous</a></li>-->
-            <li>
-                <a data-bind="attr: { href: nextUrl, title: nextUrl }">Next</a>
-            </li>
-        </ul>
-    </nav>
 </div>

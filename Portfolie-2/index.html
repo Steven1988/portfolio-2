@@ -9,19 +9,22 @@
     <link href="app/css/main.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
+    <div class="index-img">
+        
         <header>
             <div data-bind='component: {name: "navbarComponent", params: { selectedComponent: currentComponent}}'></div>
         </header>
+        <div class="container main-container">
+            <!--<div data-bind='component: {name: "searchHistoryPost"}'></div>-->
 
-        <!--<div data-bind='component: {name: "searchHistoryPost"}'></div>-->
-
-        <div class="content col-sm-12">
-            <div data-bind='component: {name: currentComponent}'></div>
+            <div class="col-sm-12">
+                <div data-bind='component: {name: currentComponent}'></div>
+            </div>
         </div>
         <footer class="panel-footer">
             Footer
         </footer>
+        
     </div>
 
     <div class="row">
@@ -47,6 +50,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
             <script src="Scripts/jquery-1.9.1.min.js"></script>

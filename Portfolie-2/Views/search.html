@@ -1,7 +1,8 @@
-﻿<div class="row">
+﻿
+<div class="row component-item">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="form-group">
-            
+
             <div class="headline">
                 <h3> Search for anything you want</h3>
             </div>
@@ -11,9 +12,11 @@
             </div>
 
             <h5>You have searched for: <span class="boldtext" data-bind="text: searchItem"></span></h5>
-    
+
         </div>
     </div>
+</div>
+<div class="row component-item" data-bind="">
     <div class="col-sm-12 col-lg-8">
         <div class="postContainer">
             <div data-bind="foreach: searchPosts">
@@ -26,8 +29,8 @@
                     <div data-bind="html: Body"></div>
 
                     <!--<div class="panel panel-default">
-                    <a data-bind="attr: { href: Url, title: Title }, text: Url"></a>
-                </div>-->
+                        <a data-bind="attr: { href: Url, title: Title }, text: Url"></a>
+                    </div>-->
                 </div>
 
 

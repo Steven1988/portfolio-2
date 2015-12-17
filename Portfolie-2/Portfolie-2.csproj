@@ -127,6 +127,7 @@
     <Content Include="app\css\normalize.css" />
     <Content Include="app\css\postdetail.css" />
     <Content Include="app\css\posts.css" />
+    <Content Include="app\images\Java-Programming-Wallpaper.jpg" />
     <Content Include="app\images\UI_design.jpg" />
     <Content Include="app\js\annotation.js" />
     <Content Include="app\js\annotation1.js" />
