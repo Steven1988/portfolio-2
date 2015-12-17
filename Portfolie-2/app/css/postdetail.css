@@ -9,6 +9,13 @@
 }
 .postdetail {
     background-color: rgb(227,212,161);
+     /*Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e8e8e8+0,dbceaf+100 
+    background: #e8e8e8;  Old browsers 
+    background: -moz-linear-gradient(top,  #e8e8e8 0%, #dbceaf 100%);  FF3.6-15 
+    background: -webkit-linear-gradient(top,  #e8e8e8 0%,#dbceaf 100%);  Chrome10-25,Safari5.1-6 
+    background: linear-gradient(to bottom,  #e8e8e8 0%,#dbceaf 100%);  W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', endColorstr='#dbceaf',GradientType=0 );  IE6-9 */*/
+
 }
 .postUser {
     vertical-align: top;
@@ -20,6 +27,10 @@
     background-color: lightyellow;
     margin: 10px 0;
 }
+.hidecomments {
+    display: none;
+}
+
 .commentBox {
     border: 1px solid grey;
     padding: 5px;
@@ -28,5 +39,6 @@
 
 .commentAuthor {
     font-weight: bold;
-
 }
+
+

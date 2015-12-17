@@ -3,12 +3,16 @@
     <div class="col-sm-8 col-sm-offset-2">
         <div class="form-group">
 
-            <div class="headline">
+            <div class="search-headline headline">
                 <h3> Search for anything you want</h3>
             </div>
             <div class="form-inline">
                 <input class="form-control search-input" type="text" data-bind="value: searchItem" />
-                <button class="btn btn-primary search-btn" data-bind="click: function (){ getResult(searchItem)}">Search</button>
+                <button class="btn btn-primary search-btn" data-bind="click: function (){ getResult(searchItem)}">
+                    Search
+                    <i class="fa fa-search"></i>
+                </button>
+                
             </div>
 
             <h5>You have searched for: <span class="boldtext" data-bind="text: searchItem"></span></h5>
