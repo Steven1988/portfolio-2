@@ -2,76 +2,10 @@
 
 @import url('global-styles.css');
 
+
 /*components stylesheets*/
 
 @import url('postdetail.css');
 @import url('posts.css');
 @import url('tag.css');
-
- /*********** Global Styles ***********/
-body {
-    margin-top: 50px;
-    background-color: rgb(210,210,200);
-}
-
-.footer{
-    margin-top:6em;
-    text-align:center;
-    font-size:1.5em;
-    padding-bottom:3em;
-}
-}
-.main-container {
-    padding-top: 60px;
-}
-
-.content {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 2px 2px 6px black;
-}
-.boldtext {
-    font-weight: bold;
-}
-
-.index-img {
-   background-image: url('../images/Java-Programming-Wallpaper.jpg');
-   background-size: cover;
-   width: 100%;
-   height: 400px;
-}
-
-.component-item {
-    background-color: #fff;
-    border-radius: 3px;
-    margin: 20px 0;
-    padding: 10px;
-    box-shadow: 2px 2px 10px black;
-}
-.custom-navbar {
-    background-color: rgba(30,30,30,0.9);
-}
-
-/*********** Advertisement ***********/
-#close {
-    float:right;
-    display:inline-block;
-    padding:2px 5px;
-    background:#ffffff;
-}
-
-#close:hover {
-    float:right;
-    display:inline-block;
-    /*padding:2px 5px;*/
-    padding-bottom:3em;
-    background:rgb(210,210,200);
-    color:#000000;
-}
-
-#closeAdButton {
-    float:right;
-    top: 0;
-    right: 0;
-}
+@import url('ad.css');
