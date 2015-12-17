@@ -123,6 +123,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\css\ad.css" />
     <Content Include="app\css\global-styles.css" />
     <Content Include="app\css\main.css" />
     <Content Include="app\css\normalize.css" />

@@ -52,3 +52,9 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
 
     ko.applyBindings(new app.mainViewModel());
 });
+
+//************ Advertisement **************
+document.getElementById('closeAdButton').addEventListener('click', function (e) {
+    e.preventDefault();
+    this.parentNode.parentNode.style.display = 'none';
+}, false);
