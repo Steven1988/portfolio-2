@@ -16,6 +16,18 @@
             console.log(posts.paging);
         });
 
+        nextPage = function (nextUrl) {
+            $.getJSON(nextUrl, function (posts) {
+                data(posts.data);
+                page(posts.paging);
+            });
+        }
+        prevPage = function (prevUrl) {
+            $.getJSON(prevUrl, function (posts) {
+                data(posts.data);
+                page(posts.paging);
+            });
+        }
         //var summary = 50;
         //console.log(posts.Body);
 

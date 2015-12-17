@@ -4,6 +4,10 @@ body {
     background-color: rgb(210,210,200);
 }
 
+img {
+    width: 100%;
+}
+
 .footer{
     margin-top:6em;
     text-align:center;

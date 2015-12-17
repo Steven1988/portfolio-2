@@ -6,6 +6,9 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
         mainVM = this;
         var currentComponent = ko.observable("search");
 
+        //mainVM.postVM = new postVM(postViewModel)
+        //console.log(mainVM.postVM);
+
         return {
             currentComponent: currentComponent,
             //change: function () {
