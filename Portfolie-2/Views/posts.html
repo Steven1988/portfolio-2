@@ -3,13 +3,15 @@
         <h2>Newest Posts
             <i class="fa fa-sticky-note"></i>
         </h2>
-        <div class="pagination-centered">
-            <ul class="pagination">
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
+        <nav>
+            <ul class="pager" data-bind="foreach: page">
+                <li data-bind="text: prevUrl"></li>
+                <li><a data-bind='click: function() { prevPage(prevUrl) }'>Previous</a></li>
+
+                <li><a data-bind='click: function() { nextPage(nextUrl) }'>Next</a></li>
+                <li data-bind="text: nextUrl"></li>
             </ul>
-        </div>
+        </nav>
 
         <div data-bind="foreach: posts">
             <div class="postItem">
@@ -23,16 +25,15 @@
                 </div>-->
             </div>
             <hr />
-
-
         </div>
         <nav>
-            <!--<ul class="pager">
-                <li><a data-bind='attr: { href: prevUrl, title: "Prev"}'>Previous</a></li>
-                <li>
-                    <a data-bind="attr: { href: nextUrl, title: nextUrl }">Next</a>
-                </li>
-            </ul>-->
+            <ul class="pager" data-bind="foreach: page">
+                <li data-bind="text: prevUrl"></li>
+                <li><a data-bind='click: function() { prevPage(prevUrl) }'>Previous</a></li>
+                
+                <li><a data-bind='click: function() { nextPage(nextUrl) }'>Next</a></li>
+                <li data-bind="text: nextUrl"></li>
+            </ul>
         </nav>
     </div>
 </div>

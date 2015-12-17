@@ -1,9 +1,10 @@
 ﻿define(['knockout', 'jQuery'], function (ko) {
-    searchVM = function () {
+    searchVM = function (Tagname) {
         vm = this
         var searchItem = ko.observable("");
         var data = ko.observableArray([]);
         var sessionUserId = ko.observable("1");
+        Tagname = searchItem;
 
         getResult = function (searchItem, sessionUserId) {
             var searchString = ko.toJS(searchItem);

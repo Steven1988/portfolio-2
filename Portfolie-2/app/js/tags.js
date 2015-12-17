@@ -1,20 +1,22 @@
 ﻿define(['knockout', 'jQuery'], function (ko) {
     tagViewModel = function() {
-        var hello = ko.observable('Something new');
         var data = ko.observableArray([]);
         $.getJSON("/api/tags", function (tags) {
 
             data(tags);
-            console.log(tags);
-});
+            //console.log(tags);
+        });
+
+        toSearch = function (Tagname) {
+            searchVM(Tagname);
+            console.log("the tagname is: " + Tagname)
+        }
 
         return {
-hello: hello,
-tags: data
-}
-//console.log(tags);
-};
-
+            tags: data
+        }
+        //console.log(tags);
+    };
     return tagViewModel;
 })
 

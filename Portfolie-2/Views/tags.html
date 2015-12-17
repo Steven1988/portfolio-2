@@ -1,11 +1,11 @@
-﻿<div class="row component-item" data-bind="">
+﻿<div class="row component-item">
     <div class="col-sm-12 col-lg-8">
         <div class="postContainer">
             <h2 class="headline">Tags
                 <i class="fa fa-tags"></i>
             </h2>
             <div data-bind="foreach: tags">
-                <div class="panel panel-default tag">
+                <div class="panel panel-default tag" data-bind="click: function() { toSearch(Tagname) }">
                     <div class="tagname" data-bind="text: Tagname"></div>
                     <span class="boldtext tagcount" data-bind="text: TagCount"></span>
                 </div>
