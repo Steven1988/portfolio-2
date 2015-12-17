@@ -1,4 +1,4 @@
-﻿<div>
+﻿<div class="row component-item" >
     <h2>Search history</h2>
     <h4 data-bind='text: "Hey " + sesUserId + ", you have searched for:"'></h4>
     <div >
@@ -19,6 +19,6 @@
                 </tr>
             </tbody>
         </table>
-        <button class="btn btn-danger pull-right" data-bind="click: function() { deletehistory() }">Delete Search History</button>
+        <button class="btn btn-danger pull-right" data-bind="click: deleteHistory">Delete Search History</button>
     </div>
 </div>

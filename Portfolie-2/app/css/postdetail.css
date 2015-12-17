@@ -27,9 +27,10 @@
     background-color: lightyellow;
     margin: 10px 0;
 }
-.hidecomments {
+.hide {
     display: none;
 }
+
 
 .commentBox {
     border: 1px solid grey;
