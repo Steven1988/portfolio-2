@@ -1,9 +1,12 @@
 ﻿/*feel free to import other stylesheet*/
 
+@import url('global-styles.css');
+
+/*components stylesheets*/
+
 @import url('postdetail.css');
 @import url('posts.css');
-
-
+@import url('tag.css');
 
  /*********** Global Styles ***********/
 body {

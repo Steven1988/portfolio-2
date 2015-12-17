@@ -19,7 +19,7 @@
                 <div class="postBody">
                     <p data-bind="html: Body"></p>
                 </div>
-                <div class="commentBox">
+                <div class="commentBox" data-bind="css: { hidecomments: Comments == 0}">
                     <div data-bind="foreach: Comments">
                         <p class="commentAuthor">Author: <span data-bind="text: AuthorName"></span></p>
                         
