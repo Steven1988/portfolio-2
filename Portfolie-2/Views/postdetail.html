@@ -7,7 +7,7 @@
         <div class="postLoop" data-bind="foreach: data">
             <div class="postdetail panel panel-body">
                 <div class="postTitle">
-                    <h2 data-bind="text: Title, css: { hide: Title == null} " ></h2>
+                    <h2  " ></h2>
                     <p>The id of the post:<span data-bind="text: Id"></span></p>
                     
                     <div class="postUser row">
@@ -18,6 +18,12 @@
                     
                 </div>
                 <div class="postBody">
+                    <form data-bind="css: { hide: Title == null}">
+                        <input type="text" name="Id" data-bind="value:Id"/>
+                        <input type="hidden" name="sesUserId" value="1" data-bind="value:1"/>
+                        <!--<input type="text" data-bind="if: FavoriteInstance.Annotation != null value: FavoriteInstance.Annotation" />-->
+                        <button button class="btn btn-success" data-bind="click: function () { saveInfo(Id) }"> Mark Favorite</button>
+                    </form>
                     <p data-bind="html: Body"></p>
                 </div>
                 <div class="commentBox" data-bind="css: { hide: Comments == 0}">
