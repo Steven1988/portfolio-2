@@ -4,10 +4,10 @@
         console.log(currentPostId);
 
         var sesUserId = 255;
-        //var id = 124462;
+        var id = 124462;
         var data = ko.observableArray([]);
         if (sesUserId != "") {
-            $.getJSON("/api/posts/" + currentPostId() + "/" + sesUserId, function (pd) {
+            $.getJSON("/api/posts/" + id + "/" + sesUserId, function (pd) {
                 data(pd.data);
                 console.log(pd.data);
                 console.log("with sesUserId" + sesUserId)

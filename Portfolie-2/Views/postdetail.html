@@ -21,7 +21,10 @@
                     <form data-bind="css: { hide: Title == null}">
                         <input type="text" name="Id" data-bind="value:Id"/>
                         <input type="hidden" name="sesUserId" value="1" data-bind="value:1"/>
-                        <!--<input type="text" data-bind="if: FavoriteInstance.Annotation != null value: FavoriteInstance.Annotation" />-->
+                        <div data-bind="if: FavoriteInstance">
+                            <input type="text" data-bind="value: FavoriteInstance.Annotation" />
+                        </div>
+
                         <button button class="btn btn-success" data-bind="click: function () { saveInfo(Id) }"> Mark Favorite</button>
                     </form>
                     <p data-bind="html: Body"></p>

@@ -27,7 +27,7 @@
 
                 <div class="postItem">
                     <h4>
-                        <a data-bind="text: Title, click: function() { goToPost(Id, Url) }"></a>
+                        <a data-bind="text: Title, click: function() { $parent.goToPost(Id) }"></a>
                     </h4>
                     <div data-bind="text: Id"></div>
                     <div data-bind="html: Body"></div>
