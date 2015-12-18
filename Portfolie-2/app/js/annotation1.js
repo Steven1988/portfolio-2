@@ -11,7 +11,7 @@
         //var selectedPostId = 124462;
         //selectedPostId = self.PostId;
 
-        self.loadUserData = function (UserId, PostId) {
+        self.loadUserData = function () {
             var data_to_send = ko.toJSON(self);
             //console.log(data_to_send);
 
@@ -36,7 +36,7 @@
                 self.Annotation(datas.Annotation);
             });
         }
-        self.saveUserData = function (UserId, PostId) {
+        self.saveUserData = function () {
 
             var data_to_send = ko.toJSON(self);
             var jObjects = JSON.parse(data_to_send);

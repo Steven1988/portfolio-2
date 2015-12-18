@@ -1,14 +1,36 @@
 ﻿define(['knockout', 'jQuery'], function (ko) {
     postdetailVM = function () {
-        this.MyName = "Stefan";
+       
+        var self = this;
+        self.ParentId = ko.observable();
+        self.UserId = ko.observable();
 
-        var id = 105568;
+        var id = 124462;
         var data = ko.observableArray([]);
-        $.getJSON("/api/posts/" + id, function (pd) {
-            data(pd.data);
-            console.log(pd.data);
-        });
 
+        
+        
+        $.get("/api/posts/" + id, function (pd) {
+            data(pd.data);
+           
+            console.log(pd);
+            console.log(pd.data.ParentId);
+            
+            
+            //var jObjects = JSON.parse(pd);
+            
+           // var sParentId = jObjects.ParentId;
+
+           // console.log(jObjects);
+        });
+        
+        saveInfo = function (Id) {
+            console.log(Id);
+            console.log("save info function")
+        }
+                
+        
+   
         //if (data.Comments !== [""])
         //{
         //    $('.someclass')append(some element);
@@ -18,6 +40,7 @@
         return {
             data: data
         }
+        
     }
     return postdetailVM;
 });
