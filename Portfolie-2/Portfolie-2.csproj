@@ -133,7 +133,6 @@
     <Content Include="app\images\Java-Programming-Wallpaper.jpg" />
     <Content Include="app\images\php-code.jpg" />
     <Content Include="app\images\UI_design.jpg" />
-    <Content Include="app\js\annotation.js" />
     <Content Include="app\js\annotation1.js" />
     <Content Include="app\js\navbar.js" />
     <Content Include="app\js\search.js" />

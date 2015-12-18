@@ -9,10 +9,10 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
 
         //mainVM.postVM = new postVM(postViewModel)
         //console.log(mainVM.postVM);
-        if (currentPostId != "") {
-            currentComponent = "postdetail";
-            console.log(currentPostId);
-        }
+        //if (currentPostId != "") {
+        //    currentComponent = "postdetail";
+        //    //console.log(currentPostId);
+        //}
 
         return {
             currentComponent: currentComponent,

@@ -12,24 +12,13 @@
         //selectedPostId = self.PostId;
 
         self.loadUserData = function () {
-            var data_to_send = ko.toJSON(self);
-            //console.log(data_to_send);
+            //var data_to_send = ko.toJSON(self);
+            //var jObjects = JSON.parse(data_to_send);  
+            //var userId = jObjects.UserId;
+            //    postId = jObjects.PostId;
 
-          
-            var jObjects = JSON.parse(data_to_send);
-            //console.log(jObjects);
-
-            var userId = jObjects.UserId;
-                postId = jObjects.PostId;
-
-            //console.log(UserId)
-            //var userId = UserId,
-            //    postId = PostId;
-           
-           
-            //console.log(jObjects.UserId);
         
-            $.getJSON("/api/Favorites/"+userId+"/"+postId, function (datas) {
+            $.getJSON("/api/Favorites/"+self.UserId()+"/"+self.PostId(), function (datas) {
 
                 self.UserId(datas.UserId);
                 self.PostId(datas.PostId);
@@ -38,28 +27,15 @@
         }
         self.saveUserData = function () {
 
-            var data_to_send = ko.toJSON(self);
-            var jObjects = JSON.parse(data_to_send);
-                //console.log(jObjects);
-            var userId = jObjects.UserId;
-                postId = jObjects.PostId;
-                $.post("api/Favorites/" + userId + "/" + postId, jObjects, function () {
+                $.post("api/Favorites/" + self.UserId() + "/" + self.PostId(), function () {
                 alert("Your data is saved");
-                //console.log("Your data is saved")
             });
         }
 
         self.updateUserData = function () {
-
-            var data_to_send = ko.toJSON(self);
-            var jObjects = JSON.parse(data_to_send);
-            var userId = jObjects.UserId;
-                postId = jObjects.PostId;
-
             $.ajax({
-                url: "api/Favorites/"+userId+"/"+postId, jObjects,
+                url: "api/Favorites/"+self.UserId()+"/"+self.PostId(),
                 type: "PUT",
-               // dataType: "json",
                 contentType: "application/json",
                 data: ko.toJSON(self),
                 success: function () {
@@ -69,13 +45,8 @@
         };
 
         self.deleteUserData = function () {
-            var data_to_send = ko.toJSON(self);
-            var jObjects = JSON.parse(data_to_send);
-            var userId = jObjects.UserId;
-                postId = jObjects.PostId;
-
             $.ajax({
-                url: "api/Favorites/" + userId +"/"+ postId, 
+                url: "api/Favorites/" + self.UserId() +"/"+ self.PostId(), 
                 type: "DELETE",
                 //dataType: "json",
                 contentType: "application/json",
