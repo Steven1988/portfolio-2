@@ -14,26 +14,33 @@
                         <!--<p class="col-sm-6" data-bind="text: CreationDate"></p>-->
                         <span data-bind="dateString: CreationDate, datePattern: 'MM/DD/YYYY'"></span>
                         <p class="col-sm-6" data-bind="text: UserInstance.Name"></p>
-                    </div> 
-                    <div class="favoriteBox">
+                    </div>
+                     
+                    <div class="favoriteBox" data-bind="css: { hide: Title == null}">
+                        
                         <div data-bind="css: { hide: FavoriteInstance == null">
                             <button type="button" class="btn btn-primary" data-toggle="button" autocomplete="off" data-bind="click: function() { toggleInput() }">Mark favorite</button>
-                            <div data-bind="if: $parent.highlight">
-                                <input type="text" placeholder="Something" value="" data-bind="value: anno" />
-                                <button type="button" class="btn btn-success" data-bind="">Save</button>
+                            <div  data-bind="if: $parent.highlight">
+                                <!--<input type="text" placeholder="Write an annotation" data-bind="textInput: self.anno" />-->
+                                <textarea class="form-control" type="text" placeholder="Write an annotation" data-bind="textInput: self.anno"></textarea>
+                                <button type="button" class="btn btn-success" data-bind="click: function() { saveAnno(self.anno) }">Save</button>
                             </div>
                         </div>
+                        <div>
+                            <input type="hidden" name="sesUserId" value="1" data-bind="value:1" />
+
+                            <div data-bind="if: FavoriteInstance">
+                                <p data-bind="text: self.anno"></p>
+                                <input class="form-control" type="text" data-bind="value: FavoriteInstance.Annotation" />
+                                <button class="btn btn-success" data-bind="click: function () { updateFav(FavoriteInstance.Annotation) }"> Update</button>
+                                <button class="btn btn-danger" data-bind="click: function () { deleteFav() }">Delete</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="postBody">
-                    <div data-bind="css: { hide: Title == null}">
-                        <input type="hidden" name="sesUserId" value="1" data-bind="value:1" />
-
-                        <div data-bind="if: FavoriteInstance">
-                            <input type="text" data-bind="value: FavoriteInstance.Annotation" />
-                            <button class="btn btn-success" data-bind="click: function () { saveInfo(Id) }"> Save</button>
-                        </div>
-                    </div>
+                   
                     <p data-bind="html: Body"></p>
                 </div>
                 <div class="commentBox" data-bind="css: { hide: Comments == 0}">

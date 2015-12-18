@@ -1,37 +1,84 @@
 ﻿define(['knockout', 'jQuery'], function (ko) {
     postdetailVM = function (params) {
+        var self = this;
         var currentPostId = params.selectedPost;
         //console.log(currentPostId());
 
-        var showInput = ko.observable();
         var highlight = ko.observable();
-        var sesUserId = 255;
-        var id = 28894151;
-        self.PostId = ko.observable();
-        self.UserId = ko.observable();
-        self.Annotation = ko.observable("");
 
-        //var sesUserId = 255;
-        //var id = 124462;
+        //**** input data to database ****
+        //self.anno = ko.observable();
+
+        self.sesUserId = 255;
+        self.id = 28737985;
         var data = ko.observableArray([]);
-        if (sesUserId != "") {
-            $.getJSON("/api/posts/" + id + "/" + sesUserId, function (pd) {
+        var anno = ko.observable();
+        if (self.sesUserId != "") {
+            $.getJSON("/api/posts/" + self.id + "/" + self.sesUserId, function (pd) {
                 data(pd.data);
                 console.log(pd.data);
-                console.log("with sesUserId" + sesUserId)
+                //console.log("with sesUserId" + sesUserId); 
+                //anno(pd.FavoriteInstance.Annotation);
+                //console.log(anno());
             });
         } else {
-            $.getJSON("/api/posts/" + id, function (pd) {
+            $.getJSON("/api/posts/" + self.id, function (pd) {
                 data(pd.data);
                 console.log(pd.data);
+               
             });
+        }
+        
+
+        saveAnno = function (anno) {
+            var favObj = {
+                UserId: self.sesUserId,
+                PostId: self.id,
+                Annotation: anno
+            }
+            console.log(favObj);
+            $.post("api/Favorites/" + favObj.UserId + "/" + favObj.PostId, favObj, function (Annotation) {
+                console.log("Your data is saved" + favObj.Annotation);
+            });
+        }
+        updateFav = function (anno) {
+            var favObj = {
+                UserId: self.sesUserId,
+                PostId: self.id,
+                Annotation: anno
+            }
+            $.ajax({
+                url: "api/Favorites/" + favObj.UserId + "/" + favObj.PostId,
+                type : "PUT",
+                contentType: "application/json",
+                data: ko.toJSON(favObj),
+                success: function () {
+                    console.log(favObj);
+                    console.log("Your data is Updated");
+                }
+             });
+        }
+
+        deleteFav = function () {
+            $.ajax({
+                url: "api/Favorites/" + self.sesUserId + "/" + self.id,
+                type: "DELETE",
+                //dataType: "json",
+                contentType: "application/json",
+                data: ko.toJSON(self),
+                success: function () {
+                    //window.location.reload(true);
+                    console.log("Your data is Deleted");
+                    self.anno = "";    
+                }
+            });
+            
         }
 
         self.saveUserData = function () {
-
-            $.post("api/Favorites/" + self.UserId() + "/" + self.PostId(), function () {
+            $.post("api/Favorites/" +self.UserId() + "/" +self.PostId(), function () {
                 alert("Your data is saved");
-            });
+        });
         }
 
         toggleInput = function () {
@@ -43,6 +90,7 @@
             data: data,
             currentPostId: currentPostId,
             highlight: highlight
+            //anno: anno
         }
     }
     return postdetailVM;
