@@ -1,13 +1,22 @@
 ﻿define(['knockout', 'jQuery'], function (ko) {
     postdetailVM = function () {
         this.MyName = "Stefan";
-
-        var id = 105568;
+        var sesUserId = 255;
+        var id = 124462;
         var data = ko.observableArray([]);
-        $.getJSON("/api/posts/" + id, function (pd) {
-            data(pd.data);
-            console.log(pd.data);
-        });
+        if (sesUserId != "") {
+            $.getJSON("/api/posts/" + id + "/" + sesUserId, function (pd) {
+                data(pd.data);
+                console.log(pd.data);
+                console.log("with sesUserId" + sesUserId)
+            });
+        } else {
+            $.getJSON("/api/posts/" + id, function (pd) {
+                data(pd.data);
+                console.log(pd.data);
+            });
+        }
+
 
         //if (data.Comments !== [""])
         //{
