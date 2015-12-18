@@ -7,6 +7,12 @@
         var highlight = ko.observable();
         var sesUserId = 255;
         var id = 28894151;
+        self.PostId = ko.observable();
+        self.UserId = ko.observable();
+        self.Annotation = ko.observable("");
+
+        //var sesUserId = 255;
+        //var id = 124462;
         var data = ko.observableArray([]);
         if (sesUserId != "") {
             $.getJSON("/api/posts/" + id + "/" + sesUserId, function (pd) {
@@ -18,6 +24,13 @@
             $.getJSON("/api/posts/" + id, function (pd) {
                 data(pd.data);
                 console.log(pd.data);
+            });
+        }
+
+        self.saveUserData = function () {
+
+            $.post("api/Favorites/" + self.UserId() + "/" + self.PostId(), function () {
+                alert("Your data is saved");
             });
         }
 
