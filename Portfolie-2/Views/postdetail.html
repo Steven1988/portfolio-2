@@ -7,7 +7,7 @@
         <div class="postLoop" data-bind="foreach: data">
             <div class="postdetail panel panel-body">
                 <div class="postTitle">
-                    <h2  " ></h2>
+                    <h2 data-bind="text: Title"></h2>
                     <p>The id of the post:<span data-bind="text: Id"></span></p>
                     
                     <div class="postUser row">
@@ -15,18 +15,25 @@
                         <span data-bind="dateString: CreationDate, datePattern: 'MM/DD/YYYY'"></span>
                         <p class="col-sm-6" data-bind="text: UserInstance.Name"></p>
                     </div> 
-                    
+                    <div class="favoriteBox">
+                        <div data-bind="css: { hide: FavoriteInstance == null">
+                            <button type="button" class="btn btn-primary" data-toggle="button" autocomplete="off" data-bind="click: function() { toggleInput() }">Mark favorite</button>
+                            <div data-bind="if: $parent.highlight">
+                                <input type="text" placeholder="Something" value="" data-bind="value: anno" />
+                                <button type="button" class="btn btn-success" data-bind="">Save</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="postBody">
-                    <form data-bind="css: { hide: Title == null}">
-                        <input type="text" name="Id" data-bind="value:Id"/>
-                        <input type="hidden" name="sesUserId" value="1" data-bind="value:1"/>
+                    <div data-bind="css: { hide: Title == null}">
+                        <input type="hidden" name="sesUserId" value="1" data-bind="value:1" />
+
                         <div data-bind="if: FavoriteInstance">
                             <input type="text" data-bind="value: FavoriteInstance.Annotation" />
+                            <button class="btn btn-success" data-bind="click: function () { saveInfo(Id) }"> Save</button>
                         </div>
-
-                        <button button class="btn btn-success" data-bind="click: function () { saveInfo(Id) }"> Mark Favorite</button>
-                    </form>
+                    </div>
                     <p data-bind="html: Body"></p>
                 </div>
                 <div class="commentBox" data-bind="css: { hide: Comments == 0}">

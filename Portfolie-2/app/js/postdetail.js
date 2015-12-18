@@ -1,10 +1,12 @@
 ﻿define(['knockout', 'jQuery'], function (ko) {
     postdetailVM = function (params) {
         var currentPostId = params.selectedPost;
-        console.log(currentPostId);
+        //console.log(currentPostId());
 
+        var showInput = ko.observable();
+        var highlight = ko.observable();
         var sesUserId = 255;
-        var id = 124462;
+        var id = 28894151;
         var data = ko.observableArray([]);
         if (sesUserId != "") {
             $.getJSON("/api/posts/" + id + "/" + sesUserId, function (pd) {
@@ -19,9 +21,15 @@
             });
         }
 
+        toggleInput = function () {
+            highlight(!highlight());
+            console.log("toggle is clicked");
+        };
+
         return {
             data: data,
-            currentPostId: currentPostId
+            currentPostId: currentPostId,
+            highlight: highlight
         }
     }
     return postdetailVM;

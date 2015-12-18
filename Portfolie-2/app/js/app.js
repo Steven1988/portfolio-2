@@ -5,7 +5,7 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
     app.mainViewModel = function () {
         mainVM = this;
 
-        var currentComponent = ko.observable("search");
+        var currentComponent = ko.observable("postdetail");
         currentPostId = ko.observable("");
 
         goToPostDetail = function (Id) {
