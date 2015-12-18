@@ -1,9 +1,9 @@
 ﻿define(['knockout','jQuery','bootstrap'], function (ko) {
-    postViewModel = function () {
+    postViewModel = function (params) {
         vm = this;
         var data = ko.observableArray([]);
         var page = ko.observable();
-        var currentPostId = ko.observable();
+        var currentPostId = params.selectedPostId
 
         $.getJSON("/api/posts", function (posts) {
 
@@ -16,7 +16,7 @@
             console.log(posts.paging);
         });
 
-        //******* Paging *******'
+        //******* Paging ********
         nextPage = function (nextUrl) {
             $.getJSON(nextUrl, function (posts) {
                 data(posts.data);
@@ -33,25 +33,26 @@
         //console.log(posts.Body);
 
         //******** functions *********
-        goToPost = function (Id) {
-           
-            console.log(Id);
-            currentPostId(Id);
+        //goToPost = function (Id) {
+        //    currentPostId(Id);
+        //    console.log(currentPostId);
 
-            //currentComponent('postdetail');
-            //ko.navbarVM().showContent('postdetail')
-            //ko.components.get('postdetail', ko.postdetailVM(Id));
 
-            //postdetailVM(Id)
-            //$.getJSON(Url, function (posts) {
-            //    data(posts.data);
-            //})
-            //return data;
-        }
+        //    currentComponent('postdetail');
+        //    ko.navbarVM().showContent('postdetail')
+        //    ko.components.get('postdetail', ko.postdetailVM(Id));
+
+        //    postdetailVM(Id)
+        //    $.getJSON(Url, function (posts) {
+        //        data(posts.data);
+        //    })
+        //    return data;
+        //}
 
         return {
             posts: data,
             page: page,
+            goToPost: params.goToPostDetail,
             currentPostId: currentPostId
         }
     };

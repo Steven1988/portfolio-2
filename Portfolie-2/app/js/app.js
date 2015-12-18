@@ -4,16 +4,31 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
 
     app.mainViewModel = function () {
         mainVM = this;
+
         var currentComponent = ko.observable("search");
         currentPostId = ko.observable("");
 
-        //mainVM.postVM = new postVM(postViewModel)
-        //console.log(mainVM.postVM);
-        if (currentPostId != "") {
-            currentComponent = "postdetail";
-            console.log(currentPostId);
+        goToPostDetail = function (Id) {
+            currentPostId(Id);
+            currentComponent("postdetail");
         }
 
+        //currentPId = ko.toJS(currentPostId);
+        //console.log(currentPId);
+
+        //if (currentPId != "") {
+        //    currentComponent("postdetail");
+        //    console.log(currentComponent);
+        //}
+
+        //goToPost = function (Id) {
+        //    var currentPId = ko.observable();
+        //    currentPId(Id);
+        //    console.log(currentPId);
+        //}
+
+        //mainVM.postVM = new postVM(postViewModel)
+        //console.log(mainVM.postVM);
         return {
             currentComponent: currentComponent,
             currentPostId: currentPostId
