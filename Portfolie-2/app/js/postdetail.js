@@ -1,6 +1,8 @@
 ﻿define(['knockout', 'jQuery'], function (ko) {
-    postdetailVM = function () {
-        this.MyName = "Stefan";
+    postdetailVM = function (params) {
+        var currentPostId = params.selectedPostId;
+        console.log(currentPostId);
+
         var sesUserId = 255;
         var id = 124462;
         var data = ko.observableArray([]);

@@ -25,6 +25,15 @@ namespace Portfolie_2.Controllers
             Page<SearchPost> p = new Page<SearchPost>(items);
             return p;
         }
+        public Page<DetailPost> Get(int id)
+        {
+            int limit = QueryStringCall.Limit();
+            int offset = QueryStringCall.String("offset");
+            int sesUserId = QueryStringCall.String("sesUserId");
+            IEnumerable<DetailPost> items = _postRepository.GetById(id, sesUserId, limit, offset);
+            Page<DetailPost> p = new Page<DetailPost>(items);
+            return p;
+        }
 
         public Page<DetailPost> Get(int id, int sesUserId)
         {

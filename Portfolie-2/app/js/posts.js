@@ -3,7 +3,7 @@
         vm = this;
         var data = ko.observableArray([]);
         var page = ko.observable();
-        var currentComponent = ko.observable();
+        var currentPostId = ko.observable();
 
         $.getJSON("/api/posts", function (posts) {
 
@@ -16,6 +16,7 @@
             console.log(posts.paging);
         });
 
+        //******* Paging *******'
         nextPage = function (nextUrl) {
             $.getJSON(nextUrl, function (posts) {
                 data(posts.data);
@@ -31,26 +32,27 @@
         //var summary = 50;
         //console.log(posts.Body);
 
-        goToPost = function (Id, Url) {
+        //******** functions *********
+        goToPost = function (Id) {
            
-            console.log(Url);
+            console.log(Id);
+            currentPostId(Id);
 
             //currentComponent('postdetail');
-            ko.navbarVM().showContent('postdetail')
-            ko.components.get('postdetail', ko.postdetailVM(Id));
+            //ko.navbarVM().showContent('postdetail')
+            //ko.components.get('postdetail', ko.postdetailVM(Id));
 
             //postdetailVM(Id)
             //$.getJSON(Url, function (posts) {
             //    data(posts.data);
             //})
             //return data;
-            //do somthing
         }
 
         return {
             posts: data,
             page: page,
-            currentComponent: currentComponent
+            currentPostId: currentPostId
         }
     };
     return postViewModel;
