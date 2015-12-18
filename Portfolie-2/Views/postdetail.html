@@ -7,24 +7,25 @@
         <div class="postLoop" data-bind="foreach: data">
             <div class="postdetail panel panel-body">
                 <div class="postTitle">
-                    <h2 data-bind="text: Title" ></h2>
+                    <h2  " ></h2>
                     <p>The id of the post:<span data-bind="text: Id"></span></p>
                     
                     <div class="postUser row">
                         <!--<p class="col-sm-6" data-bind="text: CreationDate"></p>-->
-                        <span data-bind="date: CreationDate, datePattern: 'MM/DD/YYYY'"></span>
+                        <span data-bind="dateString: CreationDate, datePattern: 'MM/DD/YYYY'"></span>
                         <p class="col-sm-6" data-bind="text: UserInstance.Name"></p>
                     </div> 
                     
                 </div>
                 <div class="postBody">
                     <form data-bind="css: { hide: Title == null}">
-                        <input type="hidden" name="Id" data-bind="value:Id"/>
+                        <input type="text" name="Id" data-bind="value:Id"/>
                         <input type="hidden" name="sesUserId" value="1" data-bind="value:1"/>
-                        <h2>You Annotation for is.</h2>
-                        
-                        <input type="text" data-bind="if: FavoriteInstance,  value: FavoriteInstance.Annotation" />
-                        <button button class="btn btn-success" data-bind="if: FavoriteInstance !== null, click: function () { saveInfo(Id) }, disable: FavoriteInstance.Annotation!==null"> Mark Favorite</button>
+                        <div data-bind="if: FavoriteInstance">
+                            <input type="text" data-bind="value: FavoriteInstance.Annotation" />
+                        </div>
+
+                        <button button class="btn btn-success" data-bind="click: function () { saveInfo(Id) }"> Mark Favorite</button>
                     </form>
                     <p data-bind="html: Body"></p>
                 </div>

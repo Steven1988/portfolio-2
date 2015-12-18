@@ -1,6 +1,6 @@
 ﻿define(['knockout', 'jQuery'], function (ko) {
     postdetailVM = function (params) {
-        var currentPostId = params.selectedPostId;
+        var currentPostId = params.selectedPost;
         console.log(currentPostId);
 
         var sesUserId = 255;
@@ -19,15 +19,9 @@
             });
         }
 
-
-        //if (data.Comments !== [""])
-        //{
-        //    $('.someclass')append(some element);
-        //} else {
-        // //   something else
-        //}
         return {
-            data: data
+            data: data,
+            currentPostId: currentPostId
         }
     }
     return postdetailVM;

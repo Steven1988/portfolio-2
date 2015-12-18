@@ -11,9 +11,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav" data-bind="foreach: menuItems">
                 <li>
-                    <a href="" data-bind="text: mItem, click: function() {showContent(mItem)}">
-                        <i class="fa fa-comments"></i>
-                    </a>
+                    <a href="" data-bind="html: icon + '&nbsp;' + mItem, click: function() {showContent(mItem)}"></a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
