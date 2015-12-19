@@ -9,7 +9,7 @@
         //**** input data to database ****
         //self.anno = ko.observable();
 
-        self.sesUserId = 255;
+        self.sesUserId = 1;
         self.id = 28737985;
         var data = ko.observableArray([]);
         var anno = ko.observable();
@@ -39,6 +39,8 @@
             console.log(favObj);
             $.post("api/Favorites/" + favObj.UserId + "/" + favObj.PostId, favObj, function (Annotation) {
                 console.log("Your data is saved" + favObj.Annotation);
+                window.location.reload(true);
+                
             });
         }
         updateFav = function (anno) {

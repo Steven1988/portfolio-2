@@ -3,61 +3,79 @@
         <h2>Post details</h2>
 
         <!--<h3 data-bind="text: Title"></h3>-->
-       
+
         <div class="postLoop" data-bind="foreach: data">
             <div class="postdetail panel panel-body">
                 <div class="postTitle">
                     <h2 data-bind="text: Title"></h2>
                     <p>The id of the post:<span data-bind="text: Id"></span></p>
-                    
+
                     <div class="postUser row">
                         <!--<p class="col-sm-6" data-bind="text: CreationDate"></p>-->
                         <span data-bind="dateString: CreationDate, datePattern: 'MM/DD/YYYY'"></span>
                         <p class="col-sm-6" data-bind="text: UserInstance.Name"></p>
                     </div>
-                     
+
                     <div class="favoriteBox" data-bind="css: { hide: Title == null}">
-                        
+
                         <div data-bind="css: { hide: FavoriteInstance == null">
-                            <button type="button" class="btn btn-primary" data-toggle="button" autocomplete="off" data-bind="click: function() { toggleInput() }">Mark favorite</button>
-                            <div  data-bind="if: $parent.highlight">
-                                <!--<input type="text" placeholder="Write an annotation" data-bind="textInput: self.anno" />-->
-                                <textarea class="form-control" type="text" placeholder="Write an annotation" data-bind="textInput: self.anno"></textarea>
-                                <button type="button" class="btn btn-success" data-bind="click: function() { saveAnno(self.anno) }">Save</button>
+                            <!--<button type="button" class="btn btn-primary" data-toggle="button" autocomplete="off" data-bind="click: function() { toggleInput() }">Mark favorite</button>-->
+                            <button id="inputFavorite" type="submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#SaveAnnotation">Save Annotation</button>
+                            <div id="SaveAnnotation" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Write Annotation</h4>
+                                        </div>
+                                        <textarea class="form-control" type="text" placeholder="Write an annotation" data-bind="textInput: self.anno"></textarea><hr/>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal" data-bind="click: function() { saveAnno(self.anno) }">Save</button> 
+                                    </div>
+                                </div>
                             </div>
+
+                            <!--<div data-bind="css: {hide: FavoriteInstance.Annotation }">-->
+                            <!--<div data-bind="if: $parent.highlight">-->
+                                <!--<input type="text" placeholder="Write an annotation" data-bind="textInput: self.anno" />-->
+                                <!--<textarea class="form-control" type="text" placeholder="Write an annotation" data-bind="textInput: self.anno"></textarea>
+                                <button type="button" class="btn btn-success" data-bind="click: function() { saveAnno(self.anno) }">Save</button>
+                            </div>-->
+                            <!--</div>-->
                         </div>
                         <div>
                             <input type="hidden" name="sesUserId" value="1" data-bind="value:1" />
 
                             <div data-bind="if: FavoriteInstance">
-                                <p data-bind="text: self.anno"></p>
+                                <label data-bind="value: FavoriteInstance.Annotation" />
                                 <input class="form-control" type="text" data-bind="value: FavoriteInstance.Annotation" />
                                 <button class="btn btn-success" data-bind="click: function () { updateFav(FavoriteInstance.Annotation) }"> Update</button>
                                 <button class="btn btn-danger" data-bind="click: function () { deleteFav() }">Delete</button>
                             </div>
+
                         </div>
 
                     </div>
                 </div>
                 <div class="postBody">
-                   
+
                     <p data-bind="html: Body"></p>
                 </div>
                 <div class="commentBox" data-bind="css: { hide: Comments == 0}">
                     <div data-bind="foreach: Comments">
                         <p class="commentAuthor">Author: <span data-bind="text: AuthorName"></span></p>
-                        
+
                         <p data-bind="text: Text"></p>
                         <p data-bind="text: CommentId"></p>
                         <p data-bind="text: AuthorName"></p>
                     </div>
                 </div>
-                
 
-                
+
+
             </div>
 
         </div>
     </div>
-    
+
 </div>
