@@ -17,7 +17,6 @@
                     </div>
 
                     <div class="favoriteBox" data-bind="css: { hide: Title == null}">
-
                         <div data-bind="css: { hide: FavoriteInstance == null">
                             <!--<button type="button" class="btn btn-primary" data-toggle="button" autocomplete="off" data-bind="click: function() { toggleInput() }">Mark favorite</button>-->
                             <button type="submit" class="input" data-toggle="modal" data-target="#SaveAnnotation"/>
@@ -43,14 +42,26 @@
                             </div>-->
                             <!--</div>-->
                         </div>
-                        <div>
-                            <input type="hidden" name="sesUserId" value="1" data-bind="value:1" />
-
-                            <div data-bind="if: FavoriteInstance">
-                                <label data-bind="value: FavoriteInstance.Annotation" />
-                                <input class="form-control" type="text" data-bind="value: FavoriteInstance.Annotation" />
-                                <button class="btn btn-success" data-bind="click: function () { updateFav(FavoriteInstance.Annotation) }"> Update</button>
-                                <button class="btn btn-danger" data-bind="click: function () { deleteFav() }">Delete</button>
+                        <div data-bind="hide : FavoriteInstance.Annotation == null">
+                        <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#ViewAnnotation">View Annotation</button>
+                        <div id="ViewAnnotation" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Annotation</h4>
+                                    </div>
+                                    <input type="hidden" name="sesUserId" value="1" data-bind="value:1" />
+                                    <div data-bind="if: FavoriteInstance">
+                                        <label data-bind="value: FavoriteInstance.Annotation" />
+                                        <input class="form-control" type="text" data-bind="value: FavoriteInstance.Annotation" /><hr/>
+                                        <button class="btn btn-success" data-dismiss="modal" data-bind="click: function () { updateFav(FavoriteInstance.Annotation) }"> Update</button>
+                                        <button class="btn btn-danger" data-dismiss="modal" data-bind="click: function () { deleteFav() }">Delete</button>
+                                    </div>
+                                </div>
+                        
+                            
                             </div>
 
                         </div>
