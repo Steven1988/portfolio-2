@@ -49,3 +49,8 @@ img {
 .headline {
     margin-bottom: 30px;
 }
+
+.pager-next, .pager-prev {
+    background-color: #E1E1E1 !important;
+    cursor: pointer;
+}

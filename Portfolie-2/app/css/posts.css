@@ -2,7 +2,7 @@
  
 }
 .postItem {
-    background-color: rgb(227,212,161);
+    background-color: #E1E1E1;
     border-radius: 8px;
     padding: 10px;
     margin: 20px 0;
@@ -22,7 +22,6 @@
 }
 .search-input {
     width: 80% !important;
-
 }
 .pagination-centered {
     text-align: center;

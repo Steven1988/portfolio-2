@@ -20,34 +20,26 @@
         </div>
     </div>
 </div>
-<div class="row component-item" data-bind="">
-    <div class="col-sm-12 col-lg-8">
-        <div class="postContainer">
-            <div data-bind="foreach: searchPosts">
-
-                <div class="postItem">
-                    <h4>
-                        <a data-bind="text: Title, click: function() { $parent.goToPost(Id) }"></a>
-                    </h4>
-                    <div data-bind="text: Id"></div>
-                    <div data-bind="html: Body"></div>
-
-                    <!--<div class="panel panel-default">
-                        <a data-bind="attr: { href: Url, title: Title }, text: Url"></a>
-                    </div>-->
+<div data-bind="if: searchItem">
+    <div class="row component-item" >
+        <div class="col-sm-12 col-lg-8">
+            <div class="postContainer">
+                <div data-bind="foreach: searchPosts">
+                    <div class="postItem">
+                        <h4>
+                            <a data-bind="text: Title, click: function() { $parent.goToPost(Id) }"></a>
+                        </h4>
+                        <div data-bind="text: Id"></div>
+                        <div data-bind="html: Body"></div>
+                    </div>
                 </div>
-
-
+                <nav>
+                    <ul class="pager" data-bind="foreach: page">
+                        <li data-bind="if: prevUrl"><a class="pager-prev" data-bind='click: function() { prevPage(prevUrl) }'>Previous</a></li>
+                        <li data-bind="if: nextUrl"><a class="pager-next" data-bind='click: function() { nextPage(nextUrl) }'>Next</a></li>
+                    </ul>
+                </nav>
             </div>
-
-            <!--<nav>
-                <ul class="pager">
-                    <li><a data-bind='attr: { href: prevUrl, title: "Prev"}'>Previous</a></li>
-                    <li>
-                        <a data-bind="attr: { href: nextUrl, title: nextUrl }">Next</a>
-                    </li>
-                </ul>
-            </nav>-->
         </div>
     </div>
 </div>
