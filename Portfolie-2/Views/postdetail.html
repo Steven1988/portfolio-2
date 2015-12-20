@@ -8,7 +8,7 @@
             <div class="postdetail panel panel-body">
                 <div class="postTitle">
                     <h2 data-bind="text: Title"></h2>
-                    <p>The id of the post:<span data-bind="text: Id"></span></p>
+                    <p>The id of the post: <span data-bind="text: Id"></span></p>
 
                     <div class="postUser row">
                         <!--<p class="col-sm-6" data-bind="text: CreationDate"></p>-->
@@ -86,10 +86,10 @@
                 </div>
                 <div class="commentBox" data-bind="css: { hide: Comments == 0}">
                     <div data-bind="foreach: Comments">
-                        <p class="commentAuthor">Author: <span data-bind="text: AuthorName"></span></p>
-
-                        <p data-bind="text: Text"></p>
-                        <p data-bind="text: CommentId"></p>
+                        <div class="comment">
+                            <p class="commentAuthor boldtext" data-bind="text: AuthorName"></p>
+                            <p class="comment-body" data-bind="text: Text"></p>
+                        </div>
                     </div>
                 </div>
             </div>

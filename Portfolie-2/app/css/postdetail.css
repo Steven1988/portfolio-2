@@ -31,16 +31,27 @@
     display: none;
 }
 
-
+/* ***** comments ***** */
 .commentBox {
     border: 1px solid grey;
     border-radius:7px;
     padding: 5px;
     background-color: #ffffff;
 }
-
+.comment {
+    margin-bottom: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px; 
+}
 .commentAuthor {
     font-weight: bold;
+    border-bottom: 1px solid;
+    margin-left: 2px;
+    width: 150px;
+}
+.comment-body {
+    border-radius: 4px;
+    margin: 7px;
 }
 
 .modal-content {
