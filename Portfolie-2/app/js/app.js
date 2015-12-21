@@ -5,8 +5,15 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
     app.mainViewModel = function () {
         mainVM = this;
 
-        var currentComponent = ko.observable("postdetail");
+        var currentComponent = ko.observable("tags");
         currentPostId = ko.observable("");
+
+        //**** setting the sesUserId ******
+        var theUser = ko.observable();
+        var desiredUserId = 136;
+        $.getJSON('/api/users/' + desiredUserId, function (user) {
+            theUser(user);
+        });
 
         goToPostDetail = function (Id) {
             currentPostId(Id);
@@ -15,7 +22,8 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
 
         return {
             currentComponent: currentComponent,
-            currentPostId: currentPostId
+            currentPostId: currentPostId,
+            user: theUser
             //change: function () {
             //    this.currentComponent("postDetail")
             //}
@@ -56,6 +64,10 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
         viewModel: { require: 'app/js/search' },
         template: { require: 'Scripts/text!Views/search.html' }
     });
+    ko.components.register('yourprofile', {
+        viewModel: { require: 'app/js/user' },
+        template: { require: 'Scripts/text!Views/user.html'}
+    })
 
 
     ko.applyBindings(new app.mainViewModel());

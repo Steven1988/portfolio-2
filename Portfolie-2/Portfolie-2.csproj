@@ -130,6 +130,7 @@
     <Content Include="app\css\postdetail.css" />
     <Content Include="app\css\posts.css" />
     <Content Include="app\css\tag.css" />
+    <Content Include="app\css\user.css" />
     <Content Include="app\images\Java-Programming-Wallpaper.jpg" />
     <Content Include="app\images\php-code.jpg" />
     <Content Include="app\images\UI_design.jpg" />
@@ -140,6 +141,7 @@
     <Content Include="app\js\tags.js" />
     <Content Include="app\js\postdetail.js" />
     <Content Include="app\js\posts.js" />
+    <Content Include="app\js\user.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -172,7 +174,7 @@
     <Content Include="Scripts\requirejs.js" />
     <Content Include="Scripts\text.js" />
     <Content Include="Views\fav.html" />
-    <Content Include="Views\history.html" />
+    <Content Include="Views\user.html" />
     <Content Include="Views\navbar.html" />
     <Content Include="Views\search.html" />
     <Content Include="Views\tags.html" />

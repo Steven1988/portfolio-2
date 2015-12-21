@@ -2,15 +2,15 @@
     navbarVM = function (params) {
 
         var menuItems = [
-            { mItem: "Search", icon: "<i class='fa fa-search'></i>" },
-            { mItem: "Posts", icon: "<i class='fa fa-envelope'></i>" },
-            { mItem: "Tags", icon: "<i class='fa fa-tags'></i>" },
-            { mItem: "Postdetail", icon: "<i class='fa fa-asterisk'></i>" }
+            { mItem: "Search", icon: "fa fa-search" },
+            { mItem: "Posts", icon: "fa fa-envelope" },
+            { mItem: "Tags", icon: "fa fa-tags" },
+            { mItem: "Postdetail", icon: "fa fa-asterisk" }
         ];
     
         var dropdownMenu = [
-            { dropItem: "Favorites", icon: "fa-comments" },
-            { dropItem: "Search History", icon: "fa-comments" }
+            { dropItem: "Your Profile", icon: "fa fa-user" },
+            { dropItem: "Favorites", icon: "fa fa-comments" },
         ];
 
         var currentComponent = params.selectedComponent;
@@ -18,6 +18,9 @@
 
         showContent = function (mItem) {
             if (mItem == "Search History") {
+                mItem = mItem.replace(/\s+/g, '');
+            }
+            if (mItem == "Your Profile") {
                 mItem = mItem.replace(/\s+/g, '');
             }
             name = mItem.toLowerCase();

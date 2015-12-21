@@ -1,0 +1,41 @@
+﻿<div class="row component-item" >
+    <div class="col-md-8">
+        <h2>Your Profile</h2>
+        <div class="your-profile">
+            <div>
+                <h3 data-bind="text: sesUser().DisplayName"></h3>
+                <label>Age:</label>
+                <span data-bind="text: sesUser().Age"></span>
+            </div>
+            <div>
+                <label>Location:</label>
+                <span data-bind="text: sesUser().Location"></span>
+            </div>
+        </div>
+
+        <div class="search-history">
+            <h4 data-bind='text: "Hi " + sesUser().DisplayName + ", you have searched for:"'></h4>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr class="boldtext">
+                        <td>Search</td>
+                        <td>Date</td>
+                        <td>User Id</td>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: searchHistoryPost">
+                    <tr>
+                        <td data-bind="text: Query"></td>
+                        <td data-bind="html: QueryTime"></td>
+                        <td data-bind="text: UserId"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-danger pull-right" data-bind="click: deleteHistory">Delete Search History</button>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2>Favorites</h2>
+    </div>
+</div>
