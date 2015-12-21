@@ -13,6 +13,11 @@
         self.id = 28894151;
         var data = ko.observableArray([]);
         var anno = ko.observable();
+
+        function trimfield(str) {
+            return str.replace(/^\s+|\s+$/g, '');
+        }
+
         if (self.sesUserId != "") {
             $.getJSON("/api/posts/" + self.id + "/" + self.sesUserId, function (pd) {
                 data(pd.data);
@@ -36,12 +41,32 @@
                 PostId: self.id,
                 Annotation: anno
             }
+
             console.log(favObj);
-            $.post("api/Favorites/" + favObj.UserId + "/" + favObj.PostId, favObj, function (Annotation) {
-                console.log("Your data is saved" + favObj.Annotation);
-                window.location.reload(true);
+
+            
+
+            //***Validation to check if the text area is empty.****
+
+            //var validation = $('#textAnnotation');
+            var validation = document.getElementById('textSave');
+            if (trimfield(validation.value) == '') {
+                alert("Please Provide Details!");
+                validation.focus();
+                return false;
+
+            } else {
                 
-            });
+                $.post("api/Favorites/" + favObj.UserId + "/" + favObj.PostId, favObj, function (Annotation) {
+                    console.log("Your data is saved" + favObj.Annotation);
+                    window.location.reload(true);
+
+                    
+
+
+
+                });
+            }
         }
         updateFav = function (anno) {
             var favObj = {
@@ -49,16 +74,25 @@
                 PostId: self.id,
                 Annotation: anno
             }
-            $.ajax({
-                url: "api/Favorites/" + favObj.UserId + "/" + favObj.PostId,
-                type : "PUT",
-                contentType: "application/json",
-                data: ko.toJSON(favObj),
-                success: function () {
-                    console.log(favObj);
-                    console.log("Your data is Updated");
-                }
-             });
+
+            var validation = document.getElementById('textUpdate');
+            if (trimfield(validation.value) == '') {
+                alert("Please Provide Details!");
+                validation.focus();
+                return false;
+
+            } else {
+                $.ajax({
+                    url: "api/Favorites/" + favObj.UserId + "/" + favObj.PostId,
+                    type: "PUT",
+                    contentType: "application/json",
+                    data: ko.toJSON(favObj),
+                    success: function () {
+                        console.log(favObj);
+                        console.log("Your data is Updated");
+                    }
+                });
+            }
         }
 
         deleteFav = function () {
