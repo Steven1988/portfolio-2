@@ -18,10 +18,10 @@
                 <div class="favoriteBox" data-bind="css: { hide: Title == null}">
                     <div>
                         <div data-bind="if: !FavoriteInstance">
-                            <button type="submit" class="btn btn-info input" data-toggle="modal" data-target="#ViewAnnotation"><i class="fa fa-star-o"></i></button>
+                            <button type="submit" class="input" data-toggle="modal" data-target="#ViewAnnotation"><i class="fa fa-star-o"></i></button>
                         </div>
                         <div data-bind="if: FavoriteInstance">
-                            <button type="submit" class="btn btn-info input" data-toggle="modal" data-target="#ViewAnnotation"><i class="fa fa-star"></i></button>
+                            <button type="submit" class="input" data-toggle="modal" data-target="#ViewAnnotation"><i class="fa fa-star"></i></button>
                         </div>
 
                         <div id="ViewAnnotation" class="modal fade" role="dialog">
@@ -60,7 +60,10 @@
                 <div class="commentBox" data-bind="css: { hide: Comments == 0}">
                     <div data-bind="foreach: Comments">
                         <div class="comment">
-                            <p class="commentAuthor boldtext" data-bind="text: AuthorName"></p>
+                            <p class="commentAuthor boldtext" data-bind="text: AuthorName">
+                                
+                            </p>
+                            <span class="comment-date text-muted" data-bind="text: CreationDate"></span>
                             <p class="comment-body" data-bind="text: Text"></p>
                         </div>
                     </div>
