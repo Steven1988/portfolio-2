@@ -4,16 +4,14 @@
         var searchItem = ko.observable("");
         var data = ko.observableArray([]);
         var page = ko.observable();
-        var sessionUserId = ko.observable("1");
+
+        var sesUser = params.sesUser;
+        sesUserId = sesUser().Id;
         var currentPostId = params.selectedPostId;
 
-        //Tagname = searchItem;
-
-        getResult = function (searchItem, sessionUserId) {
+        getResult = function (searchItem) {
             var searchString = ko.toJS(searchItem);
-            var sesUserId = ko.toJS(sessionUserId);
 
-            //console.log(searchString);
             if (sesUserId != "") {
                 $.getJSON('api/search/' +searchString + "/" + sesUserId, function(searchPosts) {
                     data(searchPosts.data);
@@ -47,7 +45,7 @@
             searchPosts: data,
             page: page,
             searchItem: searchItem,
-            sesUserId: sessionUserId,
+            sesUserId: sesUserId,
             goToPost: params.goToPostDetail
         }
     }

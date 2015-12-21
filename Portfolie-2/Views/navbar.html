@@ -11,7 +11,10 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav" data-bind="foreach: menuItems">
                 <li>
-                    <a href="" data-bind="html: icon + '&nbsp;' + mItem, click: function() {showContent(mItem)}"></a>
+                    <a href="" data-bind="click: function() {showContent(mItem)}">
+                        <i data-bind="attr: { class: icon }"></i>
+                        <span data-bind="text: mItem"></span>
+                    </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -19,11 +22,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> User Menu <b class="caret"></b></a>
                     <ul class="dropdown-menu" data-bind="foreach: dropdownMenu">
                         <li>
-                            <a href="" data-bind="text: dropItem, click: function () { showContent(dropItem)}">
-                                
-                                <i data-bind="css: { className: 'fa ' + icon }"></i>
-
-                            </a> <i class="fa fa-comments"></i>
+                            <a href="" data-bind="click: function () { showContent(dropItem)}">
+                                <i data-bind="attr: { class: icon }"></i>
+                                <span data-bind="text: dropItem"></span>
+                            </a>
                         </li>
                     </ul>
                 </li>

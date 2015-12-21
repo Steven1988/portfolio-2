@@ -47,11 +47,15 @@
     font-weight: bold;
     border-bottom: 1px solid;
     margin-left: 2px;
+    margin-bottom: 2px;
     width: 150px;
 }
 .comment-body {
     border-radius: 4px;
     margin: 7px;
+}
+.comment-date {
+    margin-left: 2px;
 }
 
 .modal-content {
@@ -61,11 +65,13 @@
 .input[type=submit] {
     /*background:url(../images/Favorite.png) no-repeat;
     background-size:cover;*/
-    border: 0;
+    border: none;
     display:block;
     float:right;
     position:relative;
     top: -112px;
+    background-color: transparent;
+    font-size: 26px;
 }
 
 .anno-content {
