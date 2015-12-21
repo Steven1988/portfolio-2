@@ -4,12 +4,10 @@
         var currentPostId = params.selectedPost;
         //console.log(currentPostId());
 
-        var highlight = ko.observable();
+        var sesUser = params.sesUser;
+        sesUserId = sesUser().Id;
 
-        //**** input data to database ****
-        //self.anno = ko.observable();
-
-        self.sesUserId = 1;
+        //var highlight = ko.observable();
         self.id = 28894151;
         var data = ko.observableArray([]);
         var anno = ko.observable();
@@ -19,7 +17,7 @@
         }
 
         if (self.sesUserId != "") {
-            $.getJSON("/api/posts/" + self.id + "/" + self.sesUserId, function (pd) {
+            $.getJSON("/api/posts/" + self.id + "/" + sesUserId, function (pd) {
                 data(pd.data);
                 console.log(pd.data);
                 //console.log("with sesUserId" + sesUserId); 
@@ -37,7 +35,7 @@
 
         saveAnno = function (anno) {
             var favObj = {
-                UserId: self.sesUserId,
+                UserId: sesUserId,
                 PostId: self.id,
                 Annotation: anno
             }
@@ -61,16 +59,12 @@
                     console.log("Your data is saved" + favObj.Annotation);
                     window.location.reload(true);
 
-                    
-
-
-
                 });
             }
         }
         updateFav = function (anno) {
             var favObj = {
-                UserId: self.sesUserId,
+                UserId: sesUserId,
                 PostId: self.id,
                 Annotation: anno
             }
@@ -97,7 +91,7 @@
 
         deleteFav = function () {
             $.ajax({
-                url: "api/Favorites/" + self.sesUserId + "/" + self.id,
+                url: "api/Favorites/" + sesUserId + "/" + self.id,
                 type: "DELETE",
                 //dataType: "json",
                 contentType: "application/json",
@@ -111,21 +105,14 @@
             
         }
 
-        self.saveUserData = function () {
-            $.post("api/Favorites/" +self.UserId() + "/" +self.PostId(), function () {
-                alert("Your data is saved");
-        });
-        }
-
-        toggleInput = function () {
-            highlight(!highlight());
-            console.log("toggle is clicked");
-        };
+        //toggleInput = function () {
+        //    highlight(!highlight());
+        //    console.log("toggle is clicked");
+        //};
 
         return {
             data: data,
-            currentPostId: currentPostId,
-            highlight: highlight
+            currentPostId: currentPostId
             //anno: anno
         }
     }
