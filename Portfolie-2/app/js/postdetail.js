@@ -8,7 +8,7 @@
 
         //**** input data to database ****
         //self.anno = ko.observable();
-
+       
         self.sesUserId = 1;
         self.id = 28894151;
         var data = ko.observableArray([]);
@@ -44,14 +44,13 @@
 
             console.log(favObj);
 
-            
-
             //***Validation to check if the text area is empty.****
 
             //var validation = $('#textAnnotation');
             var validation = document.getElementById('textSave');
             if (trimfield(validation.value) == '') {
-                alert("Please Provide Details!");
+               // $(".error-messages").text("Please write in something!").fadeIn();
+               alert("Please Write in Something!");
                 validation.focus();
                 return false;
 
@@ -60,14 +59,11 @@
                 $.post("api/Favorites/" + favObj.UserId + "/" + favObj.PostId, favObj, function (Annotation) {
                     console.log("Your data is saved" + favObj.Annotation);
                     window.location.reload(true);
-
-                    
-
-
-
+                    //favObj.Annotation("");
                 });
             }
         }
+
         updateFav = function (anno) {
             var favObj = {
                 UserId: self.sesUserId,
@@ -77,7 +73,7 @@
 
             var validation = document.getElementById('textUpdate');
             if (trimfield(validation.value) == '') {
-                alert("Please Provide Details!");
+                alert("Please Write in Something!");
                 validation.focus();
                 return false;
 
@@ -95,7 +91,7 @@
             }
         }
 
-        deleteFav = function () {
+        deleteFav = function (anno) {
             $.ajax({
                 url: "api/Favorites/" + self.sesUserId + "/" + self.id,
                 type: "DELETE",
@@ -105,7 +101,8 @@
                 success: function () {
                     //window.location.reload(true);
                     console.log("Your data is Deleted");
-                    self.anno = "";    
+                    self.anno = "";
+                    anno = "";
                 }
             });
             
