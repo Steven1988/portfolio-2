@@ -1,4 +1,5 @@
-﻿<div class="panel panel-default">
+﻿
+<div class="panel panel-default">
     <div class="postdetail-container">
         <h2>Post details</h2>
 
@@ -33,22 +34,22 @@
                                         <h4 class="modal-title">Annotation</h4>
                                     </div>
                                     <div class="anno-content">
-                                        <div data-bind="if: !FavoriteInstance">
-                                            <textarea class="form-control" type="text" placeholder="Write an annotation" data-bind="textInput: self.anno"></textarea>
+                                        <div data-bind="if: !FavoriteInstance" class="form-group has-error">
+                                            <textarea id="textSave" class="form-control" type="text" placeholder="Write an annotation" data-bind="textInput: self.anno" required></textarea>
                                             <div class="anno-btn-group">
                                                 <button type="button" class="btn btn-success pull-right anno-btns" data-bind="click: function() { saveAnno(self.anno) }"><i class="fa fa-floppy-o"></i> Save</button>
                                             </div>
                                         </div>
-                                        <div data-bind="if: FavoriteInstance">
+                                        <div data-bind="if: FavoriteInstance"  class="form-group has-error">
                                             <p data-bind="text: FavoriteInstance.Annotation"></p>
-                                            <textarea class="form-control" type="text" data-bind="value: FavoriteInstance.Annotation"></textarea>
+                                            <textarea  id="textUpdate" class="form-control" type="text" data-bind="value: FavoriteInstance.Annotation" required></textarea>
                                             <div class="anno-btn-group">
                                                 <button class="btn btn-success anno-btns pull-right" data-dismiss="modal" data-bind="click: function () { updateFav(FavoriteInstance.Annotation) }"> Update</button>
                                                 <button class="btn btn-danger anno-btns pull-right" data-dismiss="modal" data-bind="click: function () { deleteFav() }">Delete</button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>   
+                                </div>
                             </div>
                         </div>
                     </div>
