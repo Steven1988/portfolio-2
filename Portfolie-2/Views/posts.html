@@ -5,8 +5,8 @@
         </h2>
         <nav>
             <ul class="pager" data-bind="foreach: page">
-                <li><a class="pager-prev" data-bind='click: function() { prevPage(prevUrl) }'>Previous</a></li>
-                <li><a class="pager-next" data-bind='click: function() { nextPage(nextUrl) }'>Next</a></li>
+                <li data-bind="if: prevUrl"><a class="pager-prev" data-bind='click: function() { prevPage(prevUrl) }'>Previous</a></li>
+                <li data-bind="if: nextUrl"><a class="pager-next" data-bind='click: function() { nextPage(nextUrl) }'>Next</a></li>
             </ul>
         </nav>
 
@@ -26,8 +26,8 @@
         </div>
         <nav>
             <ul class="pager" data-bind="foreach: page">
-                <li><a class="pager-prev" data-bind='click: function() { prevPage(prevUrl) }'>Previous</a></li>
-                <li><a class="pager-next" data-bind='click: function() { nextPage(nextUrl) }'>Next</a></li>
+                <li data-bind="if: prevUrl"><a class="pager-prev" data-bind='click: function() { prevPage(prevUrl) }'>Previous</a></li>
+                <li data-bind="if: nextUrl"><a class="pager-next" data-bind='click: function() { nextPage(nextUrl) }'>Next</a></li>
             </ul>
         </nav>
     </div>

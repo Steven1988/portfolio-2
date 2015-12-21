@@ -16,13 +16,13 @@
                 $.getJSON('api/search/' +searchString + "/" + sesUserId, function(searchPosts) {
                     data(searchPosts.data);
                     page(searchPosts.paging);
-                    console.log(searchPosts);
+                    //console.log(searchPosts);
                 });
             }
             else {
                 $.getJSON('api/search/' +searchString, function (searchPosts) {
                     data(searchPosts.data)
-                    console.log(searchPosts);
+                    //console.log(searchPosts);
                 });
             }
 
@@ -38,7 +38,6 @@
                     page(posts.paging);
                 });
             }
-
             return searchItem;
         }
         return {
