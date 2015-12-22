@@ -59,7 +59,10 @@
                 <div class="col-xs-10 col-xs-offset-1">
                     <h3>Advertisement</h3>
                     <img src="app/images/UI_design.jpg" class="img-responsive" alt="Responsive image">
-                    <footer class="panel-footer"><button id="closeAdButton">close</button>Advertisement! Have you considered using an ad-blocker?</footer>
+                    <div class="">
+                        <button id="closeAdButton" data-bind="click: function() { closeAdvert() }">close</button>
+                        <p>Advertisement! Have you considered using an ad-blocker?</p>
+                    </div>
                 </div>
             </div>
         </div>

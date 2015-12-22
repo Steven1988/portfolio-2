@@ -25,11 +25,6 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
             currentComponent("postdetail");
         }
 
-        //currentDate = function() {
-        //    document.write(new Date().getFullYear())
-        //};
-        //console.log(currentDate)
-
 
         var mydate = new Date().getFullYear()
         console.log(mydate)
@@ -39,9 +34,6 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
             currentPostId: currentPostId,
             user: theUser,
             currentDate: mydate
-            //change: function () {
-            //    this.currentComponent("postDetail")
-            //}
         }
     }
 
@@ -86,9 +78,3 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
 
     ko.applyBindings(new app.mainViewModel());
 });
-
-//************ Advertisement **************
-document.getElementById('closeAdButton').addEventListener('click', function (e) {
-    e.preventDefault();
-    this.parentNode.parentNode.style.display = 'none';
-}, false);

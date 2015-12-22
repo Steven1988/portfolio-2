@@ -1,20 +1,21 @@
 ﻿<div class="panel panel-default">
     <div class="postdetail-container">
-        <h2>Post details</h2>
 
-        <!--<h3 data-bind="text: Title"></h3>-->
+
+        
 
         <div class="postLoop" data-bind="foreach: data">
-            <div class="postdetail panel panel-body">
                 <div class="postTitle" data-bind="css: { hide: Title == null }">
                     <h2 data-bind="text: Title"></h2>
                 </div>
+            <div class="postdetail panel panel-body">
                 <div class="postUser row">
-                    <p class="col-sm-10">The id of the post: <span data-bind="text: Id"></span></p>
-                    <p class="col-sm-6" data-bind="text: CreationDate"></p>
+                    <div class="box"></div>
+                    <p class="col-xs-6" data-bind="text: CreationDate"></p>
                     <!--timestamp with .slice --> 
                     <!--<div class="col-sm-6" data-bind="text: $parent.timestamp"></div>-->
-                    <p class="col-sm-6" data-bind="text: UserInstance.Name"></p>
+                    <p class="col-xs-6" data-bind="text: UserInstance.Name"></p>
+                    
                 </div>
                 <div class="favoriteBox" data-bind="css: { hide: Title == null}, if: sesUserId">
                     <div>

@@ -7,15 +7,14 @@
             //console.log(tags);
         });
 
-        toSearch = function (Tagname) {
-            searchVM(Tagname);
-            console.log("the tagname is: " + Tagname)
+        closeAdvert = function () {
+            $('.advert').hide();
+            console.log("clicked on close");
         }
 
         return {
             tags: data
         }
-        //console.log(tags);
     };
     return tagViewModel;
 })

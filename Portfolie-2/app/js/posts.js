@@ -40,6 +40,13 @@
                 page(posts.paging);
             });
         }
+
+        closeAdvert = function () {
+            $('.advert').hide();
+            console.log("clicked on close");
+        }
+
+
         return {
             posts: data,
             page: page,

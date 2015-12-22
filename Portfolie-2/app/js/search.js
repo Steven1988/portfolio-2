@@ -10,8 +10,7 @@
             sesUserId = "";
         } else {
             sesUserId = sesUser().Id;
-        }
-            
+        }    
         var currentPostId = params.selectedPostId;
 
         getResult = function (searchItem) {
@@ -46,6 +45,11 @@
             return searchItem;
         }
 
+        closeAdvert = function () {
+            $('.advert').hide();
+            console.log("clicked on close");
+        }
+
         //truncateText http://jsfiddle.net/bZEQM/31/
         ko.bindingHandlers.truncatedText = {
             update: function (element, valueAccessor, allBindingsAccessor) {
@@ -66,7 +70,8 @@
             page: page,
             searchItem: searchItem,
             sesUserId: sesUserId,
-            goToPost: params.goToPostDetail
+            goToPost: params.goToPostDetail,
+            closeAdvert: closeAdvert
         }
     }
    
