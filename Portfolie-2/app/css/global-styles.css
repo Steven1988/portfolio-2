@@ -8,6 +8,21 @@ img {
     width: 100%;
 }
 
+
+footer, .panel-footer {
+     background-color: rgba(30,30,30,0.9);
+     border: none;
+     height: 70px;
+     position:relative;
+    bottom: -70px;
+    width: 100%;
+}
+
+.footer-content {
+    padding: 5px;
+    color: #fff;
+}
+
 .footer{
     margin-top:6em;
     text-align:center;

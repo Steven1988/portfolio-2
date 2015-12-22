@@ -25,10 +25,20 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
             currentComponent("postdetail");
         }
 
+        //currentDate = function() {
+        //    document.write(new Date().getFullYear())
+        //};
+        //console.log(currentDate)
+
+
+        var mydate = new Date().getFullYear()
+        console.log(mydate)
+
         return {
             currentComponent: currentComponent,
             currentPostId: currentPostId,
-            user: theUser
+            user: theUser,
+            currentDate: mydate
             //change: function () {
             //    this.currentComponent("postDetail")
             //}

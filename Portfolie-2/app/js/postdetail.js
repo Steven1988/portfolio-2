@@ -47,7 +47,7 @@
                 alert("Please Provide Details!");
                 validation.focus();
                 return false;
-            } else {  
+            } else {
                 $.post("api/Favorites/" + favObj.UserId + "/" + favObj.PostId, favObj, function (Annotation) {
                     console.log("Your data is saved" + favObj.Annotation);
                     window.location.reload(true);
