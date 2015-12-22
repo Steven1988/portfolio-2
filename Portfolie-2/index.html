@@ -20,7 +20,13 @@
                 <div data-bind='component: {name: currentComponent, params: {selectedPost: currentPostId, goToPostDetail: goToPostDetail, sesUser: user}}'></div>
             </div>
         </div>
-    </div> 
+        <footer class="panel-footer">
+            <div class="container footer-content">
+
+                Copyright © <span data-bind="text :currentDate"></span> Stefan, Alexender & Nima
+            </div>
+        </footer>
+    </div>
 
     <script src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/require.js"></script>
