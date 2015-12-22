@@ -6,14 +6,9 @@
         var currentPostId = params.selectedPostId;
 
         $.getJSON("/api/posts", function (posts) {
-
             data(posts.data);
-            
-            //console.log(posts);
-
             page(posts.paging);
-            console.log(posts);
-            console.log(posts.data[2].Body);
+            //console.log(posts);
         });
 
         //truncateText http://jsfiddle.net/bZEQM/31/
@@ -44,9 +39,6 @@
                 page(posts.paging);
             });
         }
-        //var summary = 50;
-        //console.log(posts.Body);
-
         return {
             posts: data,
             page: page,

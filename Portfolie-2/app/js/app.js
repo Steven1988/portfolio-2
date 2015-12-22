@@ -5,7 +5,7 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
     app.mainViewModel = function () {
         mainVM = this;
 
-        var currentComponent = ko.observable("tags");
+        var currentComponent = ko.observable("search");
         currentPostId = ko.observable("");
 
         //**** setting the sesUserId ******
