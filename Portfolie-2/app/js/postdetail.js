@@ -12,7 +12,7 @@
 
         var data = ko.observableArray([]);
         var anno = ko.observable();
-
+        var date = ko.observable();
         function trimfield(str) {
             return str.replace(/^\s+|\s+$/g, '');
         }
@@ -21,6 +21,10 @@
             $.getJSON("/api/posts/" + currentPostId() + "/" + sesUserId, function (pd) {
                 data(pd.data);
                 console.log(pd.data);
+                var timestamp = data()[0].CreationDate.slice(0, -9);
+                date(timestamp);
+                    //.replace(/T/g, ' ')
+                console.log(timestamp);
             });
         } 
         if (sesUserId == "") {
@@ -99,6 +103,7 @@
             data: data,
             currentPostId: currentPostId,
             sesUserId: sesUserId,
+            timestamp: date
         }
     }
     return postdetailVM;

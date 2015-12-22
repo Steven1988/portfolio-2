@@ -11,8 +11,9 @@
                 </div>
                 <div class="postUser row">
                     <p class="col-sm-10">The id of the post: <span data-bind="text: Id"></span></p>
-                    <!--<p class="col-sm-6" data-bind="text: CreationDate"></p>-->
-                    <div class="col-sm-6" data-bind="text: CreationDate, datePattern: 'MM/DD/YYYY'"></div>
+                    <p class="col-sm-6" data-bind="text: CreationDate"></p>
+                    <!--timestamp with .slice --> 
+                    <!--<div class="col-sm-6" data-bind="text: $parent.timestamp"></div>-->
                     <p class="col-sm-6" data-bind="text: UserInstance.Name"></p>
                 </div>
                 <div class="favoriteBox" data-bind="css: { hide: Title == null}, if: sesUserId">
