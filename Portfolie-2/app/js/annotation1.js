@@ -5,19 +5,7 @@
         self.UserId = ko.observable();
         self.Annotation = ko.observable("");
 
-        //var sesUserId = 1;
-        //sesUserId = self.UserId;
-
-        //var selectedPostId = 124462;
-        //selectedPostId = self.PostId;
-
         self.loadUserData = function () {
-            //var data_to_send = ko.toJSON(self);
-            //var jObjects = JSON.parse(data_to_send);  
-            //var userId = jObjects.UserId;
-            //    postId = jObjects.PostId;
-
-        
             $.getJSON("/api/Favorites/"+self.UserId()+"/"+self.PostId(), function (datas) {
 
                 self.UserId(datas.UserId);
@@ -56,8 +44,6 @@
                 }
             });
         };
-         
-       
     }
     return favoriteVM;
 

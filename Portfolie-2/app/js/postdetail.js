@@ -21,8 +21,9 @@
         if (sesUserId != "") {
             $.getJSON("/api/posts/" + currentPostId() + "/" + sesUserId, function (pd) {
                 data(pd.data);
-                console.log(pd.data);
+                //console.log(pd.data);
 
+                console.log(data());
             });
         } 
         if (sesUserId == "") {
@@ -31,8 +32,6 @@
                 console.log(pd.data);
             });
         }
-
-        console.log(data([]).CreationDate);
 
         saveAnno = function (anno) {
             var favObj = {
