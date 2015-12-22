@@ -4,8 +4,7 @@
         var menuItems = [
             { mItem: "Search", icon: "fa fa-search" },
             { mItem: "Posts", icon: "fa fa-envelope" },
-            { mItem: "Tags", icon: "fa fa-tags" },
-            { mItem: "Postdetail", icon: "fa fa-asterisk" }
+            { mItem: "Tags", icon: "fa fa-tags" }
         ];
     
         var dropdownMenu = [

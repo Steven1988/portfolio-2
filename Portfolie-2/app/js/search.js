@@ -6,7 +6,12 @@
         var page = ko.observable();
 
         var sesUser = params.sesUser;
-        sesUserId = sesUser().Id;
+        if (sesUser() == null) {
+            sesUserId = "";
+        } else {
+            sesUserId = sesUser().Id;
+        }
+            
         var currentPostId = params.selectedPostId;
 
         getResult = function (searchItem) {

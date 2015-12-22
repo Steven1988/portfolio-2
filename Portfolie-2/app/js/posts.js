@@ -31,6 +31,7 @@
             $.getJSON(nextUrl, function (posts) {
                 data(posts.data);
                 page(posts.paging);
+                window.scrollTo(0, 0);
             });
         }
         prevPage = function (prevUrl) {

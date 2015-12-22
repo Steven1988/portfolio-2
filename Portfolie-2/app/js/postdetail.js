@@ -4,7 +4,11 @@
         var currentPostId = params.selectedPost;
 
         var sesUser = params.sesUser;
-        sesUserId = sesUser().Id;
+        if (sesUser() == null) {
+            sesUserId = "";
+        } else {
+            sesUserId = sesUser().Id;
+        }
 
         var data = ko.observableArray([]);
         var anno = ko.observable();
@@ -18,8 +22,9 @@
                 data(pd.data);
                 console.log(pd.data);
             });
-        } else {
-            $.getJSON("/api/posts/" + self.id, function (pd) {
+        } 
+        if (sesUserId == "") {
+            $.getJSON("/api/posts/" + currentPostId(), function (pd) {
                 data(pd.data);
                 console.log(pd.data);
             });
@@ -103,7 +108,8 @@
         }
         return {
             data: data,
-            currentPostId: currentPostId
+            currentPostId: currentPostId,
+            sesUserId: sesUserId
         }
     }
     return postdetailVM;
