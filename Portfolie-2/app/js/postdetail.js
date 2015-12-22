@@ -2,13 +2,10 @@
     postdetailVM = function (params) {
         var self = this;
         var currentPostId = params.selectedPost;
-        //console.log(currentPostId());
 
         var sesUser = params.sesUser;
         sesUserId = sesUser().Id;
 
-        //var highlight = ko.observable();
-        self.id = 28894151;
         var data = ko.observableArray([]);
         var anno = ko.observable();
 
@@ -16,19 +13,15 @@
             return str.replace(/^\s+|\s+$/g, '');
         }
 
-        if (self.sesUserId != "") {
-            $.getJSON("/api/posts/" + self.id + "/" + sesUserId, function (pd) {
+        if (sesUserId != "") {
+            $.getJSON("/api/posts/" + currentPostId() + "/" + sesUserId, function (pd) {
                 data(pd.data);
                 console.log(pd.data);
-                //console.log("with sesUserId" + sesUserId); 
-                //anno(pd.FavoriteInstance.Annotation);
-                //console.log(anno());
             });
         } else {
             $.getJSON("/api/posts/" + self.id, function (pd) {
                 data(pd.data);
                 console.log(pd.data);
-               
             });
         }
         
@@ -104,16 +97,9 @@
             });
             
         }
-
-        //toggleInput = function () {
-        //    highlight(!highlight());
-        //    console.log("toggle is clicked");
-        //};
-
         return {
             data: data,
             currentPostId: currentPostId
-            //anno: anno
         }
     }
     return postdetailVM;
