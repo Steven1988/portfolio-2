@@ -23,7 +23,7 @@
         </div>
 
     </div>
-    <div>
+    <!--<div>
         <p class="absolute-example">
         </p>
         <div class="col-xs-3">
@@ -33,19 +33,22 @@
             <img src="app/images/UI_design.jpg" class="img-responsive" alt="Responsive image">
             <footer class="panel-footer"><button id="closeAdButton">close</button>Advertisement! Have you considered using an ad-blocker?</footer>
         </div>
-    </div>
+    </div>-->
+
+    <footer class="panel-footer">
+        Copyright © <span data-bind="text :currentDate"></span> Stefan,Alexender & Nima
+    </footer>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/require.js"></script>
+    <script src="Scripts/require.config.js"></script>
+
+    <script src="Scripts/jquery.bootstrap-autohidingnavbar.js"></script>
+    <script src="app/js/app.js"></script>
+
+    <script>
+        $("div.navbar-fixed-top").autoHidingNavbar();
+    </script>
+
     
-
-<script src="Scripts/jquery-1.9.1.min.js"></script>
-        <script src="Scripts/require.js"></script>
-        <script src="Scripts/require.config.js"></script>
-
-        <script src="Scripts/jquery.bootstrap-autohidingnavbar.js"></script>
-        <script src="app/js/app.js"></script>
-
-        <script>
-            $("div.navbar-fixed-top").autoHidingNavbar();
-        </script>
 </body>
-
 </html>
