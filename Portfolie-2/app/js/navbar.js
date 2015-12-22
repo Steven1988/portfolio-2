@@ -8,8 +8,7 @@
         ];
     
         var dropdownMenu = [
-            { dropItem: "Your Profile", icon: "fa fa-user" },
-            { dropItem: "Favorites", icon: "fa fa-comments" },
+            { dropItem: "Your Profile", icon: "fa fa-user" }
         ];
 
         var currentComponent = params.selectedComponent;

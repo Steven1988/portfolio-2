@@ -13,6 +13,7 @@
         var data = ko.observableArray([]);
         var anno = ko.observable();
 
+
         function trimfield(str) {
             return str.replace(/^\s+|\s+$/g, '');
         }
@@ -21,6 +22,7 @@
             $.getJSON("/api/posts/" + currentPostId() + "/" + sesUserId, function (pd) {
                 data(pd.data);
                 console.log(pd.data);
+
             });
         } 
         if (sesUserId == "") {
@@ -29,7 +31,8 @@
                 console.log(pd.data);
             });
         }
-        
+
+        console.log(data([]).CreationDate);
 
         saveAnno = function (anno) {
             var favObj = {
@@ -98,7 +101,7 @@
         return {
             data: data,
             currentPostId: currentPostId,
-            sesUserId: sesUserId,
+            sesUserId: sesUserId
         }
     }
     return postdetailVM;

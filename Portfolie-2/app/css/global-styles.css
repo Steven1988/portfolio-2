@@ -12,10 +12,11 @@ img {
 footer, .panel-footer {
      background-color: rgba(30,30,30,0.9);
      border: none;
-     height: 70px;
+     height: 55px;
      position:relative;
-    bottom: -70px;
+    bottom: -130px;
     width: 100%;
+
 }
 
 .footer-content {

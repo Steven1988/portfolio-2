@@ -20,19 +20,19 @@
                     <tr class="boldtext">
                         <td>Search</td>
                         <td>Date</td>
-                        <td>User Id</td>
+                        <td>User Name</td>
                     </tr>
                 </thead>
                 <tbody data-bind="foreach: searchHistoryPost">
                     <tr>
                         <td data-bind="text: Query"></td>
                         <td data-bind="html: QueryTime"></td>
-                        <td data-bind="text: UserId"></td>
+                        <td data-bind="text: $parent.sesUser().DisplayName"></td>
 
                     </tr>
                 </tbody>
             </table>
-            <button class="btn btn-danger pull-right" data-bind="click: deleteHistory">Delete Search History</button>
+            <button class="btn btn-danger pull-left" data-bind="click: deleteHistory">Delete Search History</button>
         </div>
     </div>
     <div class="col-md-4">
