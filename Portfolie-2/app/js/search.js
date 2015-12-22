@@ -1,6 +1,6 @@
 ﻿define(['knockout', 'jQuery'], function (ko) {
     searchVM = function (params) {
-        vm = this;
+
         var searchItem = ko.observable("");
         var data = ko.observableArray([]);
         var page = ko.observable();
@@ -20,13 +20,12 @@
                 $.getJSON('api/search/' +searchString + "/" + sesUserId, function(searchPosts) {
                     data(searchPosts.data);
                     page(searchPosts.paging);
-                    //console.log(searchPosts);
                 });
             }
             else {
                 $.getJSON('api/search/' +searchString, function (searchPosts) {
-                    data(searchPosts.data)
-                    //console.log(searchPosts);
+                    data(searchPosts.data);
+                    page(searchPosts.paging);
                 });
             }
 
@@ -47,17 +46,15 @@
 
         closeAdvert = function () {
             $('.advert').hide();
-            console.log("clicked on close");
         }
 
         //truncateText http://jsfiddle.net/bZEQM/31/
         ko.bindingHandlers.truncatedText = {
             update: function (element, valueAccessor, allBindingsAccessor) {
                 var originalText = ko.utils.unwrapObservable(valueAccessor()),
-                    // 10 is a default maximum length
+
                     length = ko.utils.unwrapObservable(allBindingsAccessor().maxTextLength) || 20,
                     truncatedText = originalText.length > length ? originalText.substring(0, length) + "..." : originalText;
-                //$(element).html(truncatedText);
                 // updating text binding handler to show truncatedText
                 ko.bindingHandlers.html.update(element, function () {
                     return truncatedText;

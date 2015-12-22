@@ -1,4 +1,4 @@
-﻿define(['knockout', 'jQuery', 'bootstrap'], function (ko) {
+﻿define(['knockout', 'jQuery', 'autohideNavbar'], function (ko) {
     navbarVM = function (params) {
 
         var menuItems = [
@@ -26,6 +26,9 @@
             console.log(name);
 
         }
+
+        $(".navbar-fixed-top").autoHidingNavbar();
+
         return {
             menuItems: menuItems,
             currentComponent: currentComponent,

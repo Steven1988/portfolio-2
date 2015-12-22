@@ -1,9 +1,5 @@
 ﻿<div class="panel panel-default">
     <div class="postdetail-container">
-
-
-        
-
         <div class="postLoop" data-bind="foreach: data">
             <div class="postTitle" data-bind="css: { hide: Title == null }">
                 <h2 data-bind="text: Title"></h2>
@@ -15,7 +11,6 @@
                     <!--timestamp with .slice --> 
                     <!--<div class="col-sm-6" data-bind="text: $parent.timestamp"></div>-->
                     <p class="col-xs-6" data-bind="text: UserInstance.Name"></p>
-                    
                 </div>
                 <div class="favoriteBox" data-bind="css: { hide: Title == null}, if: sesUserId">
                     <div>
@@ -27,7 +22,6 @@
                         </div>
 
                         <div id="ViewAnnotation" class="modal fade" role="dialog">
-
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -58,15 +52,12 @@
                     </div>
                 </div>
                 <div class="postBody">
-
                     <p data-bind="html: Body"></p>
                 </div>
                 <div class="commentBox" data-bind="css: { hide: Comments == 0}">
                     <div data-bind="foreach: Comments">
                         <div class="comment">
-                            <p class="commentAuthor boldtext" data-bind="text: AuthorName">
-                                
-                            </p>
+                            <p class="commentAuthor boldtext" data-bind="text: AuthorName"></p>
                             <span class="comment-date text-muted" data-bind="text: CreationDate"></span>
                             <p class="comment-body" data-bind="text: Text"></p>
                         </div>

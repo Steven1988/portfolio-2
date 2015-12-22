@@ -53,11 +53,6 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
         template: { require: 'Scripts/text!Views/tags.html' }
     });
 
-    ko.components.register('searchhistory', {
-        viewModel: { require: 'app/js/searchHistory' },
-        template: { require: 'Scripts/text!Views/history.html' }
-    });
-
     ko.components.register('favorites', {
         viewModel: { require: 'app/js/annotation1' },
         template: { require: 'Scripts/text!Views/fav.html' }
