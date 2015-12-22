@@ -17,11 +17,17 @@
     text-align: center;
 }
 .search-btn {
-    width: 19%;
-    min-width: 70px;
+    width: 100%;
+    min-width: 100px;
+}
+
+.input-group-addon {
+    background-color: #337ab7; 
+    border: none;
+    color: #fff;
 }
 .search-input {
-    width: 80% !important;
+    width: 100% !important;
 }
 .pagination-centered {
     text-align: center;

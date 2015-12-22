@@ -34,14 +34,11 @@
         saveAnno = function (anno) {
             var favObj = {
                 UserId: sesUserId,
-                PostId: self.id,
+                PostId: currentPostId(),
                 Annotation: anno
             }
 
             console.log(favObj);
-
-            
-
             //***Validation to check if the text area is empty.****
 
             //var validation = $('#textAnnotation');
@@ -50,20 +47,17 @@
                 alert("Please Provide Details!");
                 validation.focus();
                 return false;
-
-            } else {
-                
+            } else {  
                 $.post("api/Favorites/" + favObj.UserId + "/" + favObj.PostId, favObj, function (Annotation) {
                     console.log("Your data is saved" + favObj.Annotation);
                     window.location.reload(true);
-
                 });
             }
         }
         updateFav = function (anno) {
             var favObj = {
                 UserId: sesUserId,
-                PostId: self.id,
+                PostId: currentPostId(),
                 Annotation: anno
             }
 
@@ -80,8 +74,7 @@
                     contentType: "application/json",
                     data: ko.toJSON(favObj),
                     success: function () {
-                        console.log(favObj);
-                        console.log("Your data is Updated");
+                        window.location.reload(true);
                     }
                 });
             }
@@ -89,15 +82,15 @@
 
         deleteFav = function () {
             $.ajax({
-                url: "api/Favorites/" + sesUserId + "/" + self.id,
+                url: "api/Favorites/" + sesUserId + "/" + currentPostId(),
                 type: "DELETE",
                 //dataType: "json",
                 contentType: "application/json",
                 data: ko.toJSON(self),
                 success: function () {
-                    //window.location.reload(true);
                     console.log("Your data is Deleted");
-                    self.anno = "";    
+                    window.location.reload(true);
+                    currentComponent("postdetail")
                 }
             });
             
@@ -105,7 +98,7 @@
         return {
             data: data,
             currentPostId: currentPostId,
-            sesUserId: sesUserId
+            sesUserId: sesUserId,
         }
     }
     return postdetailVM;

@@ -33,16 +33,18 @@
                                         <h4 class="modal-title">Annotation</h4>
                                     </div>
                                     <div class="anno-content">
-                                        <div data-bind="if: !FavoriteInstance" class="form-group has-error">
+                                        <div data-bind='if: !FavoriteInstance' class="form-group">
                                             <textarea id="textSave" class="form-control" type="text" placeholder="Write an annotation" data-bind="textInput: self.anno" required></textarea>
                                             <div class="anno-btn-group">
+                                                <p class="pull-left" data-bind="self.msg"></p>
                                                 <button type="button" class="btn btn-success pull-right anno-btns" data-bind="click: function() { saveAnno(self.anno) }"><i class="fa fa-floppy-o"></i> Save</button>
                                             </div>
                                         </div>
-                                        <div data-bind="if: FavoriteInstance"  class="form-group has-error">
+                                        <div data-bind="if: FavoriteInstance" class="form-group">
                                             <p data-bind="text: FavoriteInstance.Annotation"></p>
                                             <textarea  id="textUpdate" class="form-control" type="text" data-bind="value: FavoriteInstance.Annotation" required></textarea>
                                             <div class="anno-btn-group">
+                                                <p class="pull-left" data-bind="self.msg"></p>
                                                 <button class="btn btn-success anno-btns pull-right" data-dismiss="modal" data-bind="click: function () { updateFav(FavoriteInstance.Annotation) }"> Update</button>
                                                 <button class="btn btn-danger anno-btns pull-right" data-dismiss="modal" data-bind="click: function () { deleteFav() }">Delete</button>
                                             </div>

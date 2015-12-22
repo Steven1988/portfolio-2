@@ -10,7 +10,7 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
 
         //**** setting the sesUserId ******
         var theUser = ko.observable();
-        var desiredUserId = "";
+        var desiredUserId = 8717;
         if (desiredUserId != "") {
             $.getJSON('/api/users/' + desiredUserId, function (user) {
                 theUser(user);
