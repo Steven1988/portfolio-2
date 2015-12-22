@@ -10,10 +10,15 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
 
         //**** setting the sesUserId ******
         var theUser = ko.observable();
-        var desiredUserId = 136;
-        $.getJSON('/api/users/' + desiredUserId, function (user) {
-            theUser(user);
-        });
+        var desiredUserId = "";
+        if (desiredUserId != "") {
+            $.getJSON('/api/users/' + desiredUserId, function (user) {
+                theUser(user);
+            });
+        } else {
+            theUser(null);
+            console.log("user is null");
+        }
 
         goToPostDetail = function (Id) {
             currentPostId(Id);
@@ -66,9 +71,8 @@ require(['knockout', 'jQuery', 'bootstrap', 'moment'], function (ko) {
     });
     ko.components.register('yourprofile', {
         viewModel: { require: 'app/js/user' },
-        template: { require: 'Scripts/text!Views/user.html'}
-    })
-
+        template: { require: 'Scripts/text!Views/user.html' }
+    });
 
     ko.applyBindings(new app.mainViewModel());
 });
